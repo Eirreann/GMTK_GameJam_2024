@@ -28,8 +28,13 @@ namespace GMTK_Jam.Buildings
             while(Vector3.Distance(transform.position, _target.position) > _impactDistance)
             {
                 //Debug.Log(Vector3.Distance(transform.position, _target.position));
-                Vector3 target = new(transform.localPosition.x, transform.localPosition.y + _projectileSpeed, transform.localPosition.z);
-                transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, _projectileSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, _target.position, _projectileSpeed * Time.deltaTime);
+
+                var rotatePos = _target.position - transform.position;
+                rotatePos.y = 0;
+                var rotation = Quaternion.LookRotation(rotatePos);
+                transform.rotation = rotation;
+
                 yield return null;
             }
 

@@ -21,11 +21,13 @@ namespace GMTK_Jam.Buildings
         protected bool _isFiring = false;
 
         private TrailRenderer _line;
+        private Quaternion _startRot;
         private float _lineSpd = 150f;
         private float _fireCooldown;
 
         private void Start()
         {
+            _startRot = TowerPivot.localRotation;
             _line = GetComponentInChildren<TrailRenderer>();
             _collider = GetComponent<SphereCollider>();
             _pool = GetComponent<ProjectilePool>();
@@ -39,7 +41,7 @@ namespace GMTK_Jam.Buildings
             if (transform.localScale.x <= 1 && !direction) return;
 
             Vector3 scaleAmount = new(0.1f, 0.1f, 0.1f);
-            transform.localScale = transform.localScale += (direction ? scaleAmount : -scaleAmount);
+            Model.localScale = Model.localScale += (direction ? scaleAmount : -scaleAmount);
         }
 
         private void Update()
@@ -53,7 +55,11 @@ namespace GMTK_Jam.Buildings
                 _fireWeapon(target);
             }
             else
+            {
+                TowerPivot.localRotation = _startRot;
                 _fireCooldown = 0;
+            }
+                
         }
 
         private void OnTriggerEnter(Collider other)
@@ -80,7 +86,7 @@ namespace GMTK_Jam.Buildings
             }
             else
             {
-                //_fireCooldown -= Time.deltaTime;
+                _fireCooldown -= Time.deltaTime;
                 if( _fireCooldown < 0 )
                     _fireCooldown = 0;
                 //Debug.Log(_fireCooldown.ToString());

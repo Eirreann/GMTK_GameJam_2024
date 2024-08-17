@@ -27,13 +27,16 @@ namespace GMTK_Jam.Buildings
 
             ProjectileBase nextInstance = _poolStack.Pop();
             nextInstance.gameObject.SetActive(true);
+            _resetProjectilePos(nextInstance);
+            nextInstance.transform.parent = null;
             return nextInstance;
         }
 
         public void ReturnToPool(ProjectileBase instance)
         {
             _poolStack.Push(instance);
-            instance.transform.position = Vector3.zero; ;
+
+            _resetProjectilePos(instance);
             instance.gameObject.SetActive(false);
         }
 
@@ -51,8 +54,16 @@ namespace GMTK_Jam.Buildings
         private ProjectileBase _createPoolInstance()
         {
             ProjectileBase instance = Instantiate(_projectileTemplate, _parent);
+            instance.transform.parent = null;
             instance.Init(this);
             return instance;
+        }
+
+        private void _resetProjectilePos(ProjectileBase instance)
+        {
+            instance.transform.parent = _parent;
+            instance.transform.localPosition = Vector3.zero;
+            instance.transform.localRotation = Quaternion.identity;
         }
     }
 }
