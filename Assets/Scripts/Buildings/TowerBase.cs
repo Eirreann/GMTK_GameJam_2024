@@ -1,62 +1,72 @@
+using GMTK_Jam.Enemy;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace GMTK_Jam.Buildings
 {
-    public abstract class TowerBase : MonoBehaviour, IScrollInteractable
+    public class TowerBase : MonoBehaviour, IScrollInteractable
     {
         [Header("Attack Attributes")]
-        [SerializeField] protected int _baseDamage = 1;
-        [SerializeField] protected float _attackSpeed = 5;
+        [SerializeField] protected int baseDamage = 1;
+        [SerializeField] protected float baseAttackSpeed = 5;
+        [SerializeField] protected int maxScale = 10;
 
         [Header("Components")]
         public Transform Model;
-        public Transform TowerPivot;
+        public Transform TurretRotation;
         public Transform BulletSpawnPos;
 
-        protected List<GameObject> _targets = new List<GameObject>();
-        protected SphereCollider _collider;
-        protected ProjectilePool _pool;
-        protected bool _isFiring = false;
+        protected List<EnemyBase> targets = new List<EnemyBase>();
+        protected SphereCollider boundaryCollider;
+        protected ProjectilePool pool;
+        protected int scaleFactor = 0;
+        protected bool isFiring = false;
+        protected Quaternion startRot;
 
         private TrailRenderer _line;
-        private Quaternion _startRot;
         private float _lineSpd = 150f;
         private float _fireCooldown;
 
-        private void Start()
+        protected virtual void Start()
         {
-            _startRot = TowerPivot.localRotation;
+            startRot = TurretRotation.localRotation;
             _line = GetComponentInChildren<TrailRenderer>();
-            _collider = GetComponent<SphereCollider>();
-            _pool = GetComponent<ProjectilePool>();
-            _pool.Setup(BulletSpawnPos);
+            boundaryCollider = GetComponent<SphereCollider>();
+            pool = GetComponent<ProjectilePool>();
+            pool.Setup(BulletSpawnPos);
             StartCoroutine(_drawRadius());
         }
 
         public void OnScrollValue(bool direction)
         {
-            // Don't shrink less that 1
-            if (transform.localScale.x <= 1 && !direction) return;
-
-            Vector3 scaleAmount = new(0.1f, 0.1f, 0.1f);
-            Model.localScale = Model.localScale += (direction ? scaleAmount : -scaleAmount);
+            scaleFactor += direction ? 1 : -1;
+            if (scaleFactor <= maxScale && scaleFactor >= 0)
+            {
+                Vector3 scaleAmount = new(0.1f, 0.1f, 0.1f);
+                Model.localScale = Model.localScale += (direction ? scaleAmount : -scaleAmount);
+            }
+            else
+            {
+                scaleFactor = Mathf.Clamp(scaleFactor, 0, 10);
+            }
         }
 
         private void Update()
         {
-            _isFiring = _targets.Count > 0;
+            targets.RemoveAll(t => t == null); // Remove any destroyed targets
+            isFiring = targets.Count > 0;
 
-            if(_isFiring)
+            if(isFiring)
             {
-                Transform target = _targets[0].transform;
-                TowerPivot.LookAt(target);
+                EnemyBase target = targets[0];
+                towerLookAt(target.transform);
                 _fireWeapon(target);
             }
             else
             {
-                TowerPivot.localRotation = _startRot;
+                towerLookAt(null);
                 _fireCooldown = 0;
             }
                 
@@ -65,7 +75,10 @@ namespace GMTK_Jam.Buildings
         private void OnTriggerEnter(Collider other)
         {
             if(other.tag == "Enemy")
-                _targets.Add(other.gameObject);
+            {
+                EnemyBase enemy = other.GetComponent<EnemyBase>();
+                targets.Add(enemy);
+            }
 
             // TODO: Sort list of enemies by enemy with priority when required
         }
@@ -73,16 +86,39 @@ namespace GMTK_Jam.Buildings
 
         private void OnTriggerExit(Collider other)
         {
-            if (_targets.Contains(other.gameObject))
-                _targets.Remove(other.gameObject);
+            if (other.tag == "Enemy")
+            {
+                EnemyBase enemy = other.GetComponent<EnemyBase>();
+                if (targets.Contains(enemy))
+                    targets.Remove(enemy);
+            }
         }
-        private void _fireWeapon(Transform target)
+
+        protected virtual int getDamage()
+        {
+            return baseDamage;
+        }
+
+        protected virtual float getFireRate()
+        {
+            return baseAttackSpeed;
+        }
+
+        protected virtual void towerLookAt(Transform target = null)
+        {
+            if (target != null)
+                TurretRotation.LookAt(target.transform);
+            else
+                TurretRotation.localRotation = startRot;
+        }
+
+        private void _fireWeapon(EnemyBase target)
         {
             if(_fireCooldown == 0)
             {
-                _fireCooldown = _attackSpeed;
-                ProjectileBase bullet = _pool.GetProjectile();
-                bullet.FireAtTarget(target);
+                _fireCooldown = getFireRate();
+                ProjectileBase bullet = pool.GetProjectile();
+                bullet.FireAtTarget(target, getDamage());
             }
             else
             {
@@ -96,7 +132,7 @@ namespace GMTK_Jam.Buildings
         private IEnumerator _drawRadius()
         {
             bool isDrawing = true;
-            _line.transform.position = new Vector3(_line.transform.position.x + _collider.radius, _line.transform.position.y, _line.transform.position.z);
+            _line.transform.position = new Vector3(_line.transform.position.x + boundaryCollider.radius, _line.transform.position.y, _line.transform.position.z);
             while (isDrawing)
             {
                 _line.transform.RotateAround(transform.position, Vector3.up, _lineSpd * Time.deltaTime);
