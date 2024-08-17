@@ -24,10 +24,10 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Upgrade_Tower",
+                    "name": "Scrollwheel",
                     "type": "Value",
                     "id": "83200372-dcf5-4a90-89fe-7a4a8f964546",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -147,11 +147,11 @@
                 {
                     "name": "",
                     "id": "56585c1e-c60c-447c-8d7b-c26fc6197319",
-                    "path": "<Mouse>/scroll",
+                    "path": "<Mouse>/scroll/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Upgrade_Tower",
+                    "action": "Scrollwheel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
