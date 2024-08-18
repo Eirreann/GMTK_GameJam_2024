@@ -130,7 +130,7 @@ namespace GMTK_Jam.Enemy
         {
             if (isDead)
             {
-                GameManager.Instance.UpdatePlayerResource(_reward);
+                GameManager.Instance.UpdatePlayerResource(_reward, true);
                 _destroyEnemy();
             }
             else
@@ -155,7 +155,6 @@ namespace GMTK_Jam.Enemy
 
         private IEnumerator _scaleUpRadius()
         {
-            Debug.Log("Scaling up radius");
             _isUpdatingRadius = true;
             yield return new WaitForSeconds(2f); // TODO: Update delay relative to speed?
             while (_agent.radius < _startingRadius)

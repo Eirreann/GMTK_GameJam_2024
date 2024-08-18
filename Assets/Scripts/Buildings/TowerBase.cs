@@ -9,10 +9,12 @@ namespace GMTK_Jam.Buildings
 {
     public class TowerBase : MonoBehaviour, IScrollInteractable
     {
-        [Header("Attack Attributes")]
+        [Header("Attributes")]
         [SerializeField] protected int baseDamage = 1;
         [SerializeField] protected float baseAttackSpeed = 5;
+        [SerializeField] protected Vector2 minMaxAttackSpeed = new Vector2(1, 10);
         [SerializeField] protected int maxScale = 10;
+        [SerializeField] protected int upgradeCost = 1;
 
         [Header("Components")]
         public Transform Model;
@@ -43,13 +45,16 @@ namespace GMTK_Jam.Buildings
             DamageText.text = "Damage-" + getDamage().ToString();
         }
 
-        public void OnScrollValue(bool direction)
+        public virtual void OnScrollValue(bool direction)
         {
+            if (direction && !GameManager.Instance.CanAffordUpgrade(upgradeCost)) return;
+
             scaleFactor += direction ? 1 : -1;
             if (scaleFactor <= maxScale && scaleFactor >= 0)
             {
                 Vector3 scaleAmount = new(0.1f, 0.1f, 0.1f);
                 Model.localScale = Model.localScale += (direction ? scaleAmount : -scaleAmount);
+                GameManager.Instance.UpdatePlayerResource(direction ? -upgradeCost : upgradeCost);
             }
             else
             {
@@ -73,7 +78,7 @@ namespace GMTK_Jam.Buildings
             else
             {
                 towerLookAt(null);
-                _fireCooldown = 0;
+                //_fireCooldown = 0;
             }
                 
         }

@@ -24,11 +24,11 @@ namespace GMTK_Jam.Buildings
             {
                 // Rotate turret base
                 TurretRotation.LookAt(target.transform);
-                TurretRotation.localRotation = Quaternion.Euler(TurretRotation.localRotation.eulerAngles.x, startRot.eulerAngles.y, startRot.eulerAngles.z);
+                TurretRotation.localRotation = Quaternion.Euler(startRot.eulerAngles.z, TurretRotation.localRotation.eulerAngles.y, startRot.eulerAngles.z);
 
                 // Rotate gun
                 GunRotation.LookAt(target.transform);
-                GunRotation.localRotation = Quaternion.Euler(_startGunRot.eulerAngles.x, GunRotation.localRotation.eulerAngles.y, _startGunRot.eulerAngles.z);
+                GunRotation.localRotation = Quaternion.Euler(GunRotation.localRotation.eulerAngles.x, _startGunRot.eulerAngles.y, _startGunRot.eulerAngles.z);
             }
             else
             {

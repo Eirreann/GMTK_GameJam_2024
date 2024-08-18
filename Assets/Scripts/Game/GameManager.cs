@@ -1,6 +1,8 @@
 using GMTK_Jam;
+using GMTK_Jam.Buildings;
 using GMTK_Jam.Enemy;
 using GMTK_Jam.Player;
+using GMTK_Jam.UI;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -14,22 +16,30 @@ namespace GMTK_Jam
         public PlayerController Player;
         public PlayerBase PlayerBase;
         public int PlayerMaxHealth;
+        public int PlayerMaxScale;
 
         [Header("Gameplay")]
-        public EnemyWavesObject WavesSettings;
         public EnemySpawnManager EnemyManager;
+        public EnemyWavesObject WavesSettings;
+        public BuildingDataSO BuildingData;
 
         [Header("UI")]
         public GameObject TempPause;
+        public UIScaleBar ScaleBar;
 
+        private PlaceBuildingHandler _buildingHandler;
         private int _currentHealth;
+        private int _currentScale;
         private bool _paused = false;
 
         private void Start()
         {
             Player.InitInputs();
+            _buildingHandler = GetComponent<PlaceBuildingHandler>();
             Cursor.lockState = CursorLockMode.Confined;
             _currentHealth = PlayerMaxHealth;
+            _currentScale = PlayerMaxScale;
+            UpdatePlayerResource(0);
         }
 
         private void Update()
@@ -52,15 +62,27 @@ namespace GMTK_Jam
 
         public void UpdatePlayerHealth(int mod)
         {
-            // TODO
             _currentHealth += mod;
             PlayerBase.UpdatePlayerHealthUI(_currentHealth);
-            Debug.Log("Player health modified by " + mod.ToString());
+            //Debug.Log("Player health modified by " + mod.ToString());
         }
 
-        public void UpdatePlayerResource(int mod)
+        public void UpdatePlayerResource(int mod, bool updateMax = false)
         {
-            // TODO
+            _currentScale += mod;
+            if (updateMax)
+                PlayerMaxScale += mod;
+            ScaleBar.UpdateScaleUI(mod, _currentScale, PlayerMaxScale);
+        }
+
+        public void OpenBuyMenu()
+        {
+            _buildingHandler.StartPlacingBuilding(BuildingData.Buildings[0]);
+        }
+
+        public bool CanAffordUpgrade(int cost)
+        {
+            return cost <= _currentScale;
         }
     }
 }

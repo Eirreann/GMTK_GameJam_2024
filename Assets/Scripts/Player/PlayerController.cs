@@ -22,8 +22,9 @@ namespace GMTK_Jam.Player
         private PlayerInput _playerInput;
         private InputAction _camMoveKeys;
         private InputAction _camMoveMouse;
-        private InputAction _scrollWheel;
-        private InputAction _spacebar;
+        private InputAction _levelUpDown;
+        private InputAction _recenter;
+        private InputAction _buy;
 
         private Vector3 _startPosition;
         private Vector2 _moveDir = Vector2.zero;
@@ -34,8 +35,9 @@ namespace GMTK_Jam.Player
             _playerInput = GetComponent<PlayerInput>();
             _camMoveKeys = _playerInput.actions["Camera_Move_Keys"];
             _camMoveMouse = _playerInput.actions["Camera_Move_Mouse"];
-            _scrollWheel = _playerInput.actions["Scrollwheel"];
-            _spacebar = _playerInput.actions["Reset_View"];
+            _levelUpDown = _playerInput.actions["Scrollwheel"];
+            _recenter = _playerInput.actions["Reset_View"];
+            _buy = _playerInput.actions["Buy"];
 
             _startPosition = transform.position;
         }
@@ -51,11 +53,13 @@ namespace GMTK_Jam.Player
             _camMoveMouse.performed += _setMouseMovement;
             _camMoveMouse.canceled += _setMouseMovement;
 
-            _scrollWheel.performed += _setScrollValue;
-            _scrollWheel.canceled += _setScrollValue;
+            _levelUpDown.performed += _setScrollValue;
+            _levelUpDown.canceled += _setScrollValue;
 
-            _spacebar.performed += _resetView;
-            _spacebar.canceled += _resetView;
+            _recenter.performed += _resetView;
+            _recenter.canceled += _resetView;
+
+            _buy.performed += _openBuyMenu;
         }
 
         /// <summary>
@@ -155,6 +159,14 @@ namespace GMTK_Jam.Player
             }
             else
                 _isKeyPressed = false;
+        }
+
+        private void _openBuyMenu(InputAction.CallbackContext context)
+        {
+            if (context.ReadValue<float>() == 1)
+            {
+                GameManager.Instance.OpenBuyMenu();
+            }
         }
     }
 }
