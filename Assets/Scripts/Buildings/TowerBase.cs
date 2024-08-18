@@ -132,13 +132,18 @@ namespace GMTK_Jam.Buildings
                 TurretRotation.localRotation = startRot;
         }
 
+        protected virtual void _spawnBullet(int damage, EnemyBase target)
+        {
+            ProjectileBase bullet = pool.GetProjectile();
+            bullet.FireAtTarget(target, damage);
+        }
+
         private void _fireWeapon(EnemyBase target)
         {
             if(_fireCooldown == 0)
             {
                 _fireCooldown = getFireRate();
-                ProjectileBase bullet = pool.GetProjectile();
-                bullet.FireAtTarget(target, getDamage());
+                _spawnBullet(getDamage(), target);
             }
             else
             {

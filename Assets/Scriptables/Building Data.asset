@@ -15,6 +15,7 @@ MonoBehaviour:
   Buildings:
   - Name: Basic Tower
     Desc: attack speed scales up with size down, damage scales up with size up
+    Cost: 10
     Type: 0
     Prefab: {fileID: 2130013186963285246, guid: d924149ab33cb154691a85ddc6b6a765,
       type: 3}
@@ -25,16 +26,18 @@ MonoBehaviour:
     DowngradeIcon: {fileID: 21300000, guid: 5faa6bef7c49f1d49ae46ab591c705fc, type: 3}
   - Name: Cannon Tower
     Desc: large shot that moves through enemies, high damage low AoE
+    Cost: 5
     Type: 1
-    Prefab: {fileID: 6670677265374644613, guid: d924149ab33cb154691a85ddc6b6a765,
+    Prefab: {fileID: 1717719245319554034, guid: 7497f08fc2ec431409cac92e0908fd1b,
       type: 3}
-    BasePrefab: {fileID: 1405169185756518377, guid: 4063f4f14dc620b438f9cec1f5c0813d,
+    BasePrefab: {fileID: 3428644334504899366, guid: 1e95ccf592feb9647a6e3efea828288c,
       type: 3}
     BaseIcon: {fileID: 21300000, guid: 239e2fd8c2c523e4d8036cebccc4d8aa, type: 3}
     UpgradeIcon: {fileID: 21300000, guid: c82ee258bea78ec4e8c45b615e6c9830, type: 3}
     DowngradeIcon: {fileID: 21300000, guid: e130bb0b21b140949988ec42529efb66, type: 3}
   - Name: Ricochet Tower
     Desc: hots bounce b/w enemies, low damage high AoE
+    Cost: 30
     Type: 2
     Prefab: {fileID: 6670677265374644613, guid: d924149ab33cb154691a85ddc6b6a765,
       type: 3}
@@ -45,6 +48,7 @@ MonoBehaviour:
     DowngradeIcon: {fileID: 21300000, guid: 359aaf6ffc44fa04ba2bdf90dc6c6a58, type: 3}
   - Name: Inferno Tower
     Desc: damage scales with size up, low damage until large size
+    Cost: 40
     Type: 3
     Prefab: {fileID: 6670677265374644613, guid: d924149ab33cb154691a85ddc6b6a765,
       type: 3}

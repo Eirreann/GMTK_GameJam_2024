@@ -14,8 +14,8 @@ namespace GMTK_Jam.Buildings
         protected EnemyBase _target;
         protected int _damage;
 
-        private Coroutine _fireCoroutine;
-        private bool _isFired = false;
+        protected Coroutine _fireCoroutine;
+        protected bool _isFired = false;
 
         public void Init(ProjectilePool pool)
         {
@@ -27,7 +27,6 @@ namespace GMTK_Jam.Buildings
             _target = target;
             _damage = damage;
             _isFired = true;
-            _fireCoroutine = StartCoroutine(_moveTowardTarget());
         }
 
         protected virtual void Update()
@@ -41,7 +40,7 @@ namespace GMTK_Jam.Buildings
 
         }
 
-        private IEnumerator _moveTowardTarget()
+        protected IEnumerator _moveTowardTarget()
         {
             while(Vector3.Distance(transform.position, _target.transform.position) > _impactDistance)
             {
