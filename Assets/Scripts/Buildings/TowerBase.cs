@@ -10,8 +10,9 @@ namespace GMTK_Jam.Buildings
     public class TowerBase : MonoBehaviour, IScrollInteractable
     {
         [Header("Attributes")]
-        [SerializeField] protected int baseDamage = 1;
-        [SerializeField] protected float baseAttackSpeed = 5;
+        [SerializeField] public int baseDamage = 1;
+        [SerializeField] public float baseAttackSpeed = 5;
+        [SerializeField] public float radius = 40f;
         [SerializeField] protected Vector2 minMaxAttackSpeed = new Vector2(1, 10);
         [SerializeField] protected int maxScale = 10;
         [SerializeField] protected int upgradeCost = 1;
@@ -38,11 +39,12 @@ namespace GMTK_Jam.Buildings
             startRot = TurretRotation.localRotation;
             _line = GetComponentInChildren<TrailRenderer>();
             boundaryCollider = GetComponent<SphereCollider>();
+            boundaryCollider.radius = radius;
             pool = GetComponent<ProjectilePool>();
             pool.Setup(BulletSpawnPos);
             StartCoroutine(_drawRadius());
 
-            DamageText.text = "Damage-" + getDamage().ToString();
+            DamageText.text = "DMG " + getDamage().ToString();
         }
 
         public virtual void OnScrollValue(bool direction)
@@ -78,7 +80,14 @@ namespace GMTK_Jam.Buildings
             else
             {
                 towerLookAt(null);
-                //_fireCooldown = 0;
+
+                // TODO: Make a proper method for tracking cooldowns.
+                if(_fireCooldown > 0)
+                {
+                    _fireCooldown -= Time.deltaTime;
+                    if (_fireCooldown < 0)
+                        _fireCooldown = 0;
+                }
             }
                 
         }

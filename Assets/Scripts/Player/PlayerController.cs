@@ -86,7 +86,7 @@ namespace GMTK_Jam.Player
 
         private void _setKeyMovement(InputAction.CallbackContext context)
         {
-            if (!MovementPermitted) return;
+            if (!MovementPermitted || GameManager.Instance.State != GameState.ACTIVE) return;
 
             Vector2 value = context.ReadValue<Vector2>();
             _moveDir = value;
@@ -97,7 +97,7 @@ namespace GMTK_Jam.Player
         private void _setMouseMovement(InputAction.CallbackContext context)
         {
             // Don't let mouse override key presses, don't move camera if 
-            if (_isKeyPressed || !MovementPermitted) return;
+            if (_isKeyPressed || !MovementPermitted || GameManager.Instance.State != GameState.ACTIVE) return;
 
             // Don't listen to mouse movement if the screen is not in focus (also reset moveDir to 0 so it doesn't keep moving)
             if (!Application.isFocused)
@@ -122,8 +122,6 @@ namespace GMTK_Jam.Player
                 heightVal = -1;
             value = new Vector2((int)Mathf.Clamp(widthVal, -1, 1), (int)Mathf.Clamp(heightVal, -1, 1));
 
-            // TODO-IS: Also cap distance from edge of screen so it doesn't keep scrolling if mouse is way outside the window?
-
             // Update move direction with result
             _moveDir = value;
             //Debug.Log(value);
@@ -131,6 +129,8 @@ namespace GMTK_Jam.Player
 
         private void _setScrollValue(InputAction.CallbackContext context)
         {
+            if (GameManager.Instance.State != GameState.ACTIVE) return;
+
             float value = context.ReadValue<float>();
             bool scrollDirection = value > 0;
 
@@ -150,12 +150,19 @@ namespace GMTK_Jam.Player
 
         private void _resetView(InputAction.CallbackContext context)
         {
-            if(!MovementPermitted) return;
+            if(!MovementPermitted || GameManager.Instance.State != GameState.ACTIVE) return;
 
             if (context.ReadValue<float>() == 1)
             {
-                _isKeyPressed = true;
-                transform.position = _startPosition;
+                if(GameManager.Instance.State == GameState.ENDED)
+                {
+                    // TODO
+                }
+                else
+                {
+                    _isKeyPressed = true;
+                    transform.position = _startPosition;
+                }
             }
             else
                 _isKeyPressed = false;
@@ -163,6 +170,8 @@ namespace GMTK_Jam.Player
 
         private void _openBuyMenu(InputAction.CallbackContext context)
         {
+            if (GameManager.Instance.State != GameState.ACTIVE) return;
+
             if (context.ReadValue<float>() == 1)
             {
                 GameManager.Instance.OpenBuyMenu();

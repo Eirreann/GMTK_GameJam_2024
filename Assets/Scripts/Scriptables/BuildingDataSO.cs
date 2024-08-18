@@ -14,8 +14,18 @@ namespace GMTK_Jam.Buildings
     [System.Serializable]
     public struct BuildingData
     {
+        [Header("Details")]
+        public string Name;
+        [TextArea(2, 10)]
+        public string Desc;
+        public int Cost;
         public BuildingType Type;
-        public GameObject Prefab;
-        public GameObject BasePrefab;
+        [Header("Prefabs")]
+        public TowerBase Prefab;
+        public BuildingPlacementArea BasePrefab;
+        [Header("Sprites")]
+        public Sprite BaseIcon;
+        public Sprite UpgradeIcon;
+        public Sprite DowngradeIcon;
     }
 }

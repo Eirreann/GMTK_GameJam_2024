@@ -14,6 +14,18 @@ namespace GMTK_Jam.Enemy
 
         [Header("Waves")]
         public List<WaveOptions> Waves;
+
+        public EnemyBase ReturnEnemyObject(EnemyType enemyType)
+        {
+            EnemyBase enemy = null;
+            switch (enemyType)
+            {
+                case EnemyType.BASIC:
+                    enemy = Basic_Enemy;
+                    break;
+            }
+            return enemy;
+        }
     }
 
     [System.Serializable]

@@ -2,6 +2,7 @@ using GMTK_Jam.AI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GMTK_Jam.Enemy
 {
@@ -11,27 +12,34 @@ namespace GMTK_Jam.Enemy
         public List<PathingCorner> CornersInChunk;
 
         [Header("Enemy Settings")]
-        [SerializeField] private EnemyBase _enemyPrefab;
+        //[SerializeField] private EnemyBase _enemyPrefab;
         [SerializeField] private Vector3 _spawnArea = Vector3.one;
-        [SerializeField] private int _enemyCount;
+        //[SerializeField] private int _enemyCount;
         [SerializeField] private float _spawnFrequency = 0.25f;
 
-        public void SpawnEnemies(List<PathingCorner> corners)
+        private UnityAction<List<EnemyBase>> _onEnemiesAdded;
+
+        public void SpawnEnemies(EnemyBase prefab, int count, List<PathingCorner> corners, UnityAction<List<EnemyBase>> onEnemiesAdded)
         {
-            StartCoroutine(_spawnEnemies(corners));
+            _onEnemiesAdded = onEnemiesAdded;
+            StartCoroutine(_spawnEnemies(prefab, count, corners));
         }
 
-        private IEnumerator _spawnEnemies(List<PathingCorner> corners)
+        private IEnumerator _spawnEnemies(EnemyBase prefab, int count, List<PathingCorner> corners)
         {
-            for(int i = 0; i < _enemyCount; i++)
+            List<EnemyBase> enemies = new List<EnemyBase>();
+            for(int i = 0; i < count; i++)
             {
+                yield return new WaitForSeconds(_spawnFrequency);
+
                 float spawnRangeX = _spawnArea.x/2;
                 float spawnRangeZ = _spawnArea.z/2;
-                EnemyBase enemy = Instantiate(_enemyPrefab, transform);
+                EnemyBase enemy = Instantiate(prefab, transform);
                 enemy.transform.localPosition = new Vector3(enemy.transform.localPosition.x + Random.Range(-spawnRangeX, spawnRangeX), enemy.transform.localPosition.y, enemy.transform.localPosition.z + Random.Range(-spawnRangeZ, spawnRangeZ));
                 enemy.InitEnemy(corners);
-                yield return new WaitForSeconds(_spawnFrequency);
+                enemies.Add(enemy);
             }
+            _onEnemiesAdded.Invoke(enemies);
         }
 
         private void OnDrawGizmosSelected()
