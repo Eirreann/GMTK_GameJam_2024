@@ -8,10 +8,10 @@ namespace GMTK_Jam.Buildings
     public abstract class ProjectileBase : MonoBehaviour
     {
         [SerializeField] protected float _projectileSpeed = 5f;
+        [SerializeField] protected float _impactDistance = 0.5f;
 
         protected ProjectilePool _pool;
         protected EnemyBase _target;
-        protected float _impactDistance = 0.5f;
         protected int _damage;
 
         public void Init(ProjectilePool pool)

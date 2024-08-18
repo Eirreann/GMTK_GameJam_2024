@@ -48,7 +48,7 @@ namespace GMTK_Jam.Buildings
             float fireRate = baseAttackSpeed;
             float mod = (scaleFactor / maxScale) * 2;
             fireRate += mod;
-            Debug.Log(string.Format("{0}, {1}", fireRate, mod));
+            //Debug.Log(string.Format("{0}, {1}", fireRate, mod));
             return fireRate;
         }
     }

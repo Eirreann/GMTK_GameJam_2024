@@ -23,7 +23,9 @@ namespace GMTK_Jam.Player
         private InputAction _camMoveKeys;
         private InputAction _camMoveMouse;
         private InputAction _scrollWheel;
+        private InputAction _spacebar;
 
+        private Vector3 _startPosition;
         private Vector2 _moveDir = Vector2.zero;
         private bool _isKeyPressed = false;
 
@@ -33,6 +35,9 @@ namespace GMTK_Jam.Player
             _camMoveKeys = _playerInput.actions["Camera_Move_Keys"];
             _camMoveMouse = _playerInput.actions["Camera_Move_Mouse"];
             _scrollWheel = _playerInput.actions["Scrollwheel"];
+            _spacebar = _playerInput.actions["Reset_View"];
+
+            _startPosition = transform.position;
         }
 
         /// <summary>
@@ -49,6 +54,8 @@ namespace GMTK_Jam.Player
             _scrollWheel.performed += _setScrollValue;
             _scrollWheel.canceled += _setScrollValue;
 
+            _spacebar.performed += _resetView;
+            _spacebar.canceled += _resetView;
         }
 
         /// <summary>
@@ -71,7 +78,6 @@ namespace GMTK_Jam.Player
                 if (transform.position != target)
                     transform.position = Vector3.MoveTowards(transform.position, target, _moveSpd * Time.deltaTime);
             }
-
         }
 
         private void _setKeyMovement(InputAction.CallbackContext context)
@@ -136,6 +142,19 @@ namespace GMTK_Jam.Player
                     }
                 }
             }
+        }
+
+        private void _resetView(InputAction.CallbackContext context)
+        {
+            if(!MovementPermitted) return;
+
+            if (context.ReadValue<float>() == 1)
+            {
+                _isKeyPressed = true;
+                transform.position = _startPosition;
+            }
+            else
+                _isKeyPressed = false;
         }
     }
 }

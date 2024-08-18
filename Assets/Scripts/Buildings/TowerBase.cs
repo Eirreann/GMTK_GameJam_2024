@@ -2,6 +2,7 @@ using GMTK_Jam.Enemy;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 namespace GMTK_Jam.Buildings
@@ -17,6 +18,7 @@ namespace GMTK_Jam.Buildings
         public Transform Model;
         public Transform TurretRotation;
         public Transform BulletSpawnPos;
+        public TextMeshProUGUI DamageText;
 
         protected List<EnemyBase> targets = new List<EnemyBase>();
         protected SphereCollider boundaryCollider;
@@ -37,6 +39,8 @@ namespace GMTK_Jam.Buildings
             pool = GetComponent<ProjectilePool>();
             pool.Setup(BulletSpawnPos);
             StartCoroutine(_drawRadius());
+
+            DamageText.text = "Damage-" + getDamage().ToString();
         }
 
         public void OnScrollValue(bool direction)
@@ -51,6 +55,8 @@ namespace GMTK_Jam.Buildings
             {
                 scaleFactor = Mathf.Clamp(scaleFactor, 0, 10);
             }
+
+            DamageText.text = "Damage-" + getDamage().ToString();
         }
 
         private void Update()

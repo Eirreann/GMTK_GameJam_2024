@@ -1,3 +1,4 @@
+using GMTK_Jam.AI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,24 +7,30 @@ namespace GMTK_Jam.Enemy
 {
     public class EnemySpawnPoint : MonoBehaviour
     {
+        [Header("Pathing")]
+        public List<PathingCorner> CornersInChunk;
+
+        [Header("Enemy Settings")]
         [SerializeField] private EnemyBase _enemyPrefab;
         [SerializeField] private Vector3 _spawnArea = Vector3.one;
         [SerializeField] private int _enemyCount;
+        [SerializeField] private float _spawnFrequency = 0.25f;
 
-        private void Start()
+        public void SpawnEnemies(List<PathingCorner> corners)
         {
-            StartCoroutine(_spawnEnemies());
+            StartCoroutine(_spawnEnemies(corners));
         }
 
-        private IEnumerator _spawnEnemies()
+        private IEnumerator _spawnEnemies(List<PathingCorner> corners)
         {
             for(int i = 0; i < _enemyCount; i++)
             {
                 float spawnRangeX = _spawnArea.x/2;
                 float spawnRangeZ = _spawnArea.z/2;
                 EnemyBase enemy = Instantiate(_enemyPrefab, transform);
-                enemy.transform.localPosition = new Vector3(enemy.transform.localPosition.x + Random.Range(-spawnRangeX, spawnRangeX), enemy.transform.localPosition.y, enemy.transform.localPosition.x + Random.Range(-spawnRangeZ, spawnRangeZ));
-                yield return new WaitForSeconds(0.25f);
+                enemy.transform.localPosition = new Vector3(enemy.transform.localPosition.x + Random.Range(-spawnRangeX, spawnRangeX), enemy.transform.localPosition.y, enemy.transform.localPosition.z + Random.Range(-spawnRangeZ, spawnRangeZ));
+                enemy.InitEnemy(corners);
+                yield return new WaitForSeconds(_spawnFrequency);
             }
         }
 

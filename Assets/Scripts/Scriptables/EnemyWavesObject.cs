@@ -20,15 +20,17 @@ namespace GMTK_Jam.Enemy
     public struct WaveOptions
     {
         [Range(0, 60)]
-        public int TimeBetweenWaves;
+        public int WaveTime;
         public List<BatchSettings> Batches;
+        [TextArea(2, 10)]
+        public string TooltipText;
     }
 
     [System.Serializable]
     public struct BatchSettings
     {
         [Range(0, 60)]
-        public int TimeBetweenBatches;
+        public int BatchTime;
         public EnemyType Enemy_Type;
         public int EnemyCount;
     }
