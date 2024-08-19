@@ -52,8 +52,7 @@ namespace GMTK_Jam.Buildings
                 yield return null;
             }
 
-            _isFired = false;
-            _pool.ReturnToPool(this);
+            _returnToPool();
         }
 
         private void OnDrawGizmosSelected()

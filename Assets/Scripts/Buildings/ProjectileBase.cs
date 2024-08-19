@@ -40,6 +40,12 @@ namespace GMTK_Jam.Buildings
 
         }
 
+        protected virtual void _returnToPool()
+        {
+            _isFired = false;
+            _pool.ReturnToPool(this);
+        }
+
         protected IEnumerator _moveTowardTarget()
         {
             while(Vector3.Distance(transform.position, _target.transform.position) > _impactDistance)
@@ -52,8 +58,7 @@ namespace GMTK_Jam.Buildings
             }
 
             _target.RegisterHit(_damage);
-            _isFired = false;
-            _pool.ReturnToPool(this);
+            _returnToPool();
         }
     }
 }

@@ -301,6 +301,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8538895657636370948}
+  - {fileID: 2723263346268603487}
   - {fileID: 2741074830258512373}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -340,13 +341,14 @@ MonoBehaviour:
   baseDamage: 2
   baseAttackSpeed: 1
   radius: 40
-  minMaxAttackSpeed: {x: 1, y: 10}
-  maxScale: 10
+  scaleFactor: 1
+  maxLevel: 10
   upgradeCost: 1
   Model: {fileID: 8538895657636370948}
   TurretRotation: {fileID: 4870151910773946350}
   BulletSpawnPos: {fileID: 4990772894515026684}
   DamageText: {fileID: 6394959873280396906}
+  _line: {fileID: 3299381542653239094}
   GunRotation: {fileID: 6280544792448281329}
 --- !u!114 &964678115521780039
 MonoBehaviour:
@@ -360,7 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c118550414c38fb4cb0724e4bf84a9b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initPoolSize: 10
+  _initPoolSize: 5
   _projectileTemplate: {fileID: 8624799607853926552, guid: 0103651371c5f3846b3c8bcb40cb7e61,
     type: 3}
 --- !u!54 &7579876762385913805
@@ -584,12 +586,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8810310651153012281}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1, y: 0, z: 0}
-  m_LocalScale: {x: 30, y: 0.1, z: 30}
+  m_LocalScale: {x: 60, y: 0.1, z: 60}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8538895657636370948}
+  m_Father: {fileID: 346608388140509579}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2171461641524738104
 MeshFilter:
@@ -773,10 +775,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 184601479117338414}
-    - targetCorrespondingSourceObject: {fileID: 4514247164199654464, guid: 23f0e9307e724e548a30661b944e1601,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2723263346268603487}
     - targetCorrespondingSourceObject: {fileID: 2237560632644396213, guid: 23f0e9307e724e548a30661b944e1601,
         type: 3}
       insertIndex: -1

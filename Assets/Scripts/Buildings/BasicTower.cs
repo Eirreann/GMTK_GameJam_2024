@@ -40,7 +40,7 @@ namespace GMTK_Jam.Buildings
         protected override int getDamage()
         {
             // TODO: Sort proper damage scaling
-            int damage = baseDamage + scaleFactor;
+            int damage = baseDamage + (currentLevel * scaleFactor);
             return damage;
         }
 
@@ -48,7 +48,7 @@ namespace GMTK_Jam.Buildings
         {
             // TODO: Sort proper fire rate scaling
             float fireRate = baseAttackSpeed;
-            float mod = (scaleFactor / maxScale) * 2;
+            float mod = ((currentLevel * scaleFactor) / maxLevel) * 2;
             fireRate += mod;
             //Debug.Log(string.Format("{0}, {1}", fireRate, mod));
             return fireRate;

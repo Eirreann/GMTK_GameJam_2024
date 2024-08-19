@@ -13,10 +13,12 @@ namespace GMTK_Jam.Enemy
         [SerializeField] private int _health = 3;
         [SerializeField] private float _speed = 5;
         [SerializeField] private int _reward = 1;
+        [Range(5f, 1f)]
+        public int Priority;
 
         [Header("Components")]
         [SerializeField] private GameObject _modelParent;
-        [SerializeField] private Renderer _modelRender;
+        [SerializeField] private List<Renderer> _modelRenderers;
         [SerializeField] private Material _damageMat;
 
         [Header("UI")]
@@ -30,16 +32,21 @@ namespace GMTK_Jam.Enemy
         private PathingCorner _currentCornerTarget;
         private float _startingRadius;
         private bool _isUpdatingRadius = false;
-        private Material _originalMat;
+        private List<Material> _originalMats = new List<Material>();
         private Coroutine _updateVisual;
+        private Coroutine _updateCarMat;
         private Coroutine _updateRadius;
         private float _fadeTime = 5f;
 
         private void Awake()
         {
             _agent = GetComponent<NavMeshAgent>();
-            _originalMat = _modelRender.material;
             _startingRadius = _agent.radius;
+
+
+            //_originalMats = _modelRenderers.material;
+            for (int i = 0; i < _modelRenderers.Count; i++)
+                _originalMats.Add(_modelRenderers[i].material);
         }
 
         private void Start()
@@ -99,6 +106,11 @@ namespace GMTK_Jam.Enemy
             {
                 StopCoroutine(_updateVisual);
                 _updateVisual = null;
+                if(_updateCarMat != null)
+                {
+                    StopCoroutine( _updateCarMat);
+                    _updateCarMat = null;
+                }
             }
             _updateVisual = StartCoroutine(_updateHealthVisual(_currentHealth <= 0));
         }
@@ -135,7 +147,7 @@ namespace GMTK_Jam.Enemy
             }
             else
             {
-                StartCoroutine(_flipCarMat());
+                _updateCarMat = StartCoroutine(_flipCarMat());
                 _healthbarCanvas.SetActive(true);
                 _healthBar.fillAmount = (float)_currentHealth / (float)_health;
 
@@ -148,9 +160,12 @@ namespace GMTK_Jam.Enemy
 
         private IEnumerator _flipCarMat()
         {
-            _modelRender.material = _damageMat;
+            //_modelRenderers.material = _damageMat;
+            _modelRenderers.ForEach(r => r.material = _damageMat);
             yield return new WaitForSeconds(0.1f);
-            _modelRender.material = _originalMat;
+            //_modelRenderers.material = _originalMats;
+            for (int i = 0; i < _modelRenderers.Count; i++)
+                _modelRenderers[i].material = _originalMats[i];
         }
 
         private IEnumerator _scaleUpRadius()

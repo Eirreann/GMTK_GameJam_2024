@@ -34,6 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4343341080295839862}
+  - {fileID: 6418913562522726722}
   - {fileID: 8599643254141501597}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
@@ -73,13 +74,14 @@ MonoBehaviour:
   baseDamage: 10
   baseAttackSpeed: 5
   radius: 40
-  minMaxAttackSpeed: {x: 1, y: 10}
+  scaleFactorValue: 1
   maxScale: 10
   upgradeCost: 2
   Model: {fileID: 4343341080295839862}
   TurretRotation: {fileID: 1759434404236777960}
   BulletSpawnPos: {fileID: 4858930314115510889}
   DamageText: {fileID: 8544525071253811376}
+  _line: {fileID: 6115576974037302795}
 --- !u!114 &7659046740018145321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,12 +418,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5512380120634361858}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 30, y: 0.1, z: 30}
+  m_LocalScale: {x: 60, y: 0.10000002, z: 60}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4343341080295839862}
+  m_Father: {fileID: 4541841635749611035}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &6994776807735652938
 MeshFilter:
@@ -764,10 +766,6 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2678384221536434847, guid: ea7f20af4ba557046bd6f3cc18bb37d1,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6418913562522726722}
     - targetCorrespondingSourceObject: {fileID: 74284886163716865, guid: ea7f20af4ba557046bd6f3cc18bb37d1,
         type: 3}
       insertIndex: -1

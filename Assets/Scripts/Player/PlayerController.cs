@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -12,12 +13,18 @@ namespace GMTK_Jam.Player
     /// </summary>
     public class PlayerController : MonoBehaviour
     {
+        public List<Camera> Cameras;
         public WorldBoundary Boundary;
 
         [Header("Attributes")]
         [SerializeField] private bool MovementPermitted = true;
         [SerializeField] private float _moveIncrement = 2;
         [SerializeField] private float _moveSpd = 5f;
+
+        [Header("Zoom")]
+        [SerializeField] private float _zoomInterval = 5f;
+        [SerializeField] private float _maxZoom = 30f;
+        [SerializeField] private float _minZoom = 90f;
 
         [HideInInspector] public UnityEvent<bool> OnScroll;
 
@@ -28,10 +35,12 @@ namespace GMTK_Jam.Player
         private InputAction _levelUpDown;
         private InputAction _recenter;
         private InputAction _buy;
+        private InputAction _zoomMod;
 
         private Vector3 _startPosition;
         private Vector2 _moveDir = Vector2.zero;
         private bool _isKeyPressed = false;
+        private bool _zoomModPressed = false;
 
         private void Awake()
         {
@@ -41,6 +50,7 @@ namespace GMTK_Jam.Player
             _levelUpDown = _playerInput.actions["Scrollwheel"];
             _recenter = _playerInput.actions["Reset_View"];
             _buy = _playerInput.actions["Buy"];
+            _zoomMod = _playerInput.actions["Zoom_Mod"];
 
             _startPosition = transform.position;
         }
@@ -63,6 +73,9 @@ namespace GMTK_Jam.Player
             _recenter.canceled += _resetView;
 
             _buy.performed += _openBuyMenu;
+
+            _zoomMod.performed += _onZoomMod;
+            _zoomMod.canceled += _onZoomMod;
         }
 
         /// <summary>
@@ -139,18 +152,39 @@ namespace GMTK_Jam.Player
 
             if(value != 0)
             {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out RaycastHit hit))
+                if (_zoomModPressed)
                 {
-                    if (hit.collider.tag == "ScrollInteractable")
-                    {
-                        //Debug.Log(hit.collider.name);
-                        hit.collider.GetComponentInParent<IScrollInteractable>().OnScrollValue(scrollDirection);
-                    }
-                }
+                    float interval = _zoomInterval * (scrollDirection ? -1 : 1);
+                    float newZoom = Camera.main.fieldOfView + interval;
+                    if (newZoom > _minZoom)
+                        newZoom = _minZoom;
+                    if(newZoom < _maxZoom)
+                        newZoom = _maxZoom;
 
-                OnScroll?.Invoke(scrollDirection);
+                    Cameras.ForEach(c => c.fieldOfView = newZoom);
+                }
+                else
+                {
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    if (Physics.Raycast(ray, out RaycastHit hit))
+                    {
+                        if (hit.collider.tag == "ScrollInteractable")
+                        {
+                            //Debug.Log(hit.collider.name);
+                            hit.collider.GetComponentInParent<IScrollInteractable>().OnScrollValue(scrollDirection);
+                        }
+                    }
+
+                    OnScroll?.Invoke(scrollDirection);
+                }
             }
+        }
+
+        private void _onZoomMod(InputAction.CallbackContext context)
+        {
+            if (GameManager.Instance.State != GameState.ACTIVE) return;
+
+            _zoomModPressed = (context.ReadValue<float>() == 1);
         }
 
         private void _resetView(InputAction.CallbackContext context)

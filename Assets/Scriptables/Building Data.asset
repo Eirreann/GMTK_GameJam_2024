@@ -26,7 +26,7 @@ MonoBehaviour:
     DowngradeIcon: {fileID: 21300000, guid: 5faa6bef7c49f1d49ae46ab591c705fc, type: 3}
   - Name: Cannon Tower
     Desc: large shot that moves through enemies, high damage low AoE
-    Cost: 5
+    Cost: 20
     Type: 1
     Prefab: {fileID: 1717719245319554034, guid: 7497f08fc2ec431409cac92e0908fd1b,
       type: 3}
@@ -48,11 +48,10 @@ MonoBehaviour:
     DowngradeIcon: {fileID: 21300000, guid: 359aaf6ffc44fa04ba2bdf90dc6c6a58, type: 3}
   - Name: Inferno Tower
     Desc: damage scales with size up, low damage until large size
-    Cost: 40
+    Cost: 1
     Type: 3
-    Prefab: {fileID: 6670677265374644613, guid: d924149ab33cb154691a85ddc6b6a765,
-      type: 3}
-    BasePrefab: {fileID: 1405169185756518377, guid: 4063f4f14dc620b438f9cec1f5c0813d,
+    Prefab: {fileID: 523262055127201219, guid: 0894aae4436a9954db7227a308986e1a, type: 3}
+    BasePrefab: {fileID: 628446221391439713, guid: 79749e1d24295134bb33e4d1993b8ae1,
       type: 3}
     BaseIcon: {fileID: 21300000, guid: 03f8033cd53747d43b6998fa88c63558, type: 3}
     UpgradeIcon: {fileID: 21300000, guid: edb2afa15b041c7408cddb1cefc6db6b, type: 3}

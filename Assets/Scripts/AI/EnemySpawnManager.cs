@@ -1,4 +1,5 @@
 using GMTK_Jam.AI;
+using GMTK_Jam.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,7 @@ namespace GMTK_Jam.Enemy
 
         [Header("UI")]
         public GameObject WaveStarting;
+        public UITooltip Tooltip;
 
         private bool _waveActive = false;
         private UnityAction _onWaveComplete;
@@ -42,6 +44,12 @@ namespace GMTK_Jam.Enemy
 
         private IEnumerator _startWave(WaveOptions wave)
         {
+            if (wave.HasTooltip)
+            {
+                Tooltip.gameObject.SetActive(true);
+                Tooltip.ShowTooltip(wave.TooltipText);
+            }
+
             float uiTime = 3f;
             yield return new WaitForSeconds(wave.WaveTime - uiTime);
 

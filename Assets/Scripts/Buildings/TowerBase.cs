@@ -13,8 +13,8 @@ namespace GMTK_Jam.Buildings
         [SerializeField] public int baseDamage = 1;
         [SerializeField] public float baseAttackSpeed = 5;
         [SerializeField] public float radius = 40f;
-        [SerializeField] protected Vector2 minMaxAttackSpeed = new Vector2(1, 10);
-        [SerializeField] protected int maxScale = 10;
+        [SerializeField] protected int scaleFactor = 1;
+        [SerializeField] protected int maxLevel = 10;
         [SerializeField] protected int upgradeCost = 1;
 
         [Header("Components")]
@@ -22,22 +22,21 @@ namespace GMTK_Jam.Buildings
         public Transform TurretRotation;
         public Transform BulletSpawnPos;
         public TextMeshProUGUI DamageText;
+        [SerializeField] private TrailRenderer _line;
 
         protected List<EnemyBase> targets = new List<EnemyBase>();
         protected SphereCollider boundaryCollider;
         protected ProjectilePool pool;
-        protected int scaleFactor = 0;
+        protected int currentLevel = 0;
         protected bool isFiring = false;
         protected Quaternion startRot;
 
-        private TrailRenderer _line;
         private float _lineSpd = 150f;
         private float _fireCooldown;
 
         protected virtual void Start()
         {
             startRot = TurretRotation.localRotation;
-            _line = GetComponentInChildren<TrailRenderer>();
             boundaryCollider = GetComponent<SphereCollider>();
             boundaryCollider.radius = radius;
             pool = GetComponent<ProjectilePool>();
@@ -51,8 +50,8 @@ namespace GMTK_Jam.Buildings
         {
             if (direction && !GameManager.Instance.CanAffordUpgrade(upgradeCost)) return;
 
-            scaleFactor += direction ? 1 : -1;
-            if (scaleFactor <= maxScale && scaleFactor >= 0)
+            currentLevel += direction ? scaleFactor : -scaleFactor;
+            if (currentLevel <= maxLevel && currentLevel >= 0)
             {
                 Vector3 scaleAmount = new(0.1f, 0.1f, 0.1f);
                 Model.localScale = Model.localScale += (direction ? scaleAmount : -scaleAmount);
@@ -60,7 +59,7 @@ namespace GMTK_Jam.Buildings
             }
             else
             {
-                scaleFactor = Mathf.Clamp(scaleFactor, 0, 10);
+                currentLevel = Mathf.Clamp(currentLevel, 0, maxLevel);
             }
 
             DamageText.text = "DMG " + getDamage().ToString();
@@ -98,6 +97,7 @@ namespace GMTK_Jam.Buildings
             {
                 EnemyBase enemy = other.GetComponent<EnemyBase>();
                 targets.Add(enemy);
+                _onEnemyAdded();
             }
 
             // TODO: Sort list of enemies by enemy with priority when required
@@ -110,8 +110,21 @@ namespace GMTK_Jam.Buildings
             {
                 EnemyBase enemy = other.GetComponent<EnemyBase>();
                 if (targets.Contains(enemy))
+                {
                     targets.Remove(enemy);
+                    _onEnemyRemoved();
+                }
             }
+        }
+
+        protected virtual void _onEnemyAdded()
+        {
+
+        }
+
+        protected virtual void _onEnemyRemoved()
+        {
+
         }
 
         protected virtual int getDamage()

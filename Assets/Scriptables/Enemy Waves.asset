@@ -14,18 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Basic_Enemy: {fileID: 2626815883905132980, guid: fbaef1dd68620654aa180f27aee45dcf,
     type: 3}
+  Basic_Enemy_Elite: {fileID: 72764659189988802, guid: e11e3d411d20a2345b5f9379e6ef7651,
+    type: 3}
+  Tank_Enemy: {fileID: 7532768112576291814, guid: d9b9cbdfd2eb1d54b8ffc8f66e9ee0a6,
+    type: 3}
   Waves:
   - WaveTime: 10
     Batches:
-    - BatchTime: 5
+    - BatchTime: 0
       Enemy_Type: 0
       EnemyCount: 1
-    - BatchTime: 5
+    - BatchTime: 10
+      Enemy_Type: 0
+      EnemyCount: 5
+    - BatchTime: 10
       Enemy_Type: 0
       EnemyCount: 3
     - BatchTime: 5
-      Enemy_Type: 0
-      EnemyCount: 5
+      Enemy_Type: 1
+      EnemyCount: 2
     TooltipText: 
   - WaveTime: 10
     Batches:

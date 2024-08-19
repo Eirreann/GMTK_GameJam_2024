@@ -88,6 +88,8 @@ namespace GMTK_Jam
 
         public void PauseGame(bool state)
         {
+            if (State == GameState.ENDED) return;
+
             Time.timeScale = state ? 0 : 1;
             Player.EnableMovement(!state);
             Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Confined;
