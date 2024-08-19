@@ -25,10 +25,10 @@ namespace GMTK_Jam.Enemy
         [SerializeField] private GameObject _healthbarCanvas;
         [SerializeField] private Image _healthBar;
 
+        protected List<PathingCorner> _corners;
         protected NavMeshAgent _agent;
         protected int _currentHealth;
 
-        private List<PathingCorner> _corners;
         private PathingCorner _currentCornerTarget;
         private float _startingRadius;
         private bool _isUpdatingRadius = false;
@@ -89,7 +89,7 @@ namespace GMTK_Jam.Enemy
             }
         }
 
-        public void InitEnemy(List<PathingCorner> corners)
+        public virtual void InitEnemy(List<PathingCorner> corners)
         {
             _corners = corners;
             if (_corners.Count > 0)
@@ -123,6 +123,13 @@ namespace GMTK_Jam.Enemy
             _destroyEnemy();
             // Reduce player health by remaining enemy health
             GameManager.Instance.UpdatePlayerHealth(-_currentHealth);
+        }
+
+        protected virtual void _destroyEnemy()
+        {
+            StopAllCoroutines();
+            _modelParent.SetActive(false);
+            Destroy(gameObject);
         }
 
         private void _updateDestination(Vector3 target)
@@ -182,13 +189,6 @@ namespace GMTK_Jam.Enemy
                 _agent.radius = _startingRadius;
 
             _isUpdatingRadius = false;
-        }
-
-        private void _destroyEnemy()
-        {
-            StopAllCoroutines();
-            _modelParent.SetActive(false);
-            Destroy(gameObject);
         }
     }
 }

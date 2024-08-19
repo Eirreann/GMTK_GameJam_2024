@@ -147,13 +147,16 @@ namespace GMTK_Jam
 
         private void _spawnBuildingPlacement(BuildingData data)
         {
-            _buildingHandler.StartPlacingBuilding(data, (state) =>
+            if (data.Prefab != null)
             {
-                if(state)
-                    UpdatePlayerResource(-data.Cost);
+                _buildingHandler.StartPlacingBuilding(data, (state) =>
+                {
+                    if (state)
+                        UpdatePlayerResource(-data.Cost);
+                });
+            }
 
-                BuyBtnText.text = "Buy";
-            });
+            BuyBtnText.text = "Buy";
         }
     }
 }

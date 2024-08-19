@@ -68,6 +68,8 @@ namespace GMTK_Jam.UI
 
         private void _onClose()
         {
+            BuildingData emptyData = new();
+            _callback.Invoke(emptyData);
             GameManager.Instance.PauseGame(false);
             gameObject.SetActive(false);
         }

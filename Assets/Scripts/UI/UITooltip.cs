@@ -12,14 +12,11 @@ namespace GMTK_Jam.UI
         public float DisplayTime = 10f;
 
         private CanvasGroup _canvas;
-
-        private void Start()
-        {
-            _canvas = GetComponent<CanvasGroup>();
-        }
+        private float _fadeSpeed = 1f;
 
         public void ShowTooltip(string text)
         {
+            _canvas = GetComponent<CanvasGroup>();
             StartCoroutine(_show(text));
         }
 
@@ -30,7 +27,7 @@ namespace GMTK_Jam.UI
 
             while(_canvas.alpha < 1)
             {
-                _canvas.alpha += Time.deltaTime;
+                _canvas.alpha += _fadeSpeed * Time.deltaTime;
                 yield return null;
             }
 
@@ -38,7 +35,7 @@ namespace GMTK_Jam.UI
 
             while (_canvas.alpha > 0)
             {
-                _canvas.alpha -= Time.deltaTime;
+                _canvas.alpha -= _fadeSpeed * Time.deltaTime;
                 yield return null;
             }
 

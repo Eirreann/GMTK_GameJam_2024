@@ -18,12 +18,16 @@ MonoBehaviour:
     type: 3}
   Tank_Enemy: {fileID: 7532768112576291814, guid: d9b9cbdfd2eb1d54b8ffc8f66e9ee0a6,
     type: 3}
+  Spawner_Enemy: {fileID: 7269682387847077512, guid: 4ae0e8a803b7c69489610c0d127ec602,
+    type: 3}
+  Exploder_Enemy: {fileID: 6278749880970737425, guid: 92e04bb235a10d7459668be9eca002b7,
+    type: 3}
   Waves:
   - WaveTime: 10
     Batches:
-    - BatchTime: 0
-      Enemy_Type: 0
-      EnemyCount: 1
+    - BatchTime: 30
+      Enemy_Type: 4
+      EnemyCount: 2
     - BatchTime: 10
       Enemy_Type: 0
       EnemyCount: 5
@@ -33,7 +37,8 @@ MonoBehaviour:
     - BatchTime: 5
       Enemy_Type: 1
       EnemyCount: 2
-    TooltipText: 
+    HasTooltip: 1
+    TooltipText: 'This is the first wave! Good luck :) '
   - WaveTime: 10
     Batches:
     - BatchTime: 5
@@ -45,4 +50,5 @@ MonoBehaviour:
     - BatchTime: 5
       Enemy_Type: 0
       EnemyCount: 15
+    HasTooltip: 0
     TooltipText: 

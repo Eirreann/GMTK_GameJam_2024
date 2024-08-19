@@ -23,7 +23,6 @@ namespace GMTK_Jam.Buildings
         {
             base.OnScrollValue(direction);
             float newCost = Mathf.Pow(_baseUpgradeCost, (_upgradeCostFactor * currentLevel));
-            Debug.Log(newCost);
             upgradeCost = Mathf.RoundToInt(newCost);
         }
 

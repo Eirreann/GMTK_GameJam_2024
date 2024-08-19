@@ -10,7 +10,7 @@ namespace GMTK_Jam.Enemy
     /// <summary>
     /// This class manages the enemy spawning, should be informed by the GameManager with waves logic
     /// </summary>
-    public class EnemySpawnManager : MonoBehaviour
+    public class EnemySpawnManager : MonoSingleton<EnemySpawnManager>
     {
         [HideInInspector] public List<EnemyBase> SpawnedEnemies = new List<EnemyBase>();
 
@@ -68,7 +68,7 @@ namespace GMTK_Jam.Enemy
                     SpawnedEnemies.AddRange(e);
                 });
 
-                yield return new WaitForSeconds(wave.Batches[currentIndex].BatchTime);
+                yield return new WaitForSeconds(settings.BatchTime);
 
                 if (GameManager.Instance.State != GameState.ENDED)
                     currentIndex++;
