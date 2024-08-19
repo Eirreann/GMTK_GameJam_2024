@@ -10,14 +10,31 @@ namespace GMTK_Jam.Buildings
         protected override void towerLookAt(Transform target = null)
         {
             // DOES NOTHING :D
+            // (Overriding to skip this function's base functionality
         }
 
         protected override void _spawnBullet(int damage, EnemyBase target)
         {
-            Debug.Log("Bullet spawned");
             ProjectileBase bullet = pool.GetProjectile();
-            (bullet as CannonProjectile).SetEnemiesInRange(targets);
+            (bullet as CannonProjectile).Setup(BulletSpawnPos, targets);
             bullet.FireAtTarget(null, damage);
+        }
+
+        protected override int getDamage()
+        {
+            // TODO: Sort proper damage scaling
+            int damage = baseDamage + scaleFactor;
+            return damage;
+        }
+
+        protected override float getFireRate()
+        {
+            // TODO: Sort proper fire rate scaling
+            float fireRate = baseAttackSpeed;
+            float mod = (scaleFactor / maxScale) * 2;
+            fireRate += mod;
+            //Debug.Log(string.Format("{0}, {1}", fireRate, mod));
+            return fireRate;
         }
     }
 }

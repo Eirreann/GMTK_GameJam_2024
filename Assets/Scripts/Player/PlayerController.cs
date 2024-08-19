@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace GMTK_Jam.Player
@@ -17,6 +18,8 @@ namespace GMTK_Jam.Player
         [SerializeField] private bool MovementPermitted = true;
         [SerializeField] private float _moveIncrement = 2;
         [SerializeField] private float _moveSpd = 5f;
+
+        [HideInInspector] public UnityEvent<bool> OnScroll;
 
         // Inputs
         private PlayerInput _playerInput;
@@ -145,6 +148,8 @@ namespace GMTK_Jam.Player
                         hit.collider.GetComponentInParent<IScrollInteractable>().OnScrollValue(scrollDirection);
                     }
                 }
+
+                OnScroll?.Invoke(scrollDirection);
             }
         }
 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1717719245319554034}
   - component: {fileID: 7659046740018145321}
   - component: {fileID: 3669969226228208412}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cannon Tower (Structure)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ Transform:
   m_GameObject: {fileID: 6088154253044415278}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.20000002, y: 0, z: 0.08000002}
+  m_LocalPosition: {x: -0.5, y: 0, z: 0.08}
   m_LocalScale: {x: 0.06666667, y: 0.125, z: 0.025}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -756,6 +756,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CannonBuilding
       objectReference: {fileID: 0}
+    - target: {fileID: 3341768706391859237, guid: ea7f20af4ba557046bd6f3cc18bb37d1,
+        type: 3}
+      propertyPath: m_TagString
+      value: ScrollInteractable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -771,7 +776,15 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3741446889622644331}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3341768706391859237, guid: ea7f20af4ba557046bd6f3cc18bb37d1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7418412543759029651}
+    - targetCorrespondingSourceObject: {fileID: 3341768706391859237, guid: ea7f20af4ba557046bd6f3cc18bb37d1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8518513909845815878}
   m_SourcePrefab: {fileID: 100100000, guid: ea7f20af4ba557046bd6f3cc18bb37d1, type: 3}
 --- !u!4 &1759434404236777960 stripped
 Transform:
@@ -779,6 +792,60 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1832171136886350569}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3966955626274570956 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3341768706391859237, guid: ea7f20af4ba557046bd6f3cc18bb37d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1832171136886350569}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &7418412543759029651
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966955626274570956}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 12.242031, y: 12.327431, z: 32.017094}
+  m_Center: {x: -0.047237396, y: 0.047237396, z: 16.12646}
+--- !u!54 &8518513909845815878
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966955626274570956}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!4 &4343341080295839862 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2678384221536434847, guid: ea7f20af4ba557046bd6f3cc18bb37d1,

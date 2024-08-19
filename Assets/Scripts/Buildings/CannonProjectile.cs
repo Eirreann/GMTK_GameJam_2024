@@ -17,15 +17,16 @@ namespace GMTK_Jam.Buildings
             // Do nothing : D
         }
 
-        public void SetEnemiesInRange(List<EnemyBase> enemies)
+        public void Setup(Transform muzzlePos, List<EnemyBase> enemies)
         {
             _targets = enemies;
+            var targetOffset = new Vector3(muzzlePos.localPosition.x, muzzlePos.localPosition.y, muzzlePos.localPosition.z + _travelDistance);
+            _targetPos = muzzlePos.TransformPoint(targetOffset);
         }
 
         public override void FireAtTarget(EnemyBase target, int damage)
         {
             base.FireAtTarget(target, damage);
-            _targetPos = new(transform.position.x + _travelDistance, transform.position.y, transform.position.z);
             _fireCoroutine = StartCoroutine(_fireBullet());
         }
 
@@ -33,9 +34,7 @@ namespace GMTK_Jam.Buildings
         {
             while (Vector3.Distance(transform.position, _targetPos) > 1f)
             {
-                Debug.Log(Vector3.Distance(transform.position, _targetPos));
                 transform.position = Vector3.MoveTowards(transform.position, _targetPos, _projectileSpeed * Time.deltaTime);
-                //transform.LookAt(_target.transform);
 
                 List<EnemyBase> enemiesHit = new List<EnemyBase>();
                 _targets.ForEach((e) =>
@@ -53,9 +52,14 @@ namespace GMTK_Jam.Buildings
                 yield return null;
             }
 
-            Debug.Log("Returned to pool");
             _isFired = false;
             _pool.ReturnToPool(this);
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(transform.position, _impactDistance);
         }
     }
 }

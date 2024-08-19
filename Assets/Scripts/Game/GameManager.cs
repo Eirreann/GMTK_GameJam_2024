@@ -82,10 +82,7 @@ namespace GMTK_Jam
                 if(_waveIndex < WavesData.Waves.Count)
                     EnemyManager.StartWave(WavesData.Waves[_waveIndex], _onWaveCompleted);
                 else
-                {
-                    State = GameState.ENDED;
-                    GameOverUI.SetActive(true);
-                }
+                    _endGame();
             }
         }
 
@@ -105,7 +102,7 @@ namespace GMTK_Jam
             if(_currentHealth <= 0)
             {
                 // TODO: Game over logic
-                State = GameState.ENDED;
+                _endGame();
             }
             //Debug.Log("Player health modified by " + mod.ToString());
         }
@@ -121,7 +118,7 @@ namespace GMTK_Jam
         public void OpenBuyMenu()
         {
             //_buildingHandler.StartPlacingBuilding(BuildingData.Buildings[0]);
-            if (TowerShop.gameObject.activeInHierarchy && State != GameState.ACTIVE) return;
+            if (TowerShop.gameObject.activeInHierarchy || State != GameState.ACTIVE) return;
 
             TowerShop.gameObject.SetActive(true);
             TowerShop.ShowBuyMenu(BuildingData.Buildings, _spawnBuildingPlacement);
@@ -138,6 +135,12 @@ namespace GMTK_Jam
         public EnemyBase GetEnemyObjectByType(EnemyType type)
         {
             return WavesData.ReturnEnemyObject(type);
+        }
+
+        private void _endGame()
+        {
+            State = GameState.ENDED;
+            GameOverUI.SetActive(true);
         }
 
         private void _spawnBuildingPlacement(BuildingData data)

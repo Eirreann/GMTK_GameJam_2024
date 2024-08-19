@@ -39,12 +39,14 @@ namespace GMTK_Jam.Buildings
 
         protected override int getDamage()
         {
+            // TODO: Sort proper damage scaling
             int damage = baseDamage + scaleFactor;
             return damage;
         }
 
         protected override float getFireRate()
         {
+            // TODO: Sort proper fire rate scaling
             float fireRate = baseAttackSpeed;
             float mod = (scaleFactor / maxScale) * 2;
             fireRate += mod;

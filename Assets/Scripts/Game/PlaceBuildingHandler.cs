@@ -1,5 +1,6 @@
 using GMTK_Jam.Buildings;
 using GMTK_Jam.Util;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,11 +12,27 @@ namespace GMTK_Jam.Player
     {
         public Transform BuildingParent;
         public string BuildTag = "Buildable";
+        public float RotationIncrement = 10f;
 
         private BuildingPlacementArea _base;
         private BuildingData _data;
         private bool _isPlacing = false;
         private UnityAction<bool> _onPlacedCallback;
+
+        private void Start()
+        {
+            GameManager.Instance.Player.OnScroll.AddListener(_onPlayerScroll);
+        }
+
+        private void _onPlayerScroll(bool state)
+        {
+            if(_base != null)
+            {
+                float rotIncrement = RotationIncrement * (state ? 1f : -1f);
+                Vector3 baseRot = _base.transform.rotation.eulerAngles;
+                _base.transform.rotation = Quaternion.Euler(baseRot.x, baseRot.y + rotIncrement, baseRot.z);
+            }
+        }
 
         private void Update()
         {
@@ -33,11 +50,19 @@ namespace GMTK_Jam.Player
 
                         if (Input.GetMouseButtonDown(0))
                         {
-                            _isPlacing = false;
-                            TowerBase tower = Instantiate(_data.Prefab, BuildingParent);
-                            tower.transform.position = hit.point;
-                            _reset();
-                            _onPlacedCallback?.Invoke(true);
+                            if (GameManager.Instance.CanAffordUpgrade(_data.Cost))
+                            {
+                                _isPlacing = false;
+                                TowerBase tower = Instantiate(_data.Prefab, BuildingParent);
+                                tower.transform.position = hit.point;
+                                tower.transform.rotation = _base.transform.rotation;
+                                _reset();
+                                _onPlacedCallback?.Invoke(true);
+                            }
+                            else
+                            {
+                                ClearPendingBuilding();
+                            }
                         }
                     }
                     else

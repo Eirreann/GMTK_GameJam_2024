@@ -63,7 +63,7 @@ namespace GMTK_Jam.Buildings
                 scaleFactor = Mathf.Clamp(scaleFactor, 0, 10);
             }
 
-            DamageText.text = "Damage-" + getDamage().ToString();
+            DamageText.text = "DMG " + getDamage().ToString();
         }
 
         private void Update()
