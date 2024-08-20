@@ -23,15 +23,15 @@ MonoBehaviour:
   Exploder_Enemy: {fileID: 6278749880970737425, guid: 92e04bb235a10d7459668be9eca002b7,
     type: 3}
   Waves:
-  - WaveTime: 10
+  - WaveTime: 2
     Batches:
-    - BatchTime: 30
-      Enemy_Type: 3
-      EnemyCount: 2
-    - BatchTime: 10
-      Enemy_Type: 4
-      EnemyCount: 2
-    - BatchTime: 10
+    - BatchTime: 5
+      Enemy_Type: 0
+      EnemyCount: 3
+    - BatchTime: 5
+      Enemy_Type: 0
+      EnemyCount: 10
+    - BatchTime: 5
       Enemy_Type: 0
       EnemyCount: 3
     - BatchTime: 5

@@ -468,8 +468,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5805f93c38f0d6d41ad5da2eb119e331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 2
-  baseAttackSpeed: 1
+  baseDamage: 10
+  baseAttackSpeed: 0.5
   radius: 40
   scaleFactor: 1
   maxLevel: 10
