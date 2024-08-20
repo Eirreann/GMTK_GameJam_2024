@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectileSpeed: 50
   _impactDistance: 5
-  _travelDistance: 50
+  _travelDistance: 70
 --- !u!1001 &78518087291631707
 PrefabInstance:
   m_ObjectHideFlags: 0

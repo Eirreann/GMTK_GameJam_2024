@@ -207,10 +207,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 10
   baseAttackSpeed: 5
+  attackSpeedRange: {x: 3, y: 0}
   radius: 70
-  scaleFactor: 1
+  scaleFactor: 5
   maxLevel: 10
-  upgradeCost: 2
+  upgradeCost: 5
   Model: {fileID: 4343341080295839862}
   TurretRotation: {fileID: 1759434404236777960}
   BulletSpawnPos: {fileID: 4858930314115510889}

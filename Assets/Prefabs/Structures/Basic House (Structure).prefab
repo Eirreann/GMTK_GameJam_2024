@@ -607,9 +607,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 10
   baseAttackSpeed: 0.5
-  attackSpeedRange: {x: 0.5, y: 3}
+  attackSpeedRange: {x: 0.5, y: 1}
   radius: 40
-  scaleFactor: 1
+  scaleFactor: 2
   maxLevel: 10
   upgradeCost: 1
   Model: {fileID: 8538895657636370948}

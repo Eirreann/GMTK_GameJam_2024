@@ -51,3 +51,39 @@ MonoBehaviour:
     TooltipText: This car is too strong! Use your [SCROLL WHEEL] to power up our
       Urban Defense Structures. Keep in mind this will make them slower and uses
       up scale!
+  - WaveTime: 10
+    Batches:
+    - BatchTime: 15
+      Enemy_Type: 0
+      EnemyCount: 20
+    - BatchTime: 10
+      Enemy_Type: 2
+      EnemyCount: 3
+    UnlocksPath: 0
+    HasTooltip: 1
+    TooltipText: Did you know you can use [SCROLL WHEEL] to rotate your structures
+      when building them? Use this to aim buildings like The Cannon!
+  - WaveTime: 10
+    Batches:
+    - BatchTime: 5
+      Enemy_Type: 2
+      EnemyCount: 3
+    - BatchTime: 10
+      Enemy_Type: 0
+      EnemyCount: 20
+    UnlocksPath: 0
+    HasTooltip: 1
+    TooltipText: The cars are using the tanks as a shield! Use the Ricochet Structure
+      to hit the small cars!
+  - WaveTime: 10
+    Batches:
+    - BatchTime: 5
+      Enemy_Type: 2
+      EnemyCount: 3
+    - BatchTime: 10
+      Enemy_Type: 0
+      EnemyCount: 20
+    UnlocksPath: 1
+    HasTooltip: 1
+    TooltipText: It's rush hour! Use the extra street you just gained to deal with
+      this big wave!
