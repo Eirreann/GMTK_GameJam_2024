@@ -36,7 +36,7 @@ namespace GMTK_Jam
         private int _chunkIndex = 0;
 
         [Header("UI")]
-        public GameObject TempPause;
+        public GameObject PauseScreen;
         public UIScaleBar ScaleBar;
         public Button BuyBtn;
         public TextMeshProUGUI BuyBtnText;
@@ -79,7 +79,7 @@ namespace GMTK_Jam
             {
                 _paused = !_paused;
                 PauseGame(_paused);
-                TempPause.SetActive(_paused);
+                PauseScreen.SetActive(_paused);
                 // TODO: Proper pause menu?
             }
         }
