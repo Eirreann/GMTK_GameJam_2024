@@ -60,7 +60,7 @@ namespace GMTK_Jam.Buildings
         {
             if (direction && !GameManager.Instance.CanAffordUpgrade(upgradeCost)) return;
 
-            currentLevel += direction ? scaleFactor : -scaleFactor;
+            currentLevel += direction ? 1 : -1;
             if (currentLevel <= maxLevel && currentLevel >= 0)
             {
                 Vector3 scaleAmount = new(0.1f, 0.1f, 0.1f);
