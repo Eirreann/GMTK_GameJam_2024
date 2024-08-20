@@ -40549,8 +40549,8 @@ MonoBehaviour:
   BuyBtn: {fileID: 1409528695}
   BuyBtnText: {fileID: 524480727}
   TowerShop: {fileID: 1840451576}
-  GameOverWinUI: {fileID: 0}
-  GameOverLoseUI: {fileID: 0}
+  GameOverWinUI: {fileID: 1358326440}
+  GameOverLoseUI: {fileID: 294869725}
   EndGameButtons:
   - {fileID: 2137327179}
   - {fileID: 1804099724}
