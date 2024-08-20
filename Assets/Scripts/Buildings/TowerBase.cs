@@ -21,7 +21,9 @@ namespace GMTK_Jam.Buildings
         public Transform Model;
         public Transform TurretRotation;
         public Transform BulletSpawnPos;
+        public CanvasGroup StatsUI;
         public TextMeshProUGUI DamageText;
+        public TextMeshProUGUI CostText;
         [SerializeField] private TrailRenderer _line;
         public AudioClip OnFire;
 
@@ -50,6 +52,7 @@ namespace GMTK_Jam.Buildings
             StartCoroutine(_drawRadius());
 
             DamageText.text = "DMG " + getDamage().ToString();
+            CostText.text = "Cost " + upgradeCost.ToString();
         }
 
         public virtual void OnScrollValue(bool direction)
@@ -70,6 +73,7 @@ namespace GMTK_Jam.Buildings
             }
 
             DamageText.text = "DMG " + getDamage().ToString();
+            CostText.text = "Cost " + upgradeCost.ToString();
         }
 
         protected virtual void Update()
@@ -186,6 +190,11 @@ namespace GMTK_Jam.Buildings
                 _line.transform.RotateAround(transform.position, Vector3.up, _lineSpd * Time.deltaTime);
                 yield return null;
             }
+        }
+
+        public void OnHover(bool state)
+        {
+            StatsUI.alpha = state ? 1 : 0;
         }
     }
 }

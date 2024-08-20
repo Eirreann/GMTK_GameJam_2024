@@ -41,6 +41,7 @@ namespace GMTK_Jam.Player
         private Vector2 _moveDir = Vector2.zero;
         private bool _isKeyPressed = false;
         private bool _zoomModPressed = false;
+        private IScrollInteractable _prevHit;
 
         private void Awake()
         {
@@ -117,6 +118,31 @@ namespace GMTK_Jam.Player
             {
                 if (transform.position != target)
                     transform.position = Vector3.MoveTowards(transform.position, target, _moveSpd * Time.deltaTime);
+            }
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                if (hit.collider.tag == "ScrollInteractable")
+                {
+                    if (_prevHit != null && _prevHit != hit.collider.GetComponentInParent<IScrollInteractable>())
+                    {
+                        _prevHit.OnHover(false);
+                        _prevHit = null;
+                    }
+
+                    //Debug.Log(hit.collider.name);
+                    _prevHit = hit.collider.GetComponentInParent<IScrollInteractable>();
+                    _prevHit.OnHover(true);
+                }
+                else
+                {
+                    if(_prevHit != null)
+                    {
+                        _prevHit.OnHover(false);
+                        _prevHit = null;
+                    }
+                }
             }
         }
 

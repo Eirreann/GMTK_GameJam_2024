@@ -40,5 +40,10 @@ namespace GMTK_Jam.Player
                 other.GetComponent<EnemyBase>().OnEnemyCollideWithBase();
             }
         }
+
+        public void OnHover(bool state)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

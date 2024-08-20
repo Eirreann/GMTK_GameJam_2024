@@ -85,10 +85,11 @@ namespace GMTK_Jam.Buildings
                 currentLevel = Mathf.Clamp(currentLevel, 0, maxLevel);
             }
 
-            DamageText.text = "DMG " + getDamage().ToString();
-
             float newCost = Mathf.Pow(_baseUpgradeCost, (_upgradeCostFactor * currentLevel));
             upgradeCost = Mathf.RoundToInt(newCost);
+
+            DamageText.text = "DMG " + getDamage().ToString();
+            CostText.text = "Cost " + upgradeCost.ToString();
         }
 
         protected override void _onEnemyAdded()
