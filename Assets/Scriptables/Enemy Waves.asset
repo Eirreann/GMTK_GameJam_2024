@@ -36,18 +36,18 @@ MonoBehaviour:
       EnemyCount: 5
     UnlocksPath: 0
     HasTooltip: 1
-    TooltipText: 'This is the first wave! Good luck :) '
+    TooltipText: Our cars have gone rogue and are heading straight back to our HQ!
+      Use the buy menu to place our family friendly Urban Defense Structures!
   - WaveTime: 10
     Batches:
-    - BatchTime: 5
+    - BatchTime: 15
+      Enemy_Type: 2
+      EnemyCount: 1
+    - BatchTime: 10
       Enemy_Type: 0
       EnemyCount: 5
-    - BatchTime: 5
-      Enemy_Type: 0
-      EnemyCount: 10
-    - BatchTime: 5
-      Enemy_Type: 0
-      EnemyCount: 15
-    UnlocksPath: 1
+    UnlocksPath: 0
     HasTooltip: 1
-    TooltipText: Your path is longer now! Go build more towers!
+    TooltipText: This car is too strong! Use your [SCROLL WHEEL] to power up our
+      Urban Defense Structures. Keep in mind this will make them slower and uses
+      up scale!
