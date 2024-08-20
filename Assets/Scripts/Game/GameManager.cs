@@ -36,6 +36,8 @@ namespace GMTK_Jam
         private int _chunkIndex = 0;
 
         [Header("UI")]
+        public UIIntroScreen IntroScreen;
+        public bool SkipIntro = false;
         public GameObject PauseScreen;
         public UIScaleBar ScaleBar;
         public Button BuyBtn;
@@ -65,7 +67,14 @@ namespace GMTK_Jam
 
             BuyBtn.onClick.AddListener(OpenBuyMenu);
             EndGameButtons.ForEach(b => b.onClick.AddListener(_onRestart));
-            StartGame();
+
+            if (SkipIntro)
+                StartGame();
+            else
+            {
+                IntroScreen.gameObject.SetActive(true);
+                IntroScreen.OnStart(() => StartGame());
+            }
         }
 
         private void _onRestart()
