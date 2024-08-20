@@ -25,18 +25,15 @@ MonoBehaviour:
   Waves:
   - WaveTime: 2
     Batches:
-    - BatchTime: 5
+    - BatchTime: 15
+      Enemy_Type: 0
+      EnemyCount: 1
+    - BatchTime: 10
       Enemy_Type: 0
       EnemyCount: 3
-    - BatchTime: 5
+    - BatchTime: 10
       Enemy_Type: 0
-      EnemyCount: 10
-    - BatchTime: 5
-      Enemy_Type: 0
-      EnemyCount: 3
-    - BatchTime: 5
-      Enemy_Type: 1
-      EnemyCount: 2
+      EnemyCount: 5
     UnlocksPath: 0
     HasTooltip: 1
     TooltipText: 'This is the first wave! Good luck :) '
