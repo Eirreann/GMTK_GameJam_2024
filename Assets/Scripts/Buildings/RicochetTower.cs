@@ -7,6 +7,16 @@ namespace GMTK_Jam.Buildings
 {
     public class RicochetTower : TowerBase
     {
+        protected override void _spawnBullet(int damage, EnemyBase target)
+        {
+            ProjectileBase bullet = pool.GetProjectile(currentLevel);
+            (bullet as RicochetProjectile).SetRadius(radius);
+            bullet.FireAtTarget(target, damage);
+
+            if (OnFire != null)
+                _audioSource.PlayOneShot(OnFire);
+        }
+
         protected override void towerLookAt(Transform target = null)
         {
             base.towerLookAt(target);

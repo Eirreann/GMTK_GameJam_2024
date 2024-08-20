@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Cinemachine.DocumentationSortingAttribute;
 
 namespace GMTK_Jam.Buildings
 {
@@ -22,15 +23,14 @@ namespace GMTK_Jam.Buildings
         {
             if(_poolStack.Count == 0)
             {
-                ProjectileBase instance = _createPoolInstance();
-                instance.UpdateScale(level);
+                ProjectileBase instance = _createPoolInstance(level);
                 return instance;
             }
 
             ProjectileBase nextInstance = _poolStack.Pop();
             nextInstance.gameObject.SetActive(true);
-            nextInstance.UpdateScale(level);
             _resetProjectilePos(nextInstance);
+            nextInstance.UpdateScale(level);
             nextInstance.transform.parent = transform.parent;
             return nextInstance;
         }
@@ -54,11 +54,12 @@ namespace GMTK_Jam.Buildings
             }
         }
 
-        private ProjectileBase _createPoolInstance()
+        private ProjectileBase _createPoolInstance(int level = 0)
         {
             ProjectileBase instance = Instantiate(_projectileTemplate, _parent);
-            instance.transform.parent = transform.parent;
             instance.Init(this);
+            instance.UpdateScale(level);
+            instance.transform.parent = transform.parent;
             return instance;
         }
 

@@ -16,8 +16,7 @@ namespace GMTK_Jam.Buildings
 
         protected Coroutine _fireCoroutine;
         protected bool _isFired = false;
-
-        private Vector3 _baseScale;
+        protected Vector3 _baseScale;
 
         public void Init(ProjectilePool pool)
         {

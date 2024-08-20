@@ -11,6 +11,13 @@ namespace GMTK_Jam.Buildings
     {
         [SerializeField] private RicochetSubBullet _bulletTemplate;
 
+        private float _radius;
+
+        public void SetRadius(float radius)
+        {
+            _radius = radius;
+        }
+
         public override void FireAtTarget(EnemyBase target, int damage)
         {
             base.FireAtTarget(target, damage);
@@ -53,11 +60,10 @@ namespace GMTK_Jam.Buildings
             for (int i = 0; i < enemyCount; i++)
             {
                 var target = enemies[i];
-                var bullet = Instantiate(_bulletTemplate);
+                var bullet = Instantiate(_bulletTemplate, transform);
+                bullet.transform.parent = transform.parent;
                 bullet.gameObject.SetActive(true);
-                bullet.transform.position = transform.position;
-                bullet.transform.rotation = transform.rotation;
-                bullet.FireSubBullet(_impactDistance, _projectileSpeed, _damage, target);
+                bullet.FireSubBullet(_impactDistance, _projectileSpeed, _damage, target, _radius);
             }
         }
     }
