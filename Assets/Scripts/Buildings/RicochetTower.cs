@@ -22,5 +22,12 @@ namespace GMTK_Jam.Buildings
             base.towerLookAt(target);
             TurretRotation.localRotation = Quaternion.Euler(startRot.eulerAngles.z, TurretRotation.localRotation.eulerAngles.y, startRot.eulerAngles.z);
         }
+
+        protected override int getDamage()
+        {
+            // TODO: Sort proper damage scaling
+            int damage = baseDamage + (currentLevel * scaleFactor);
+            return damage;
+        }
     }
 }
