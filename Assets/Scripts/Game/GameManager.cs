@@ -70,7 +70,7 @@ namespace GMTK_Jam
 
         private void _onRestart()
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(0);
         }
 
         private void Update()

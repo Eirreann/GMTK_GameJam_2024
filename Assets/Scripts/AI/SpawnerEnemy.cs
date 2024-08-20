@@ -37,9 +37,8 @@ namespace GMTK_Jam.Enemy
             for(int i = 0; i < _spawnCount; i++)
             {
                 EnemyBase enemy = Instantiate(_enemyToSpawn, _spawnLocation);
-                enemy.transform.parent = null;
                 List<PathingCorner> newCornersList = new List<PathingCorner>();
-                newCornersList.ForEach(c => _corners.Add(c));
+                _corners.ForEach(c => newCornersList.Add(c));
                 enemy.InitEnemy(newCornersList);
                 EnemySpawnManager.Instance.SpawnedEnemies.Add(enemy);
             }
