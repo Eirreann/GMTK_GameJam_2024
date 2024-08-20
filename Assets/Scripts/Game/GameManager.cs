@@ -106,6 +106,7 @@ namespace GMTK_Jam
                         _chunkIndex++;
                         if(_chunkIndex < _chunks.Count)
                             EnemyManager.UpdateSpawnPoint(_chunks[_chunkIndex].SpawnPoint);
+                        _chunks[_chunkIndex].BuildSurface.SetActive(true);
                     }
                     EnemyManager.StartWave(WavesData.Waves[_waveIndex], _onWaveCompleted);
                 }
