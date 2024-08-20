@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace GMTK_Jam.Buildings
@@ -39,6 +40,7 @@ namespace GMTK_Jam.Buildings
 
         private float _lineSpd = 150f;
         private float _fireCooldown;
+        private Coroutine _scaleCoroutine;
 
         protected virtual void Start()
         {
@@ -64,7 +66,9 @@ namespace GMTK_Jam.Buildings
             if (currentLevel <= maxLevel && currentLevel >= 0)
             {
                 Vector3 scaleAmount = new(0.1f, 0.1f, 0.1f);
-                Model.localScale = Model.localScale += (direction ? scaleAmount : -scaleAmount);
+                if(_scaleCoroutine != null)
+                    StopCoroutine(_scaleCoroutine);
+                _scaleCoroutine = StartCoroutine(_scaleBuilding(Model.localScale += (direction ? scaleAmount : -scaleAmount)));
                 GameManager.Instance.UpdatePlayerResource(direction ? -upgradeCost : upgradeCost);
                 AudioManager.Instance.OnUpgradeStructure(direction);
             }
@@ -75,6 +79,18 @@ namespace GMTK_Jam.Buildings
 
             DamageText.text = "DMG " + getDamage().ToString();
             CostText.text = "Cost " + upgradeCost.ToString();
+        }
+
+        private IEnumerator _scaleBuilding(Vector3 targetScale)
+        {
+            float time = 0;
+            while(time < 1)
+            {
+                Model.localScale = Vector3.Lerp(Model.localScale, targetScale, time);
+                time += Time.deltaTime;
+                yield return null;
+            }
+            Model.localScale = targetScale;
         }
 
         protected virtual void Update()
