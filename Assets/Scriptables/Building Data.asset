@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Buildings:
   - Name: Basic Tower
-    Desc: attack speed scales up with size down, damage scales up with size up
-    Cost: 10
+    Desc: A basic urban home, with FIREPOWER! Hits harder the bigger it is, but shoots
+      slower with size.
+    Cost: 2
     Type: 0
     Prefab: {fileID: 2130013186963285246, guid: d924149ab33cb154691a85ddc6b6a765,
       type: 3}
@@ -25,8 +26,9 @@ MonoBehaviour:
     UpgradeIcon: {fileID: 21300000, guid: d410be746b4117745822785ec027a845, type: 3}
     DowngradeIcon: {fileID: 21300000, guid: 5faa6bef7c49f1d49ae46ab591c705fc, type: 3}
   - Name: Cannon Tower
-    Desc: large shot that moves through enemies, high damage low AoE
-    Cost: 5
+    Desc: This office complex packs a PUNCH! But it only shoots in a straight line,
+      devastating everything it hits.
+    Cost: 4
     Type: 1
     Prefab: {fileID: 1717719245319554034, guid: 7497f08fc2ec431409cac92e0908fd1b,
       type: 3}
@@ -36,8 +38,9 @@ MonoBehaviour:
     UpgradeIcon: {fileID: 21300000, guid: c82ee258bea78ec4e8c45b615e6c9830, type: 3}
     DowngradeIcon: {fileID: 21300000, guid: e130bb0b21b140949988ec42529efb66, type: 3}
   - Name: Ricochet Tower
-    Desc: Shots bounce b/w enemies, low damage high AoE
-    Cost: 5
+    Desc: Sharing is caring! This peaceful structure wants to spread the love...
+      and the damage! Shots will hit up to three neighbours!
+    Cost: 6
     Type: 2
     Prefab: {fileID: 8212569296169257795, guid: f326e6ae31d3abf458beb363f18f4f4c,
       type: 3}
@@ -47,8 +50,9 @@ MonoBehaviour:
     UpgradeIcon: {fileID: 21300000, guid: ba70908f8299df447b1bdd46af868ca7, type: 3}
     DowngradeIcon: {fileID: 21300000, guid: 359aaf6ffc44fa04ba2bdf90dc6c6a58, type: 3}
   - Name: Inferno Tower
-    Desc: damage scales with size up, low damage until large size
-    Cost: 1
+    Desc: Something to keep you warm on a cold night! Might not do much more than
+      blow hot air when it's small, scale up this puppy to create an inferno!
+    Cost: 8
     Type: 3
     Prefab: {fileID: 523262055127201219, guid: 0894aae4436a9954db7227a308986e1a, type: 3}
     BasePrefab: {fileID: 628446221391439713, guid: 79749e1d24295134bb33e4d1993b8ae1,
