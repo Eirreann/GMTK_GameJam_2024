@@ -19,6 +19,7 @@ namespace GMTK_Jam.UI
         public TextMeshProUGUI TowerDesc;
         public TextMeshProUGUI TowerBaseDamage;
         public TextMeshProUGUI TowerBaseFireRate;
+        public TextMeshProUGUI TowerCost;
 
         [Header("Buttons")]
         public Button CloseBtn;
@@ -58,6 +59,8 @@ namespace GMTK_Jam.UI
             TowerDesc.text = data.Desc;
             TowerBaseDamage.text = data.Prefab != null ? data.Prefab.baseDamage.ToString() : "0";
             TowerBaseFireRate.text = data.Prefab != null ? data.Prefab.baseAttackSpeed.ToString() : "0";
+            TowerCost.text = data.Prefab != null ? data.Cost.ToString() : "0";
+            TowerCost.color = GameManager.Instance.CanAffordUpgrade(data.Cost) ? Color.green : Color.red;
         }
 
         private void _onClick(BuildingData data)

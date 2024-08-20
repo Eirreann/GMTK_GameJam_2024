@@ -23,7 +23,10 @@ namespace GMTK_Jam.Buildings
         public Transform BulletSpawnPos;
         public TextMeshProUGUI DamageText;
         [SerializeField] private TrailRenderer _line;
+        public AudioClip OnFire;
 
+
+        protected AudioSource _audioSource;
         protected List<EnemyBase> targets = new List<EnemyBase>();
         protected SphereCollider boundaryCollider;
         protected ProjectilePool pool;
@@ -36,6 +39,9 @@ namespace GMTK_Jam.Buildings
 
         protected virtual void Start()
         {
+            _audioSource = GetComponentInChildren<AudioSource>();
+            AudioManager.Instance.PlayBuildAudio(_audioSource);
+
             startRot = TurretRotation.localRotation;
             boundaryCollider = GetComponent<SphereCollider>();
             boundaryCollider.radius = radius;
@@ -56,6 +62,7 @@ namespace GMTK_Jam.Buildings
                 Vector3 scaleAmount = new(0.1f, 0.1f, 0.1f);
                 Model.localScale = Model.localScale += (direction ? scaleAmount : -scaleAmount);
                 GameManager.Instance.UpdatePlayerResource(direction ? -upgradeCost : upgradeCost);
+                AudioManager.Instance.OnUpgradeStructure(direction);
             }
             else
             {
@@ -65,7 +72,7 @@ namespace GMTK_Jam.Buildings
             DamageText.text = "DMG " + getDamage().ToString();
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             targets.RemoveAll(t => t == null); // Remove any destroyed targets
             isFiring = targets.Count > 0;
@@ -147,8 +154,11 @@ namespace GMTK_Jam.Buildings
 
         protected virtual void _spawnBullet(int damage, EnemyBase target)
         {
-            ProjectileBase bullet = pool.GetProjectile();
+            ProjectileBase bullet = pool.GetProjectile(currentLevel);
             bullet.FireAtTarget(target, damage);
+
+            if(OnFire != null)
+                _audioSource.PlayOneShot(OnFire);
         }
 
         private void _fireWeapon(EnemyBase target)

@@ -17,9 +17,17 @@ namespace GMTK_Jam.Buildings
         protected Coroutine _fireCoroutine;
         protected bool _isFired = false;
 
+        private Vector3 _baseScale;
+
         public void Init(ProjectilePool pool)
         {
             _pool = pool;
+            _baseScale = transform.localScale;
+        }
+
+        public virtual void UpdateScale(int level)
+        {
+            transform.localScale = new Vector3(_baseScale.x + (0.1f * level), _baseScale.y + (0.1f * level), _baseScale.z + (0.1f * level));
         }
 
         public virtual void FireAtTarget(EnemyBase target, int damage)
@@ -46,7 +54,7 @@ namespace GMTK_Jam.Buildings
             _pool.ReturnToPool(this);
         }
 
-        protected IEnumerator _moveTowardTarget()
+        protected virtual IEnumerator _moveTowardTarget()
         {
             while(Vector3.Distance(transform.position, _target.transform.position) > _impactDistance)
             {

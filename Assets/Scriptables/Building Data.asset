@@ -26,7 +26,7 @@ MonoBehaviour:
     DowngradeIcon: {fileID: 21300000, guid: 5faa6bef7c49f1d49ae46ab591c705fc, type: 3}
   - Name: Cannon Tower
     Desc: large shot that moves through enemies, high damage low AoE
-    Cost: 20
+    Cost: 5
     Type: 1
     Prefab: {fileID: 1717719245319554034, guid: 7497f08fc2ec431409cac92e0908fd1b,
       type: 3}
@@ -37,11 +37,11 @@ MonoBehaviour:
     DowngradeIcon: {fileID: 21300000, guid: e130bb0b21b140949988ec42529efb66, type: 3}
   - Name: Ricochet Tower
     Desc: Shots bounce b/w enemies, low damage high AoE
-    Cost: 30
+    Cost: 5
     Type: 2
-    Prefab: {fileID: 6670677265374644613, guid: d924149ab33cb154691a85ddc6b6a765,
+    Prefab: {fileID: 8212569296169257795, guid: f326e6ae31d3abf458beb363f18f4f4c,
       type: 3}
-    BasePrefab: {fileID: 1405169185756518377, guid: 4063f4f14dc620b438f9cec1f5c0813d,
+    BasePrefab: {fileID: 3213770870039666041, guid: b4a9658fc50d085408a4705a272d12c4,
       type: 3}
     BaseIcon: {fileID: 21300000, guid: 7cb72b2a1d2b0cc46a6db25d2ec3c919, type: 3}
     UpgradeIcon: {fileID: 21300000, guid: ba70908f8299df447b1bdd46af868ca7, type: 3}

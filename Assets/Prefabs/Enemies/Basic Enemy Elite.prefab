@@ -294,7 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetOverride: {fileID: 0}
   DisableAfterRotation: 0
-  ValidAxis: {x: 1, y: 1, z: 0}
+  ValidAxis: {x: 1, y: 1, z: 1}
 --- !u!1 &5238901817920858748
 GameObject:
   m_ObjectHideFlags: 0

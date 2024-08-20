@@ -26,17 +26,18 @@ MonoBehaviour:
   - WaveTime: 10
     Batches:
     - BatchTime: 30
-      Enemy_Type: 4
+      Enemy_Type: 3
       EnemyCount: 2
     - BatchTime: 10
-      Enemy_Type: 0
-      EnemyCount: 5
+      Enemy_Type: 4
+      EnemyCount: 2
     - BatchTime: 10
       Enemy_Type: 0
       EnemyCount: 3
     - BatchTime: 5
       Enemy_Type: 1
       EnemyCount: 2
+    UnlocksPath: 0
     HasTooltip: 1
     TooltipText: 'This is the first wave! Good luck :) '
   - WaveTime: 10
@@ -50,5 +51,6 @@ MonoBehaviour:
     - BatchTime: 5
       Enemy_Type: 0
       EnemyCount: 15
-    HasTooltip: 0
-    TooltipText: 
+    UnlocksPath: 1
+    HasTooltip: 1
+    TooltipText: Your path is longer now! Go build more towers!

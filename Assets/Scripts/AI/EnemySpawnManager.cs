@@ -15,6 +15,7 @@ namespace GMTK_Jam.Enemy
         [HideInInspector] public List<EnemyBase> SpawnedEnemies = new List<EnemyBase>();
 
         [Header("Pathing")]
+        [SerializeField] private Transform _spawnObscurer;
         [SerializeField] private EnemySpawnPoint _currentSpawnPoint;
         [SerializeField] private List<PathingCorner> _corners = new List<PathingCorner>();
 
@@ -22,13 +23,22 @@ namespace GMTK_Jam.Enemy
         public GameObject WaveStarting;
         public UITooltip Tooltip;
 
+        private float _obscurerSpeed = 2f;
         private bool _waveActive = false;
         private UnityAction _onWaveComplete;
+
+        private void Update()
+        {
+            if(_currentSpawnPoint != null)
+            {
+                Vector3 targetPos = new(_currentSpawnPoint.transform.position.x, _spawnObscurer.position.y, _currentSpawnPoint.transform.position.z);
+                _spawnObscurer.position = Vector3.Lerp(_spawnObscurer.position, targetPos, _obscurerSpeed * Time.deltaTime);
+            }
+        }
 
         public void StartWave(WaveOptions wave, UnityAction onWaveComplete)
         {
             _onWaveComplete = onWaveComplete;
-            UpdateSpawnPoint(_currentSpawnPoint); // TODO?
             StartCoroutine(_startWave(wave));
         }
 
@@ -54,6 +64,7 @@ namespace GMTK_Jam.Enemy
             yield return new WaitForSeconds(wave.WaveTime - uiTime);
 
             WaveStarting.SetActive(true);
+            AudioManager.Instance.OnWaveStart();
             yield return new WaitForSeconds(uiTime);
             WaveStarting.SetActive(false);
 

@@ -91,7 +91,7 @@ namespace GMTK_Jam.Player
 
         private void Update()
         {
-            Vector3 target = new(transform.position.x + (_moveIncrement * _moveDir.x), transform.position.y, transform.position.z + (_moveIncrement * _moveDir.y));
+            Vector3 target = new(transform.position.x + (_moveIncrement * _moveDir.y), transform.position.y, transform.position.z + (_moveIncrement * _moveDir.x));
 
             if (Boundary.IsWithinBoundary(target))
             {
@@ -105,7 +105,7 @@ namespace GMTK_Jam.Player
             if (!MovementPermitted || GameManager.Instance.State != GameState.ACTIVE) return;
 
             Vector2 value = context.ReadValue<Vector2>();
-            _moveDir = value;
+            _moveDir = new Vector2(value.x, -value.y);
             _isKeyPressed =  _moveDir.x != 0 || _moveDir.y != 0;
             //Debug.Log(value);
         }
@@ -139,7 +139,7 @@ namespace GMTK_Jam.Player
             value = new Vector2((int)Mathf.Clamp(widthVal, -1, 1), (int)Mathf.Clamp(heightVal, -1, 1));
 
             // Update move direction with result
-            _moveDir = value;
+            _moveDir = new Vector2(value.x, -value.y); ;
             //Debug.Log(value);
         }
 

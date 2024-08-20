@@ -52,6 +52,9 @@ namespace GMTK_Jam.Enemy
         public int WaveTime;
         public List<BatchSettings> Batches;
 
+        [Header("Gameplay")]
+        public bool UnlocksPath;
+
         [Header("UI")]
         public bool HasTooltip;
         [TextArea(2, 10)]

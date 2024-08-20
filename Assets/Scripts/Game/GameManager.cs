@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace GMTK_Jam
@@ -30,13 +31,21 @@ namespace GMTK_Jam
         public EnemyWavesObject WavesData;
         public BuildingDataSO BuildingData;
 
+        [Header("Pathing")]
+        [SerializeField] private List<PathChunk> _chunks;
+        private int _chunkIndex = 0;
+
         [Header("UI")]
         public GameObject TempPause;
-        public GameObject GameOverUI;
         public UIScaleBar ScaleBar;
         public Button BuyBtn;
         public TextMeshProUGUI BuyBtnText;
         public UITowerShop TowerShop;
+
+        [Header("Game Over")]
+        public GameObject GameOverWinUI;
+        public GameObject GameOverLoseUI;
+        public List<Button> EndGameButtons;
 
         private PlaceBuildingHandler _buildingHandler;
         private int _currentHealth;
@@ -52,9 +61,16 @@ namespace GMTK_Jam
             _currentHealth = PlayerMaxHealth;
             _currentScale = PlayerMaxScale;
             UpdatePlayerResource(0);
+            PlayerBase.UpdatePlayerHealthUI(_currentHealth);
 
             BuyBtn.onClick.AddListener(OpenBuyMenu);
+            EndGameButtons.ForEach(b => b.onClick.AddListener(_onRestart));
             StartGame();
+        }
+
+        private void _onRestart()
+        {
+            SceneManager.LoadScene(1);
         }
 
         private void Update()
@@ -71,6 +87,10 @@ namespace GMTK_Jam
         public void StartGame()
         {
             State = GameState.ACTIVE;
+
+            _chunks.ForEach(chunk => chunk.BuildSurface.SetActive(false));
+            _chunks[_chunkIndex].BuildSurface.SetActive(true);
+            EnemyManager.UpdateSpawnPoint(_chunks[_chunkIndex].SpawnPoint);
             EnemyManager.StartWave(WavesData.Waves[_waveIndex], _onWaveCompleted);
         }
 
@@ -80,9 +100,17 @@ namespace GMTK_Jam
             {
                 _waveIndex++;
                 if(_waveIndex < WavesData.Waves.Count)
+                {
+                    if (WavesData.Waves[_waveIndex].UnlocksPath)
+                    {
+                        _chunkIndex++;
+                        if(_chunkIndex < _chunks.Count)
+                            EnemyManager.UpdateSpawnPoint(_chunks[_chunkIndex].SpawnPoint);
+                    }
                     EnemyManager.StartWave(WavesData.Waves[_waveIndex], _onWaveCompleted);
+                }
                 else
-                    _endGame();
+                    _endGame(true);
             }
         }
 
@@ -98,13 +126,15 @@ namespace GMTK_Jam
 
         public void UpdatePlayerHealth(int mod)
         {
+            if (State == GameState.ENDED) return;
+
             _currentHealth += mod;
             PlayerBase.UpdatePlayerHealthUI(_currentHealth);
 
             if(_currentHealth <= 0)
             {
                 // TODO: Game over logic
-                _endGame();
+                _endGame(false);
             }
             //Debug.Log("Player health modified by " + mod.ToString());
         }
@@ -139,10 +169,14 @@ namespace GMTK_Jam
             return WavesData.ReturnEnemyObject(type);
         }
 
-        private void _endGame()
+        private void _endGame(bool state)
         {
             State = GameState.ENDED;
-            GameOverUI.SetActive(true);
+
+            if(state)
+                GameOverWinUI.SetActive(true);
+            else
+                GameOverLoseUI.SetActive(true);
         }
 
         private void _spawnBuildingPlacement(BuildingData data)
@@ -158,5 +192,12 @@ namespace GMTK_Jam
 
             BuyBtnText.text = "Buy";
         }
+    }
+
+    [System.Serializable]
+    public struct PathChunk
+    {
+        public EnemySpawnPoint SpawnPoint;
+        public GameObject BuildSurface;
     }
 }

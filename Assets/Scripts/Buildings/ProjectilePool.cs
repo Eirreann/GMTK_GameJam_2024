@@ -18,15 +18,18 @@ namespace GMTK_Jam.Buildings
             _setupPool();
         }
 
-        public ProjectileBase GetProjectile()
+        public ProjectileBase GetProjectile(int level)
         {
             if(_poolStack.Count == 0)
             {
-                return _createPoolInstance();
+                ProjectileBase instance = _createPoolInstance();
+                instance.UpdateScale(level);
+                return instance;
             }
 
             ProjectileBase nextInstance = _poolStack.Pop();
             nextInstance.gameObject.SetActive(true);
+            nextInstance.UpdateScale(level);
             _resetProjectilePos(nextInstance);
             nextInstance.transform.parent = transform.parent;
             return nextInstance;

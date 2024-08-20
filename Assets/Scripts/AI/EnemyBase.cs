@@ -25,7 +25,7 @@ namespace GMTK_Jam.Enemy
         [SerializeField] private GameObject _healthbarCanvas;
         [SerializeField] private Image _healthBar;
 
-        protected List<PathingCorner> _corners;
+        protected List<PathingCorner> _corners = new List<PathingCorner>();
         protected NavMeshAgent _agent;
         protected int _currentHealth;
 
@@ -91,7 +91,8 @@ namespace GMTK_Jam.Enemy
 
         public virtual void InitEnemy(List<PathingCorner> corners)
         {
-            _corners = corners;
+            //_corners = corners;
+            corners.ForEach(c=> _corners.Add(c));
             if (_corners.Count > 0)
                 _updateDestination(_corners[0].GetDestination());
             else
@@ -142,7 +143,7 @@ namespace GMTK_Jam.Enemy
 
                 _updateRadius = StartCoroutine(_scaleUpRadius());
             }
-            //_agent.radius = _startingRadius;
+            //Debug.Log("Corners left: " + _corners.Count);
         }
 
         private IEnumerator _updateHealthVisual(bool isDead)

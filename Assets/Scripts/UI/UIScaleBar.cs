@@ -15,7 +15,7 @@ namespace GMTK_Jam.UI
         private string _valueText;
         private Coroutine _upgradeCoroutine;
 
-        private void Start()
+        private void Awake()
         {
             _valueText = BarValueText.text;
             UpdateAmntText.gameObject.SetActive(false);
