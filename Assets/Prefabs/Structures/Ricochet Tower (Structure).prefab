@@ -1067,7 +1067,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1508,11 +1508,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 2
   baseAttackSpeed: 1
-  attackSpeedRange: {x: 0, y: 0}
+  attackSpeedRange: {x: 1, y: 2}
   radius: 40
-  scaleFactor: 1
+  scaleFactor: 2
   maxLevel: 10
-  upgradeCost: 1
+  upgradeCost: 2
   Model: {fileID: 3234069186996525771}
   TurretRotation: {fileID: 120852040245566869}
   BulletSpawnPos: {fileID: 3949214538739292949}
