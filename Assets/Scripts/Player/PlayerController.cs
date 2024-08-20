@@ -78,6 +78,26 @@ namespace GMTK_Jam.Player
             _zoomMod.canceled += _onZoomMod;
         }
 
+        public void DeregisterInputs()
+        {
+            _camMoveKeys.performed -= _setKeyMovement;
+            _camMoveKeys.canceled -= _setKeyMovement;
+
+            _camMoveMouse.performed -= _setMouseMovement;
+            _camMoveMouse.canceled -= _setMouseMovement;
+
+            _levelUpDown.performed -= _setScrollValue;
+            _levelUpDown.canceled -= _setScrollValue;
+
+            _recenter.performed -= _resetView;
+            _recenter.canceled -= _resetView;
+
+            _buy.performed -= _openBuyMenu;
+
+            _zoomMod.performed -= _onZoomMod;
+            _zoomMod.canceled -= _onZoomMod;
+        }
+
         /// <summary>
         /// Enables/disables the player's ability to move the camera
         /// </summary>

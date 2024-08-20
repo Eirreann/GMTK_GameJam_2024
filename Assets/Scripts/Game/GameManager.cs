@@ -173,6 +173,7 @@ namespace GMTK_Jam
         private void _endGame(bool state)
         {
             State = GameState.ENDED;
+            Player.DeregisterInputs();
             Player.enabled = false;
 
             if(state)
