@@ -114,5 +114,11 @@ namespace GMTK_Jam.Buildings
             int damage = Mathf.RoundToInt(damageFloat);
             return damage;
         }
+
+        protected override float getFireRate()
+        {
+            // do nothing! :D
+            return baseAttackSpeed;
+        }
     }
 }

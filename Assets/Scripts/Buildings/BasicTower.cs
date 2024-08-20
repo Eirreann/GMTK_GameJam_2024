@@ -43,15 +43,5 @@ namespace GMTK_Jam.Buildings
             int damage = baseDamage + (currentLevel * scaleFactor);
             return damage;
         }
-
-        protected override float getFireRate()
-        {
-            // TODO: Sort proper fire rate scaling
-            float fireRate = baseAttackSpeed;
-            float mod = ((currentLevel * scaleFactor) / maxLevel) * 2;
-            fireRate += mod;
-            //Debug.Log(string.Format("{0}, {1}", fireRate, mod));
-            return fireRate;
-        }
     }
 }

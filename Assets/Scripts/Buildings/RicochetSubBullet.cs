@@ -1,9 +1,6 @@
 using GMTK_Jam.Enemy;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.tvOS;
-using UnityEngine.UIElements;
 
 namespace GMTK_Jam.Buildings
 {

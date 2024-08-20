@@ -43,7 +43,7 @@ namespace GMTK_Jam.Player
 
         public void OnHover(bool state)
         {
-            throw new System.NotImplementedException();
+
         }
     }
 }

@@ -1,4 +1,5 @@
 using GMTK_Jam.Enemy;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,16 +29,6 @@ namespace GMTK_Jam.Buildings
             // TODO: Sort proper damage scaling
             int damage = baseDamage + (int)(currentLevel * scaleFactor);
             return damage;
-        }
-
-        protected override float getFireRate()
-        {
-            // TODO: Sort proper fire rate scaling
-            float fireRate = baseAttackSpeed;
-            float mod = ((currentLevel * scaleFactor) / maxLevel) * 2;
-            fireRate += mod;
-            //Debug.Log(string.Format("{0}, {1}", fireRate, mod));
-            return fireRate;
         }
     }
 }

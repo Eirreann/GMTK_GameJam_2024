@@ -12,6 +12,7 @@ namespace GMTK_Jam.Buildings
         [Header("Attributes")]
         [SerializeField] public int baseDamage = 1;
         [SerializeField] public float baseAttackSpeed = 5;
+        [SerializeField] public Vector2 attackSpeedRange;
         [SerializeField] public float radius = 40f;
         [SerializeField] protected int scaleFactor = 1;
         [SerializeField] protected int maxLevel = 10;
@@ -145,7 +146,13 @@ namespace GMTK_Jam.Buildings
 
         protected virtual float getFireRate()
         {
-            return baseAttackSpeed;
+            if (currentLevel == 0)
+                return attackSpeedRange.x;
+
+            float levelRatio = ((float)currentLevel / (float)maxLevel);
+            float range = attackSpeedRange.y - attackSpeedRange.x;
+            float newFireRate = attackSpeedRange.x + (range * levelRatio);
+            return attackSpeedRange.x + (range * levelRatio);
         }
 
         protected virtual void towerLookAt(Transform target = null)
