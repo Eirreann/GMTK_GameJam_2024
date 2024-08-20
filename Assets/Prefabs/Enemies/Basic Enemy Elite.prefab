@@ -73,7 +73,7 @@ MonoBehaviour:
   _health: 12
   _speed: 3
   _reward: 2
-  Priority: 4
+  Priority: 5
   _modelParent: {fileID: 4626371597854028564}
   _modelRenderers:
   - {fileID: 8355591492022556810}

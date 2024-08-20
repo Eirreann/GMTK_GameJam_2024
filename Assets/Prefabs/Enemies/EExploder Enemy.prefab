@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 6278749880970737425}
   - component: {fileID: 2284947511914745615}
   m_Layer: 0
-  m_Name: Exploder Enemy
+  m_Name: EExploder Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 250
-  _speed: 10
+  _speed: 8
   _reward: 0
   Priority: 5
   _modelParent: {fileID: 5734479913691972133}
@@ -245,7 +245,7 @@ MonoBehaviour:
   _healthBar: {fileID: 8706706542200862966}
   _enemyToSpawn: {fileID: 2626815883905132980, guid: fbaef1dd68620654aa180f27aee45dcf,
     type: 3}
-  _spawnCount: 10
+  _spawnCount: 20
 --- !u!65 &2284947511914745615
 BoxCollider:
   m_ObjectHideFlags: 0

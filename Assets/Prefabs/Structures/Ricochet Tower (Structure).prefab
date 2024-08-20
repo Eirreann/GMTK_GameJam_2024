@@ -1512,7 +1512,7 @@ MonoBehaviour:
   radius: 40
   scaleFactor: 2
   maxLevel: 10
-  upgradeCost: 2
+  upgradeCost: 5
   Model: {fileID: 3234069186996525771}
   TurretRotation: {fileID: 120852040245566869}
   BulletSpawnPos: {fileID: 3949214538739292949}

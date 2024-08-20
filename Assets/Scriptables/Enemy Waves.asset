@@ -134,3 +134,41 @@ MonoBehaviour:
     UnlocksPath: 0
     HasTooltip: 1
     TooltipText: Watch out! This truck will explode out more cars if it's destroyed!
+  - WaveTime: 10
+    Batches:
+    - BatchTime: 5
+      Enemy_Type: 2
+      EnemyCount: 3
+    - BatchTime: 10
+      Enemy_Type: 4
+      EnemyCount: 3
+    - BatchTime: 10
+      Enemy_Type: 0
+      EnemyCount: 50
+    - BatchTime: 10
+      Enemy_Type: 4
+      EnemyCount: 5
+    UnlocksPath: 1
+    HasTooltip: 1
+    TooltipText: '
+
+'
+  - WaveTime: 10
+    Batches:
+    - BatchTime: 5
+      Enemy_Type: 2
+      EnemyCount: 3
+    - BatchTime: 10
+      Enemy_Type: 4
+      EnemyCount: 3
+    - BatchTime: 10
+      Enemy_Type: 0
+      EnemyCount: 50
+    - BatchTime: 10
+      Enemy_Type: 4
+      EnemyCount: 5
+    UnlocksPath: 1
+    HasTooltip: 1
+    TooltipText: '
+
+'
