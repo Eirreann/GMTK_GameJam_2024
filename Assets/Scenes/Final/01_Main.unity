@@ -41498,7 +41498,7 @@ MonoBehaviour:
   State: 0
   Player: {fileID: 750208903}
   PlayerBase: {fileID: 364069646}
-  PlayerMaxHealth: 150
+  PlayerMaxHealth: 100
   PlayerMaxScale: 10
   EnemyManager: {fileID: 1741597240}
   WavesData: {fileID: 11400000, guid: 42f2b1c3badddf54aa2f4976a6cc9b6d, type: 2}
