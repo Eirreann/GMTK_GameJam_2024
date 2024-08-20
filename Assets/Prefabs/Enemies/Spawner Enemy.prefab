@@ -372,9 +372,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 300
-  _speed: 10
-  _reward: 5
-  Priority: 3
+  _speed: 13
+  _reward: 0
+  Priority: 5
   _modelParent: {fileID: 4273141342635475391}
   _modelRenderers:
   - {fileID: 615890531550931489}
@@ -398,7 +398,7 @@ MonoBehaviour:
     type: 3}
   _spawnLocation: {fileID: 330273530512171184}
   _spawnInterval: 5
-  _spawnCount: 1
+  _spawnCount: 3
 --- !u!65 &476433658065019709
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ MonoBehaviour:
   Exploder_Enemy: {fileID: 6278749880970737425, guid: 92e04bb235a10d7459668be9eca002b7,
     type: 3}
   Waves:
-  - WaveTime: 2
+  - WaveTime: 10
     Batches:
     - BatchTime: 15
       Enemy_Type: 0
@@ -134,3 +134,134 @@ MonoBehaviour:
     UnlocksPath: 0
     HasTooltip: 1
     TooltipText: Watch out! This truck will explode out more cars if it's destroyed!
+  - WaveTime: 10
+    Batches:
+    - BatchTime: 5
+      Enemy_Type: 2
+      EnemyCount: 3
+    - BatchTime: 10
+      Enemy_Type: 4
+      EnemyCount: 3
+    - BatchTime: 10
+      Enemy_Type: 0
+      EnemyCount: 50
+    - BatchTime: 10
+      Enemy_Type: 4
+      EnemyCount: 5
+    UnlocksPath: 1
+    HasTooltip: 1
+    TooltipText: '
+
+'
+  - WaveTime: 10
+    Batches:
+    - BatchTime: 5
+      Enemy_Type: 2
+      EnemyCount: 3
+    - BatchTime: 10
+      Enemy_Type: 4
+      EnemyCount: 3
+    - BatchTime: 10
+      Enemy_Type: 0
+      EnemyCount: 50
+    - BatchTime: 10
+      Enemy_Type: 4
+      EnemyCount: 5
+    UnlocksPath: 1
+    HasTooltip: 1
+    TooltipText: '
+
+'
+  - WaveTime: 10
+    Batches:
+    - BatchTime: 5
+      Enemy_Type: 3
+      EnemyCount: 1
+    - BatchTime: 10
+      Enemy_Type: 2
+      EnemyCount: 3
+    - BatchTime: 10
+      Enemy_Type: 3
+      EnemyCount: 3
+    - BatchTime: 10
+      Enemy_Type: 2
+      EnemyCount: 3
+    UnlocksPath: 0
+    HasTooltip: 1
+    TooltipText: 'Decommission this truck as quickly as possible! It will continue
+      releasing cars until it''s killed!
+
+'
+  - WaveTime: 10
+    Batches:
+    - BatchTime: 5
+      Enemy_Type: 4
+      EnemyCount: 5
+    - BatchTime: 5
+      Enemy_Type: 3
+      EnemyCount: 3
+    - BatchTime: 5
+      Enemy_Type: 0
+      EnemyCount: 50
+    UnlocksPath: 0
+    HasTooltip: 1
+    TooltipText: 
+  - WaveTime: 10
+    Batches:
+    - BatchTime: 5
+      Enemy_Type: 2
+      EnemyCount: 10
+    - BatchTime: 10
+      Enemy_Type: 3
+      EnemyCount: 3
+    - BatchTime: 5
+      Enemy_Type: 4
+      EnemyCount: 5
+    UnlocksPath: 1
+    HasTooltip: 1
+    TooltipText: 
+  - WaveTime: 10
+    Batches:
+    - BatchTime: 5
+      Enemy_Type: 0
+      EnemyCount: 50
+    - BatchTime: 5
+      Enemy_Type: 2
+      EnemyCount: 10
+    - BatchTime: 10
+      Enemy_Type: 4
+      EnemyCount: 10
+    UnlocksPath: 0
+    HasTooltip: 1
+    TooltipText: 
+  - WaveTime: 10
+    Batches:
+    - BatchTime: 5
+      Enemy_Type: 2
+      EnemyCount: 10
+    - BatchTime: 15
+      Enemy_Type: 0
+      EnemyCount: 100
+    - BatchTime: 10
+      Enemy_Type: 2
+      EnemyCount: 10
+    - BatchTime: 10
+      Enemy_Type: 3
+      EnemyCount: 10
+    - BatchTime: 10
+      Enemy_Type: 4
+      EnemyCount: 10
+    - BatchTime: 20
+      Enemy_Type: 4
+      EnemyCount: 20
+    - BatchTime: 20
+      Enemy_Type: 3
+      EnemyCount: 20
+    - BatchTime: 60
+      Enemy_Type: 0
+      EnemyCount: 250
+    UnlocksPath: 1
+    HasTooltip: 1
+    TooltipText: 'These are the last ones! If we defeat these we''ll save our company!
+
+'
