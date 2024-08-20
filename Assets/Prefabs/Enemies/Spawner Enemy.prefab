@@ -372,7 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 300
-  _speed: 20
+  _speed: 13
   _reward: 0
   Priority: 5
   _modelParent: {fileID: 4273141342635475391}
