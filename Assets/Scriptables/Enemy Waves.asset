@@ -36,8 +36,8 @@ MonoBehaviour:
       EnemyCount: 5
     UnlocksPath: 0
     HasTooltip: 1
-    TooltipText: Our cars have gone rogue and are heading straight back to our HQ!
-      Use the buy menu to place our family friendly Urban Defense Structures!
+    TooltipText: Our cars have gone rogue and are heading straight for our HQ! Use
+      the buy menu to place one of our family friendly Urban Defense Structures!
   - WaveTime: 10
     Batches:
     - BatchTime: 15
@@ -48,8 +48,8 @@ MonoBehaviour:
       EnemyCount: 5
     UnlocksPath: 0
     HasTooltip: 1
-    TooltipText: This car is too strong! Use your [SCROLL WHEEL] to power up our
-      Urban Defense Structures. Keep in mind this will make them slower and uses
+    TooltipText: This next car looks strong! Use your [SCROLL WHEEL] to power up
+      our Urban Defense Structures. Keep in mind this will make them slower and uses
       up scale!
   - WaveTime: 10
     Batches:
@@ -62,7 +62,7 @@ MonoBehaviour:
     UnlocksPath: 0
     HasTooltip: 1
     TooltipText: Did you know you can use [SCROLL WHEEL] to rotate your structures
-      when building them? Use this to aim buildings like The Cannon!
+      before placing them? Use this to aim buildings like the Cannon!
   - WaveTime: 10
     Batches:
     - BatchTime: 5
@@ -133,7 +133,7 @@ MonoBehaviour:
       EnemyCount: 3
     UnlocksPath: 0
     HasTooltip: 1
-    TooltipText: Watch out! This truck will explode out more cars if it's destroyed!
+    TooltipText: Watch out! This truck will explode into more cars if it's destroyed!
   - WaveTime: 10
     Batches:
     - BatchTime: 5
