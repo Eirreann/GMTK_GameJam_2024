@@ -79,6 +79,12 @@ MonoBehaviour:
     Batches:
     - BatchTime: 5
       Enemy_Type: 2
+      EnemyCount: 2
+    - BatchTime: 10
+      Enemy_Type: 0
+      EnemyCount: 10
+    - BatchTime: 5
+      Enemy_Type: 2
       EnemyCount: 3
     - BatchTime: 10
       Enemy_Type: 0
@@ -87,3 +93,44 @@ MonoBehaviour:
     HasTooltip: 1
     TooltipText: It's rush hour! Use the extra street you just gained to deal with
       this big wave!
+  - WaveTime: 10
+    Batches:
+    - BatchTime: 5
+      Enemy_Type: 2
+      EnemyCount: 1
+    - BatchTime: 10
+      Enemy_Type: 0
+      EnemyCount: 10
+    - BatchTime: 5
+      Enemy_Type: 2
+      EnemyCount: 2
+    - BatchTime: 10
+      Enemy_Type: 0
+      EnemyCount: 20
+    - BatchTime: 10
+      Enemy_Type: 2
+      EnemyCount: 3
+    - BatchTime: 10
+      Enemy_Type: 0
+      EnemyCount: 30
+    UnlocksPath: 0
+    HasTooltip: 1
+    TooltipText: The Inferno Tower starts off slow, but will mow down strong enemies
+      when scaled up!
+  - WaveTime: 10
+    Batches:
+    - BatchTime: 5
+      Enemy_Type: 4
+      EnemyCount: 1
+    - BatchTime: 10
+      Enemy_Type: 2
+      EnemyCount: 2
+    - BatchTime: 5
+      Enemy_Type: 4
+      EnemyCount: 3
+    - BatchTime: 10
+      Enemy_Type: 2
+      EnemyCount: 3
+    UnlocksPath: 0
+    HasTooltip: 1
+    TooltipText: Watch out! This truck will explode out more cars if it's destroyed!
