@@ -56,7 +56,6 @@ namespace GMTK_Jam.Enemy
         public bool UnlocksPath;
 
         [Header("UI")]
-        public bool HasTooltip;
         [TextArea(2, 10)]
         public string TooltipText;
     }

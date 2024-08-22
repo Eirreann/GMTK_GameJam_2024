@@ -54,7 +54,7 @@ namespace GMTK_Jam.Enemy
 
         private IEnumerator _startWave(WaveOptions wave)
         {
-            if (wave.HasTooltip)
+            if (!string.IsNullOrEmpty(wave.TooltipText))
             {
                 Tooltip.gameObject.SetActive(true);
                 Tooltip.ShowTooltip(wave.TooltipText);

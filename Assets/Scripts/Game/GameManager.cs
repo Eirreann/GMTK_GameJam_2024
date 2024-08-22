@@ -41,6 +41,7 @@ namespace GMTK_Jam
         public GameObject PauseScreen;
         public UIScaleBar ScaleBar;
         public Button BuyBtn;
+        public Button SpeedUpBtn;
         public TextMeshProUGUI BuyBtnText;
         public UITowerShop TowerShop;
 
@@ -54,18 +55,21 @@ namespace GMTK_Jam
         private int _currentScale;
         private int _waveIndex = 0;
         private bool _paused = false;
+        private bool _isSpedUp = false;
+        private float _currentTimescale = 1;
 
         private void Start()
         {
             Player.InitInputs();
             _buildingHandler = GetComponent<PlaceBuildingHandler>();
-            Cursor.lockState = CursorLockMode.Confined;
+            //Cursor.lockState = CursorLockMode.Confined;
             _currentHealth = PlayerMaxHealth;
             _currentScale = PlayerMaxScale;
             UpdatePlayerResource(0);
             PlayerBase.UpdatePlayerHealthUI(_currentHealth);
 
             BuyBtn.onClick.AddListener(OpenBuyMenu);
+            SpeedUpBtn.onClick.AddListener(_speedUpGame);
             EndGameButtons.ForEach(b => b.onClick.AddListener(_onRestart));
 
             if (SkipIntro)
@@ -75,6 +79,13 @@ namespace GMTK_Jam
                 IntroScreen.gameObject.SetActive(true);
                 IntroScreen.OnStart(() => StartGame());
             }
+        }
+
+        private void _speedUpGame()
+        {
+            _isSpedUp = !_isSpedUp;
+            _currentTimescale = _isSpedUp ? 1 : 5;
+            Time.timeScale = _currentTimescale;
         }
 
         private void _onRestart()
@@ -128,9 +139,9 @@ namespace GMTK_Jam
         {
             if (State == GameState.ENDED) return;
 
-            Time.timeScale = state ? 0 : 1;
+            Time.timeScale = state ? 0 : _currentTimescale;
             Player.EnableMovement(!state);
-            Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Confined;
+            //Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Confined;
             State = state ? GameState.PAUSED : GameState.ACTIVE;
         }
 
