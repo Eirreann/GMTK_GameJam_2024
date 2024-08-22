@@ -12,7 +12,7 @@ namespace GMTK_Jam.AI
         {
             float spawnRangeX = _destinationArea.x / 2;
             float spawnRangeZ = _destinationArea.z / 2;
-            Vector3 destination = new Vector3(transform.localPosition.x + Random.Range(-spawnRangeX, spawnRangeX), transform.localPosition.y, transform.localPosition.z + Random.Range(-spawnRangeZ, spawnRangeZ));
+            Vector3 destination = new Vector3(transform.position.x + Random.Range(-spawnRangeX, spawnRangeX), transform.position.y, transform.position.z + Random.Range(-spawnRangeZ, spawnRangeZ));
             return destination;
         }
 

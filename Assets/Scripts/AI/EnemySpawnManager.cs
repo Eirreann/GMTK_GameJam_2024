@@ -49,7 +49,8 @@ namespace GMTK_Jam.Enemy
         public void UpdateSpawnPoint(EnemySpawnPoint spawnPoint)
         {
             _currentSpawnPoint = spawnPoint;
-            _currentSpawnPoint.CornersInChunk.ForEach(corner => _corners.Add(corner));
+            //_currentSpawnPoint.CornersInChunk.ForEach(corner => _corners.Add(corner));
+            _corners.InsertRange(0, _currentSpawnPoint.CornersInChunk);
         }
 
         private IEnumerator _startWave(WaveOptions wave)

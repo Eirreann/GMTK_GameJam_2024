@@ -37,7 +37,6 @@ namespace GMTK_Jam
 
         [Header("UI")]
         public UIIntroScreen IntroScreen;
-        public bool SkipIntro = false;
         public GameObject PauseScreen;
         public UIScaleBar ScaleBar;
         public Button BuyBtn;
@@ -49,6 +48,10 @@ namespace GMTK_Jam
         public GameObject GameOverWinUI;
         public GameObject GameOverLoseUI;
         public List<Button> EndGameButtons;
+
+        [Header("Debug")]
+        public bool DontEndGameOnDeath = false;
+        public bool SkipIntro = false;
 
         private PlaceBuildingHandler _buildingHandler;
         private int _currentHealth;
@@ -114,27 +117,6 @@ namespace GMTK_Jam
             EnemyManager.StartWave(WavesData.Waves[_waveIndex], _onWaveCompleted);
         }
 
-        private void _onWaveCompleted()
-        {
-            if(State == GameState.ACTIVE)
-            {
-                _waveIndex++;
-                if(_waveIndex < WavesData.Waves.Count)
-                {
-                    if (WavesData.Waves[_waveIndex].UnlocksPath)
-                    {
-                        _chunkIndex++;
-                        if(_chunkIndex < _chunks.Count)
-                            EnemyManager.UpdateSpawnPoint(_chunks[_chunkIndex].SpawnPoint);
-                        _chunks[_chunkIndex].BuildSurface.SetActive(true);
-                    }
-                    EnemyManager.StartWave(WavesData.Waves[_waveIndex], _onWaveCompleted);
-                }
-                else
-                    _endGame(true);
-            }
-        }
-
         public void PauseGame(bool state)
         {
             if (State == GameState.ENDED) return;
@@ -152,7 +134,7 @@ namespace GMTK_Jam
             _currentHealth += mod;
             PlayerBase.UpdatePlayerHealthUI(_currentHealth);
 
-            if(_currentHealth <= 0)
+            if (_currentHealth <= 0)
             {
                 // TODO: Game over logic
                 _endGame(false);
@@ -190,8 +172,31 @@ namespace GMTK_Jam
             return WavesData.ReturnEnemyObject(type);
         }
 
+        private void _onWaveCompleted()
+        {
+            if(State == GameState.ACTIVE)
+            {
+                _waveIndex++;
+                if(_waveIndex < WavesData.Waves.Count)
+                {
+                    if (WavesData.Waves[_waveIndex].UnlocksPath)
+                    {
+                        _chunkIndex++;
+                        if(_chunkIndex < _chunks.Count)
+                            EnemyManager.UpdateSpawnPoint(_chunks[_chunkIndex].SpawnPoint);
+                        _chunks[_chunkIndex].BuildSurface.SetActive(true);
+                    }
+                    EnemyManager.StartWave(WavesData.Waves[_waveIndex], _onWaveCompleted);
+                }
+                else
+                    _endGame(true);
+            }
+        }
+
         private void _endGame(bool state)
         {
+            if (DontEndGameOnDeath) return;
+
             State = GameState.ENDED;
             Player.DeregisterInputs();
             Player.enabled = false;

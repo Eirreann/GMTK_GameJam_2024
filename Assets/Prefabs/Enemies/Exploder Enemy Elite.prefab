@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 6278749880970737425}
   - component: {fileID: 2284947511914745615}
   m_Layer: 0
-  m_Name: EExploder Enemy
+  m_Name: Exploder Enemy Elite
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,10 +196,10 @@ NavMeshAgent:
   m_GameObject: {fileID: 8687888186699098643}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 8
+  m_Radius: 4
   m_Speed: 5
   m_Acceleration: 8
-  avoidancePriority: 10
+  avoidancePriority: 85
   m_AngularSpeed: 120
   m_StoppingDistance: 5
   m_AutoTraverseOffMeshLink: 1
@@ -208,7 +208,7 @@ NavMeshAgent:
   m_Height: 5.6
   m_BaseOffset: 1.6
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 1
 --- !u!114 &6278749880970737425
 MonoBehaviour:
   m_ObjectHideFlags: 0

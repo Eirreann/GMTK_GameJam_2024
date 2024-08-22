@@ -1,6 +1,7 @@
 using GMTK_Jam.AI;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace GMTK_Jam.Enemy
@@ -38,7 +39,11 @@ namespace GMTK_Jam.Enemy
                 EnemyBase enemy = Instantiate(_enemyToSpawn, _spawnLocation);
                 enemy.transform.parent = transform.parent;
                 List<PathingCorner> newCornersList = new List<PathingCorner>();
-                _corners.ForEach(c => newCornersList.Add(c));
+                _corners.ForEach((c) =>
+                {
+                    if (c.Corner != null)
+                        newCornersList.Add(c.Corner);
+                });
                 enemy.InitEnemy(newCornersList);
                 EnemySpawnManager.Instance.SpawnedEnemies.Add(enemy);
             }
