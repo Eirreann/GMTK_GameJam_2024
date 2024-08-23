@@ -58,7 +58,7 @@ namespace GMTK_Jam.UI
             TowerHeader.text = data.Name;
             TowerDesc.text = data.Desc;
             TowerBaseDamage.text = data.Prefab != null ? data.Prefab.baseDamage.ToString() : "0";
-            TowerBaseFireRate.text = data.Prefab != null ? data.Prefab.baseAttackSpeed.ToString() : "0";
+            TowerBaseFireRate.text = data.Prefab != null ? data.Prefab.attackSpeedRange.x.ToString() : "0";
             TowerCost.text = data.Prefab != null ? data.Cost.ToString() : "0";
             TowerCost.color = GameManager.Instance.CanAffordUpgrade(data.Cost) ? Color.green : Color.red;
         }

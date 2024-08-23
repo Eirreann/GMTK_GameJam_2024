@@ -12,7 +12,8 @@ namespace GMTK_Jam.Buildings
     {
         [Header("Attributes")]
         [SerializeField] public int baseDamage = 1;
-        [SerializeField] public float baseAttackSpeed = 5;
+        //[SerializeField] public float baseAttackSpeed = 5;
+        [SerializeField] public Vector2 damageRange;
         [SerializeField] public Vector2 attackSpeedRange;
         [SerializeField] public float radius = 40f;
         [SerializeField] protected int scaleFactor = 1;
@@ -28,7 +29,6 @@ namespace GMTK_Jam.Buildings
         public TextMeshProUGUI CostText;
         [SerializeField] private TrailRenderer _line;
         public AudioClip OnFire;
-
 
         protected AudioSource _audioSource;
         protected List<EnemyBase> targets = new List<EnemyBase>();
@@ -116,7 +116,6 @@ namespace GMTK_Jam.Buildings
                         _fireCooldown = 0;
                 }
             }
-                
         }
 
         private void OnTriggerEnter(Collider other)

@@ -10,7 +10,8 @@ namespace GMTK_Jam.Buildings
         [SerializeField] private float _travelDistance = 50f;
 
         private Vector3 _targetPos;
-        private List<EnemyBase> _targets;
+        private List<EnemyBase> _targets = new List<EnemyBase>();
+        private List<EnemyBase> _targetsHit = new List<EnemyBase>();
 
         protected override void Update()
         {
@@ -19,7 +20,7 @@ namespace GMTK_Jam.Buildings
 
         public void Setup(Transform muzzlePos, List<EnemyBase> enemies)
         {
-            _targets = enemies;
+            enemies.ForEach(e => _targets.Add(e));
             var targetOffset = new Vector3(muzzlePos.localPosition.x, muzzlePos.localPosition.y, muzzlePos.localPosition.z + _travelDistance);
             _targetPos = muzzlePos.TransformPoint(targetOffset);
         }
@@ -36,15 +37,14 @@ namespace GMTK_Jam.Buildings
             {
                 transform.position = Vector3.MoveTowards(transform.position, _targetPos, _projectileSpeed * Time.deltaTime);
 
-                List<EnemyBase> enemiesHit = new List<EnemyBase>();
                 _targets.ForEach((e) =>
                 {
-                    if (!enemiesHit.Contains(e))
+                    if (!_targetsHit.Contains(e))
                     {
                         if (Vector3.Distance(transform.position, e.transform.position) < _impactDistance)
                         {
+                            _targetsHit.Add(e);
                             e.RegisterHit(_damage);
-                            enemiesHit.Add(e);
                         }
                     }
                 });

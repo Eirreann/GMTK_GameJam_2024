@@ -118,7 +118,7 @@ namespace GMTK_Jam.Buildings
         protected override float getFireRate()
         {
             // do nothing! :D
-            return baseAttackSpeed;
+            return attackSpeedRange.x;
         }
     }
 }
