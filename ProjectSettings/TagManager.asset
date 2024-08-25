@@ -8,6 +8,7 @@ TagManager:
   - ScrollInteractable
   - Enemy
   - Buildable
+  - Unbuildable
   layers:
   - Default
   - TransparentFX

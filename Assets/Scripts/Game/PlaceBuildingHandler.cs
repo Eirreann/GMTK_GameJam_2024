@@ -12,6 +12,7 @@ namespace GMTK_Jam.Player
     {
         public Transform BuildingParent;
         public string BuildTag = "Buildable";
+        public string NoBuildTag = "Unbuildable";
         public float RotationIncrement = 10f;
 
         private BuildingPlacementArea _base;
@@ -43,12 +44,14 @@ namespace GMTK_Jam.Player
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out RaycastHit hit))
                 {
-                    if (hit.collider.tag == BuildTag)
+                    if (hit.collider.tag == BuildTag || hit.collider.tag == NoBuildTag)
                     {
+                        bool canBuild = hit.collider.tag == BuildTag;
                         _base.gameObject.SetActive(true);
                         _base.transform.position = hit.point;
+                        _base.UpdateMat(canBuild);
 
-                        if (Input.GetMouseButtonDown(0))
+                        if (canBuild && Input.GetMouseButtonDown(0))
                         {
                             if (GameManager.Instance.CanAffordUpgrade(_data.Cost))
                             {
@@ -80,7 +83,7 @@ namespace GMTK_Jam.Player
             _data = data;
             _onPlacedCallback = callback;
             _base = Instantiate(_data.BasePrefab);
-            _base.InitRadius(_data.Prefab.radius);
+            _base.InitRadius(_data.Prefab.aOERange);
             _base.gameObject.SetActive(false);
             _isPlacing = true;
         }

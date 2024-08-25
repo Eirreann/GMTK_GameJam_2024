@@ -25,18 +25,6 @@ MonoBehaviour:
     BaseIcon: {fileID: 21300000, guid: d5830d0bb9e225647b38b9db736e070b, type: 3}
     UpgradeIcon: {fileID: 21300000, guid: d410be746b4117745822785ec027a845, type: 3}
     DowngradeIcon: {fileID: 21300000, guid: 5faa6bef7c49f1d49ae46ab591c705fc, type: 3}
-  - Name: Cannon Tower
-    Desc: This office complex packs a PUNCH! But it only shoots in a straight line,
-      devastating everything it hits.
-    Cost: 30
-    Type: 1
-    Prefab: {fileID: 1717719245319554034, guid: 7497f08fc2ec431409cac92e0908fd1b,
-      type: 3}
-    BasePrefab: {fileID: 3428644334504899366, guid: 1e95ccf592feb9647a6e3efea828288c,
-      type: 3}
-    BaseIcon: {fileID: 21300000, guid: 239e2fd8c2c523e4d8036cebccc4d8aa, type: 3}
-    UpgradeIcon: {fileID: 21300000, guid: c82ee258bea78ec4e8c45b615e6c9830, type: 3}
-    DowngradeIcon: {fileID: 21300000, guid: e130bb0b21b140949988ec42529efb66, type: 3}
   - Name: Ricochet Tower
     Desc: Sharing is caring! This peaceful structure wants to spread the love...
       and the damage! Shots will hit up to three neighbours!
@@ -49,6 +37,18 @@ MonoBehaviour:
     BaseIcon: {fileID: 21300000, guid: 7cb72b2a1d2b0cc46a6db25d2ec3c919, type: 3}
     UpgradeIcon: {fileID: 21300000, guid: ba70908f8299df447b1bdd46af868ca7, type: 3}
     DowngradeIcon: {fileID: 21300000, guid: 359aaf6ffc44fa04ba2bdf90dc6c6a58, type: 3}
+  - Name: Cannon Tower
+    Desc: This office complex packs a PUNCH! But it only shoots in a straight line,
+      devastating everything it hits.
+    Cost: 30
+    Type: 1
+    Prefab: {fileID: 1717719245319554034, guid: 7497f08fc2ec431409cac92e0908fd1b,
+      type: 3}
+    BasePrefab: {fileID: 3428644334504899366, guid: 1e95ccf592feb9647a6e3efea828288c,
+      type: 3}
+    BaseIcon: {fileID: 21300000, guid: 239e2fd8c2c523e4d8036cebccc4d8aa, type: 3}
+    UpgradeIcon: {fileID: 21300000, guid: c82ee258bea78ec4e8c45b615e6c9830, type: 3}
+    DowngradeIcon: {fileID: 21300000, guid: e130bb0b21b140949988ec42529efb66, type: 3}
   - Name: Inferno Tower
     Desc: Something to keep you warm on a cold night! Might not do much more than
       blow hot air when it's small, scale up this puppy to create an inferno!

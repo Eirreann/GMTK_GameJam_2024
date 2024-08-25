@@ -18,11 +18,19 @@ namespace GMTK_Jam.Buildings
             // Do nothing : D
         }
 
-        public void Setup(Transform muzzlePos, List<EnemyBase> enemies)
+        public void Setup(float travelDistance, Transform muzzlePos, List<EnemyBase> enemies)
         {
+            // update travel distance
+            _travelDistance = travelDistance;
+
+            // Update bullet scale
+            _impactDistance = transform.lossyScale.x;
+
+            // Get reference list of enemies from tower (not currently used as we're instead using list of _all_ enemies - may revert if we sort out collider issue)
             enemies.ForEach(e => _targets.Add(e));
-            var targetOffset = new Vector3(muzzlePos.localPosition.x, muzzlePos.localPosition.y, muzzlePos.localPosition.z + _travelDistance);
-            _targetPos = muzzlePos.TransformPoint(targetOffset);
+
+            // Set travel endpoint
+            _targetPos = transform.position + muzzlePos.transform.forward * _travelDistance;
         }
 
         public override void FireAtTarget(EnemyBase target, int damage)
@@ -37,14 +45,17 @@ namespace GMTK_Jam.Buildings
             {
                 transform.position = Vector3.MoveTowards(transform.position, _targetPos, _projectileSpeed * Time.deltaTime);
 
-                _targets.ForEach((e) =>
+                List<EnemyBase> enemies = new List<EnemyBase>();
+                EnemySpawnManager.Instance.SpawnedEnemies.ForEach((e) => enemies.Add(e));
+                enemies.RemoveAll(e => e == null);
+                enemies.ForEach(enemy =>
                 {
-                    if (!_targetsHit.Contains(e))
+                    if (!_targetsHit.Contains(enemy))
                     {
-                        if (Vector3.Distance(transform.position, e.transform.position) < _impactDistance)
+                        if (Vector3.Distance(transform.position, enemy.transform.position) < _impactDistance)
                         {
-                            _targetsHit.Add(e);
-                            e.RegisterHit(_damage);
+                            _targetsHit.Add(enemy);
+                            enemy.RegisterHit(_damage);
                         }
                     }
                 });

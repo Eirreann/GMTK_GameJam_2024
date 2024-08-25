@@ -10,7 +10,7 @@ namespace GMTK_Jam.Buildings
         protected override void _spawnBullet(int damage, EnemyBase target)
         {
             ProjectileBase bullet = pool.GetProjectile(currentLevel);
-            (bullet as RicochetProjectile).SetRadius(radius);
+            (bullet as RicochetProjectile).SetRadius(_getAoE());
             bullet.FireAtTarget(target, damage);
 
             if (OnFire != null)
@@ -21,13 +21,6 @@ namespace GMTK_Jam.Buildings
         {
             base.towerLookAt(target);
             TurretRotation.localRotation = Quaternion.Euler(startRot.eulerAngles.z, TurretRotation.localRotation.eulerAngles.y, startRot.eulerAngles.z);
-        }
-
-        protected override int getDamage()
-        {
-            // TODO: Sort proper damage scaling
-            int damage = baseDamage + (currentLevel * scaleFactor);
-            return damage;
         }
     }
 }

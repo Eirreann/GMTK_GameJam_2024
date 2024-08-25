@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.0275731, g: 0.6277271, b: 0.6784305, a: 1}
+  m_IndirectSpecularColor: {r: 1.0275602, g: 0.62774456, b: 0.6784407, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7406,12 +7406,12 @@ GameObject:
   - component: {fileID: 343270674}
   - component: {fileID: 343270676}
   m_Layer: 0
-  m_Name: Plane
-  m_TagString: Untagged
+  m_Name: Plane (placing disallowed area)
+  m_TagString: Unbuildable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!33 &343270674
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -32346,7 +32346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &1613529520
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -41929,6 +41929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BuildingParent: {fileID: 810502790}
   BuildTag: Buildable
+  NoBuildTag: Unbuildable
   RotationIncrement: 10
 --- !u!114 &1828607202
 MonoBehaviour:
@@ -41946,7 +41947,7 @@ MonoBehaviour:
   Player: {fileID: 750208903}
   PlayerBase: {fileID: 364069646}
   PlayerMaxHealth: 150
-  PlayerMaxScale: 1000
+  PlayerMaxScale: 10
   EnemyManager: {fileID: 1741597240}
   WavesData: {fileID: 11400000, guid: 231f1e53801a0104280bb49fc325fd6a, type: 2}
   BuildingData: {fileID: 11400000, guid: 80d0bf6e497d3334185c94664b56b5da, type: 2}
@@ -41975,8 +41976,8 @@ MonoBehaviour:
   EndGameButtons:
   - {fileID: 2137327179}
   - {fileID: 1804099724}
-  DontEndGameOnDeath: 1
-  SkipIntro: 1
+  DontEndGameOnDeath: 0
+  SkipIntro: 0
 --- !u!4 &1828607203
 Transform:
   m_ObjectHideFlags: 0

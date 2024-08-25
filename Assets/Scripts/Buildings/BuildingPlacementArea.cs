@@ -8,25 +8,45 @@ namespace GMTK_Jam.Buildings
     public class BuildingPlacementArea : MonoBehaviour
     {
         [SerializeField] private LineRenderer _lineRenderer;
+        [SerializeField] private LineRenderer _lineRendererMax;
+
+        [Header("Model")]
+        [SerializeField] private List<Renderer> _renderers;
+        [SerializeField] private Material AllowedMat;
+        [SerializeField] private Material UnallowedMat;
+
         private Renderer _render;
 
         private int _lineSegments = 50;
-        private float _radius;
+        private Vector2 _radius;
         private bool _drawCircle = false;
+        private bool _allowed = false;
 
-        public void InitRadius(float radius)
+        public void InitRadius(Vector2 radius)
         {
             _radius = radius;
             _drawCircle = true;
         }
 
-        private void Update()
+        public void UpdateMat(bool state)
         {
-            if(_drawCircle)
-                _createCircle(_lineSegments, _radius);
+            if(state != _allowed)
+            {
+                _allowed = state;
+                _renderers.ForEach(r => r.material = state ? AllowedMat : UnallowedMat);
+            }
         }
 
-        private void _createCircle(int steps, float radius)
+        private void Update()
+        {
+            if (_drawCircle)
+            {
+                _createCircle(_lineRenderer, _lineSegments, _radius.x);
+                _createCircle(_lineRendererMax, _lineSegments, _radius.y);
+            }
+        }
+
+        private void _createCircle(LineRenderer renderer, int steps, float radius)
         {
             _lineRenderer.positionCount = steps;
 

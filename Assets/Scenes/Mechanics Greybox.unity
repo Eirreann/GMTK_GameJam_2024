@@ -999,6 +999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerHealthbar: {fileID: 1096755683}
+  _playerHealthText: {fileID: 0}
 --- !u!1 &316777588
 GameObject:
   m_ObjectHideFlags: 0
@@ -3506,6 +3507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnedEnemies: []
+  _spawnObscurer: {fileID: 0}
   _currentSpawnPoint: {fileID: 1753240705}
   _corners: []
   WaveStarting: {fileID: 1023669039}
@@ -4726,12 +4728,19 @@ MonoBehaviour:
   EnemyManager: {fileID: 1271872362}
   WavesData: {fileID: 11400000, guid: 42f2b1c3badddf54aa2f4976a6cc9b6d, type: 2}
   BuildingData: {fileID: 11400000, guid: 80d0bf6e497d3334185c94664b56b5da, type: 2}
-  TempPause: {fileID: 195931397}
-  GameOverUI: {fileID: 2063717270}
+  _chunks: []
+  IntroScreen: {fileID: 0}
+  PauseScreen: {fileID: 0}
   ScaleBar: {fileID: 1163287084}
   BuyBtn: {fileID: 1824098459}
+  SpeedUpBtn: {fileID: 0}
   BuyBtnText: {fileID: 1537945736}
   TowerShop: {fileID: 2138568337}
+  GameOverWinUI: {fileID: 0}
+  GameOverLoseUI: {fileID: 0}
+  EndGameButtons: []
+  DontEndGameOnDeath: 0
+  SkipIntro: 0
 --- !u!4 &1754159298
 Transform:
   m_ObjectHideFlags: 0
@@ -5553,6 +5562,7 @@ MonoBehaviour:
   TowerDesc: {fileID: 239876106}
   TowerBaseDamage: {fileID: 571523892}
   TowerBaseFireRate: {fileID: 847285550}
+  TowerCost: {fileID: 0}
   CloseBtn: {fileID: 316777590}
 --- !u!1 &2144251171
 GameObject:
@@ -5976,7 +5986,7 @@ PrefabInstance:
     - target: {fileID: 4541841635749611035, guid: 7497f08fc2ec431409cac92e0908fd1b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4541841635749611035, guid: 7497f08fc2ec431409cac92e0908fd1b,
         type: 3}
@@ -5986,7 +5996,7 @@ PrefabInstance:
     - target: {fileID: 4541841635749611035, guid: 7497f08fc2ec431409cac92e0908fd1b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4541841635749611035, guid: 7497f08fc2ec431409cac92e0908fd1b,
         type: 3}
@@ -6001,7 +6011,7 @@ PrefabInstance:
     - target: {fileID: 4541841635749611035, guid: 7497f08fc2ec431409cac92e0908fd1b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4541841635749611035, guid: 7497f08fc2ec431409cac92e0908fd1b,
         type: 3}

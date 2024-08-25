@@ -63,26 +63,34 @@ namespace GMTK_Jam.Buildings
         {
             if (direction && !GameManager.Instance.CanAffordUpgrade(upgradeCost)) return;
 
-            currentLevel += direction ? scaleFactor : -scaleFactor;
-            if (currentLevel <= maxLevel && currentLevel >= 0)
+            currentLevel += direction ? 1 : -1;
+            if (currentLevel <= maxLevel && currentLevel >= minLevel)
             {
+                // Update scale
                 Vector3 scaleAmount = new(0.1f, 0.1f, 0.1f);
                 Model.localScale = Model.localScale += (direction ? scaleAmount : -scaleAmount);
                 if (direction)
                 {
+                    // Update UIs and play audio
                     GameManager.Instance.UpdatePlayerResource(-upgradeCost);
                     _previousUpgradeCosts.Push(upgradeCost);
                 }
                 else
                 {
+                    // Update UIs
                     int refund = _previousUpgradeCosts.Pop();
                     GameManager.Instance.UpdatePlayerResource(refund);
                 }
+
+                // Play audio
                 AudioManager.Instance.OnUpgradeStructure(direction);
+
+                // Update AoE
+                _updateAoE();
             }
             else
             {
-                currentLevel = Mathf.Clamp(currentLevel, 0, maxLevel);
+                currentLevel = Mathf.Clamp(currentLevel, minLevel, maxLevel);
             }
 
             float newCost = Mathf.Pow(_baseUpgradeCost, (_upgradeCostFactor * currentLevel));
@@ -110,7 +118,7 @@ namespace GMTK_Jam.Buildings
 
         protected override int getDamage()
         {
-            float damageFloat = Mathf.Pow((baseDamage * 1.5f), (scaleFactor * currentLevel));
+            float damageFloat = Mathf.Pow((damageRange.x * 1.5f), currentLevel);
             int damage = Mathf.RoundToInt(damageFloat);
             return damage;
         }

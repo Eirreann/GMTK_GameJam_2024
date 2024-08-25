@@ -36,12 +36,5 @@ namespace GMTK_Jam.Buildings
                 GunRotation.localRotation = _startGunRot;
             }
         }
-
-        protected override int getDamage()
-        {
-            // TODO: Sort proper damage scaling
-            int damage = baseDamage + (currentLevel * scaleFactor);
-            return damage;
-        }
     }
 }

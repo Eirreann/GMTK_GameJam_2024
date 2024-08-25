@@ -642,11 +642,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4723744ea055e47ad76bbf9a0dcdce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 1
-  baseAttackSpeed: 0.1
+  damageRange: {x: 1, y: 1}
   attackSpeedRange: {x: 0.1, y: 0.1}
+  aOERange: {x: 40, y: 75}
   radius: 40
-  scaleFactor: 1
+  radiusFactor: 1
   maxLevel: 10
   upgradeCost: 3
   Model: {fileID: 1501923709938631357}
@@ -655,8 +655,8 @@ MonoBehaviour:
   StatsUI: {fileID: 5102977906214017011}
   DamageText: {fileID: 7296006508199316432}
   CostText: {fileID: 1751382122464025308}
-  _line: {fileID: 8335531280945254046}
   OnFire: {fileID: 8300000, guid: 9143751b073b75b4b907f7f393298cfb, type: 3}
+  _line: {fileID: 8335531280945254046}
   _upgradeCostFactor: 1
   _prioritiseTargets: 1
   _audioLoop: {fileID: 8300000, guid: 623f2741f1355f74eabc0caae19b6dd5, type: 3}
