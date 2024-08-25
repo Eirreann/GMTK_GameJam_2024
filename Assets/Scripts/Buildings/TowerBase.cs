@@ -51,8 +51,9 @@ namespace GMTK_Jam.Buildings
             pool.Setup(BulletSpawnPos);
             _updateAoE();
 
-            DamageText.text = "DMG " + getDamage().ToString();
+            CostText.color = Color.yellow;
             CostText.text = "Cost " + upgradeCost.ToString();
+            DamageText.text = "DMG " + getDamage().ToString();
         }
 
         public virtual void OnScrollValue(bool direction)
@@ -83,8 +84,17 @@ namespace GMTK_Jam.Buildings
                 currentLevel = Mathf.Clamp(currentLevel, minLevel, maxLevel);
             }
 
+            if(currentLevel == maxLevel)
+            {
+                CostText.color = Color.red;
+                CostText.text = "-";
+            }
+            else
+            {
+                CostText.color = Color.yellow;
+                CostText.text = "Cost " + upgradeCost.ToString();
+            }
             DamageText.text = "DMG " + getDamage().ToString();
-            CostText.text = "Cost " + upgradeCost.ToString();
         }
 
         private IEnumerator _scaleBuilding(Vector3 targetScale)

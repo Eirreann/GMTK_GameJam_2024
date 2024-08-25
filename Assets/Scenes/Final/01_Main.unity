@@ -36439,7 +36439,7 @@ MonoBehaviour:
   Player: {fileID: 750208903}
   PlayerBase: {fileID: 364069646}
   PlayerMaxHealth: 150
-  PlayerMaxScale: 10000
+  PlayerMaxScale: 100000
   EnemyManager: {fileID: 1741597240}
   WavesData: {fileID: 11400000, guid: 231f1e53801a0104280bb49fc325fd6a, type: 2}
   BuildingData: {fileID: 11400000, guid: 80d0bf6e497d3334185c94664b56b5da, type: 2}

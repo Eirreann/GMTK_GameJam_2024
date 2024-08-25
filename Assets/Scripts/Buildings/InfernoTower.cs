@@ -96,8 +96,17 @@ namespace GMTK_Jam.Buildings
             float newCost = Mathf.Pow(_baseUpgradeCost, (_upgradeCostFactor * currentLevel));
             upgradeCost = Mathf.RoundToInt(newCost);
 
+            if (currentLevel == maxLevel)
+            {
+                CostText.color = Color.red;
+                CostText.text = "-";
+            }
+            else
+            {
+                CostText.color = Color.yellow;
+                CostText.text = "Cost " + upgradeCost.ToString();
+            }
             DamageText.text = "DMG " + getDamage().ToString();
-            CostText.text = "Cost " + upgradeCost.ToString();
         }
 
         protected override void _onEnemyAdded()
