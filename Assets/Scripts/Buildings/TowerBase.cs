@@ -271,6 +271,7 @@ namespace GMTK_Jam.Buildings
         public void OnHover(bool state)
         {
             StatsUI.alpha = state ? 1 : 0;
+            GameManager.Instance.PreviewCost(state, upgradeCost);
         }
     }
 }

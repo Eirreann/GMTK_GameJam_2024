@@ -1,3 +1,4 @@
+using GMTK_Jam.Util;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -122,27 +123,30 @@ namespace GMTK_Jam.Player
                     transform.position = Vector3.MoveTowards(transform.position, target, _moveSpd * Time.deltaTime);
             }
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (!CameraHelper.IsPointerOverUIElement(CameraHelper.GetEventSystemRaycastResults()))
             {
-                if (hit.collider.tag == "ScrollInteractable")
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out RaycastHit hit))
                 {
-                    if (_prevHit != null && _prevHit != hit.collider.GetComponentInParent<IScrollInteractable>())
+                    if (hit.collider.tag == "ScrollInteractable")
                     {
-                        _prevHit.OnHover(false);
-                        _prevHit = null;
-                    }
+                        if (_prevHit != null && _prevHit != hit.collider.GetComponentInParent<IScrollInteractable>())
+                        {
+                            _prevHit.OnHover(false);
+                            _prevHit = null;
+                        }
 
-                    //Debug.Log(hit.collider.name);
-                    _prevHit = hit.collider.GetComponentInParent<IScrollInteractable>();
-                    _prevHit.OnHover(true);
-                }
-                else
-                {
-                    if(_prevHit != null)
+                        //Debug.Log(hit.collider.name);
+                        _prevHit = hit.collider.GetComponentInParent<IScrollInteractable>();
+                        _prevHit.OnHover(true);
+                    }
+                    else
                     {
-                        _prevHit.OnHover(false);
-                        _prevHit = null;
+                        if (_prevHit != null)
+                        {
+                            _prevHit.OnHover(false);
+                            _prevHit = null;
+                        }
                     }
                 }
             }

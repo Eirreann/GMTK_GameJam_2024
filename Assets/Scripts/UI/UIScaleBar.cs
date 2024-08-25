@@ -9,6 +9,7 @@ namespace GMTK_Jam.UI
     public class UIScaleBar : MonoBehaviour
     {
         public Image BarImage;
+        public Image PreviewImage;
         public TextMeshProUGUI BarValueText;
         public TextMeshProUGUI UpdateAmntText;
 
@@ -32,6 +33,17 @@ namespace GMTK_Jam.UI
                     StopCoroutine(_upgradeCoroutine);
                 _upgradeCoroutine = StartCoroutine(_showUpgradeAmount(mod));
             }
+        }
+
+        public void PreviewCost(int cost, int max)
+        {
+            PreviewImage.gameObject.SetActive(true);
+            PreviewImage.fillAmount = (float)cost / (float)max;
+        }
+
+        public void PreviewCost(bool state)
+        {
+            PreviewImage.gameObject.SetActive(state);
         }
 
         private IEnumerator _showUpgradeAmount(int amnt)

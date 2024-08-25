@@ -12618,6 +12618,12 @@ Transform:
   - {fileID: 1539148200}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 60, y: -90, z: 0}
+--- !u!1 &750971934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1269484806746210264, guid: 9c3cfd74ad9045c479ee8945fd948c2d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6774949272682170594}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &756569253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36458,18 +36464,21 @@ MonoBehaviour:
     BuildSurface: {fileID: 641423697}
   IntroScreen: {fileID: 1951192382}
   PauseScreen: {fileID: 665320779}
+  TutorialScreen: {fileID: 750971934}
   ScaleBar: {fileID: 1680019778}
   BuyBtn: {fileID: 1409528695}
   SpeedUpBtn: {fileID: 1659772111}
   BuyBtnText: {fileID: 524480727}
   TowerShop: {fileID: 1840451576}
+  SpeedUpBtnEnabledColour: {r: 0.5019608, g: 1, b: 0.53333336, a: 1}
+  SpeedUpBtnDisabledColour: {r: 0.95686275, g: 0.7058824, b: 0.8862745, a: 1}
   GameOverWinUI: {fileID: 1358326440}
   GameOverLoseUI: {fileID: 294869725}
   EndGameButtons:
   - {fileID: 2137327179}
   - {fileID: 1804099724}
   DontEndGameOnDeath: 0
-  SkipIntro: 1
+  SkipIntro: 0
 --- !u!4 &1828607203
 Transform:
   m_ObjectHideFlags: 0

@@ -7,10 +7,13 @@ namespace GMTK_Jam.Buildings
 {
     public class InfernoProjectile : ProjectileBase
     {
+        private float maxScale = 1.85f; // Hardcoding this for now. >.<
+
         public override void FireAtTarget(EnemyBase target, int damage)
         {
             base.FireAtTarget(target, damage);
             GetComponent<TrailRenderer>().Clear();
+            GetComponent<TrailRenderer>().widthMultiplier = 1 + (transform.localScale.x / maxScale);
             _fireCoroutine = StartCoroutine(_moveTowardTarget());
         }
 

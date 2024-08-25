@@ -38,11 +38,14 @@ namespace GMTK_Jam
         [Header("UI")]
         public UIIntroScreen IntroScreen;
         public GameObject PauseScreen;
+        public GameObject TutorialScreen;
         public UIScaleBar ScaleBar;
         public Button BuyBtn;
         public Button SpeedUpBtn;
         public TextMeshProUGUI BuyBtnText;
         public UITowerShop TowerShop;
+        public Color SpeedUpBtnEnabledColour;
+        public Color SpeedUpBtnDisabledColour;
 
         [Header("Game Over")]
         public GameObject GameOverWinUI;
@@ -67,7 +70,7 @@ namespace GMTK_Jam
         {
             Player.InitInputs();
             _buildingHandler = GetComponent<PlaceBuildingHandler>();
-            Cursor.lockState = CursorLockMode.Confined;
+            //Cursor.lockState = CursorLockMode.Confined;
             _currentHealth = PlayerMaxHealth;
             _currentScale = PlayerMaxScale;
             UpdatePlayerResource(0);
@@ -76,6 +79,14 @@ namespace GMTK_Jam
             BuyBtn.onClick.AddListener(OpenBuyMenu);
             SpeedUpBtn.onClick.AddListener(_speedUpGame);
             EndGameButtons.ForEach(b => b.onClick.AddListener(_onRestart));
+
+
+            //PlayerPrefs.SetInt("DoneTutorial", 0);
+            if (PlayerPrefs.GetInt("DoneTutorial", 0) == 0)
+            {
+                TutorialScreen.SetActive(true);
+                PlayerPrefs.SetInt("DoneTutorial", 1);
+            }
 
             if (SkipIntro)
                 StartGame();
@@ -89,8 +100,19 @@ namespace GMTK_Jam
         private void _speedUpGame()
         {
             _isSpedUp = !_isSpedUp;
-            _currentTimescale = _isSpedUp ? 1 : 5;
+            _currentTimescale = _isSpedUp ? 5 : 1;
             Time.timeScale = _currentTimescale;
+
+            if (_isSpedUp)
+            {
+                SpeedUpBtn.GetComponentInChildren<TextMeshProUGUI>().text = ">>";
+                SpeedUpBtn.GetComponent<Image>().color = SpeedUpBtnEnabledColour;
+            }
+            else
+            {
+                SpeedUpBtn.GetComponentInChildren<TextMeshProUGUI>().text = ">";
+                SpeedUpBtn.GetComponent<Image>().color = SpeedUpBtnDisabledColour;
+            }
         }
 
         private void _onRestart()
@@ -132,7 +154,7 @@ namespace GMTK_Jam
 
             Time.timeScale = state ? 0 : _currentTimescale;
             Player.EnableMovement(!state);
-            Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Confined;
+            //Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Confined;
             State = state ? GameState.PAUSED : GameState.ACTIVE;
         }
 
@@ -178,8 +200,8 @@ namespace GMTK_Jam
                 _buildingHandler.ClearPendingBuilding();
                 BuyBtnText.text = "Buy";
 
-                //if(!_isPlacingBuilding)
-                //    PauseGame(false);
+                if (!_isPlacingBuilding)
+                    PauseGame(false);
             }
         }
 
@@ -191,6 +213,19 @@ namespace GMTK_Jam
         public EnemyBase GetEnemyObjectByType(EnemyType type)
         {
             return WavesData.ReturnEnemyObject(type);
+        }
+
+        public void PreviewCost(bool state, int cost = 0)
+        {
+            if (state)
+            {
+                if (CanAffordUpgrade(cost))
+                    ScaleBar.PreviewCost(cost, PlayerMaxScale);
+                else
+                    ScaleBar.PreviewCost(false);
+            }
+            else
+                ScaleBar.PreviewCost(false);
         }
 
         private void _onWaveCompleted()
@@ -222,7 +257,10 @@ namespace GMTK_Jam
             Player.DeregisterInputs();
             Player.enabled = false;
 
-            if(state)
+            if (_isSpedUp)
+                _speedUpGame();
+
+            if (state)
                 GameOverWinUI.SetActive(true);
             else
                 GameOverLoseUI.SetActive(true);
