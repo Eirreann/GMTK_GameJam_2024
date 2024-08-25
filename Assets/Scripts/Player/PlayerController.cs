@@ -73,7 +73,8 @@ namespace GMTK_Jam.Player
             _recenter.performed += _resetView;
             _recenter.canceled += _resetView;
 
-            _buy.performed += _openBuyMenu;
+            //_buy.performed += _openBuyMenu;
+            //_buy.canceled += _openBuyMenu;
 
             _zoomMod.performed += _onZoomMod;
             _zoomMod.canceled += _onZoomMod;
@@ -93,7 +94,8 @@ namespace GMTK_Jam.Player
             _recenter.performed -= _resetView;
             _recenter.canceled -= _resetView;
 
-            _buy.performed -= _openBuyMenu;
+            //_buy.performed -= _openBuyMenu;
+            //_buy.canceled -= _openBuyMenu;
 
             _zoomMod.performed -= _onZoomMod;
             _zoomMod.canceled -= _onZoomMod;
@@ -264,6 +266,7 @@ namespace GMTK_Jam.Player
             if (context.ReadValue<float>() == 1)
             {
                 GameManager.Instance.OpenBuyMenu();
+                Debug.Log("Buy button pressed");
             }
         }
     }

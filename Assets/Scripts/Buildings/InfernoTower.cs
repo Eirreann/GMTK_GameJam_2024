@@ -27,7 +27,7 @@ namespace GMTK_Jam.Buildings
 
         protected override void _spawnBullet(int damage, EnemyBase target)
         {
-            ProjectileBase bullet = pool.GetProjectile(currentLevel);
+            ProjectileBase bullet = pool.GetProjectile(currentLevel, false);
             bullet.FireAtTarget(target, damage);
 
             _audioPlaying = true;

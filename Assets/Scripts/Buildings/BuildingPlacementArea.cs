@@ -48,7 +48,7 @@ namespace GMTK_Jam.Buildings
 
         private void _createCircle(LineRenderer renderer, int steps, float radius)
         {
-            _lineRenderer.positionCount = steps;
+            renderer.positionCount = steps;
 
             for (int currentStep = 0; currentStep < steps; currentStep++)
             {
@@ -65,7 +65,7 @@ namespace GMTK_Jam.Buildings
 
                 Vector3 currentPosition = new Vector3(x, y, z);
 
-                _lineRenderer.SetPosition(currentStep, currentPosition);
+                renderer.SetPosition(currentStep, currentPosition);
             }
         }
     }

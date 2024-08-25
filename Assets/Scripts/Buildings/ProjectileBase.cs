@@ -29,6 +29,11 @@ namespace GMTK_Jam.Buildings
             transform.localScale = new Vector3(_baseScale.x + (0.1f * level), _baseScale.y + (0.1f * level), _baseScale.z + (0.1f * level));
         }
 
+        public void ResetScale()
+        {
+            transform.localScale = _baseScale;
+        }
+
         public virtual void FireAtTarget(EnemyBase target, int damage)
         {
             _target = target;

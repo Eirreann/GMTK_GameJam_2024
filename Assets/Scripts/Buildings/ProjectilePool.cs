@@ -19,7 +19,7 @@ namespace GMTK_Jam.Buildings
             _setupPool();
         }
 
-        public ProjectileBase GetProjectile(int level)
+        public ProjectileBase GetProjectile(int level, bool updateScale = true)
         {
             if(_poolStack.Count == 0)
             {
@@ -30,7 +30,10 @@ namespace GMTK_Jam.Buildings
             ProjectileBase nextInstance = _poolStack.Pop();
             nextInstance.gameObject.SetActive(true);
             _resetProjectilePos(nextInstance);
-            nextInstance.UpdateScale(level);
+            if (updateScale)
+                nextInstance.UpdateScale(level);
+            else
+                nextInstance.ResetScale();
             nextInstance.transform.parent = transform.parent;
             return nextInstance;
         }

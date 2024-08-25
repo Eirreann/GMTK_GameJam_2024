@@ -109,6 +109,11 @@ namespace GMTK_Jam
                 PauseScreen.SetActive(_paused);
                 // TODO: Proper pause menu?
             }
+
+            if (Input.GetKeyUp(KeyCode.B))
+            {
+                OpenBuyMenu();
+            }
         }
 
         public void StartGame()
@@ -156,6 +161,7 @@ namespace GMTK_Jam
 
         public void OpenBuyMenu()
         {
+            PauseGame(!_isBuyMenuOpen);
             _isBuyMenuOpen = !_isBuyMenuOpen;
 
             if (_isBuyMenuOpen)
@@ -164,7 +170,7 @@ namespace GMTK_Jam
                 TowerShop.ShowBuyMenu(BuildingData.Buildings, _spawnBuildingPlacement);
                 _buildingHandler.ClearPendingBuilding();
                 BuyBtnText.text = "Cancel";
-                PauseGame(true);
+                //PauseGame(true);
             }
             else
             {
@@ -172,8 +178,8 @@ namespace GMTK_Jam
                 _buildingHandler.ClearPendingBuilding();
                 BuyBtnText.text = "Buy";
 
-                if(!_isPlacingBuilding)
-                    PauseGame(false);
+                //if(!_isPlacingBuilding)
+                //    PauseGame(false);
             }
         }
 
