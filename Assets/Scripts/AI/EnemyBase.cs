@@ -32,7 +32,6 @@ namespace GMTK_Jam.Enemy
 
         private PathToCorner _currentCornerTarget;
         protected float _startingRadius;
-        private bool _isUpdatingRadius = false;
         private List<Material> _originalMats = new List<Material>();
         private Coroutine _updateVisual;
         private Coroutine _updateCarMat;
@@ -227,7 +226,6 @@ namespace GMTK_Jam.Enemy
 
         private IEnumerator _scaleUpRadius()
         {
-            _isUpdatingRadius = true;
             while (Vector3.Distance(_lastDestination, transform.position) < _radiusMaxDistance)
                 yield return null;
 
@@ -239,8 +237,6 @@ namespace GMTK_Jam.Enemy
 
             if( _agent.radius > _startingRadius)
                 _agent.radius = _startingRadius;
-
-            _isUpdatingRadius = false;
         }
     }
 

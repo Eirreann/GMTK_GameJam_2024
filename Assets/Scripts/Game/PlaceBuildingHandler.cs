@@ -69,10 +69,16 @@ namespace GMTK_Jam.Player
                         }
                     }
                     else
+                    {
+                        _base.UpdateMat(false);
                         _base.gameObject.SetActive(false);
+                    }
                 }
                 else
+                {
+                    _base.UpdateMat(false);
                     _base.gameObject.SetActive(false);
+                }
             }
         }
 

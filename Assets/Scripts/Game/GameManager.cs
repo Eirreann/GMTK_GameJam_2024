@@ -59,13 +59,15 @@ namespace GMTK_Jam
         private int _waveIndex = 0;
         private bool _paused = false;
         private bool _isSpedUp = false;
+        private bool _isBuyMenuOpen = false;
+        private bool _isPlacingBuilding = false;
         private float _currentTimescale = 1;
 
         private void Start()
         {
             Player.InitInputs();
             _buildingHandler = GetComponent<PlaceBuildingHandler>();
-            //Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.Confined;
             _currentHealth = PlayerMaxHealth;
             _currentScale = PlayerMaxScale;
             UpdatePlayerResource(0);
@@ -100,6 +102,8 @@ namespace GMTK_Jam
         {
             if (Input.GetKeyUp(KeyCode.Escape))
             {
+                if (_isBuyMenuOpen) return;
+
                 _paused = !_paused;
                 PauseGame(_paused);
                 PauseScreen.SetActive(_paused);
@@ -119,11 +123,11 @@ namespace GMTK_Jam
 
         public void PauseGame(bool state)
         {
-            if (State == GameState.ENDED) return;
+            if (State == GameState.ENDED || _isBuyMenuOpen) return;
 
             Time.timeScale = state ? 0 : _currentTimescale;
             Player.EnableMovement(!state);
-            //Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Confined;
+            Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Confined;
             State = state ? GameState.PAUSED : GameState.ACTIVE;
         }
 
@@ -152,14 +156,25 @@ namespace GMTK_Jam
 
         public void OpenBuyMenu()
         {
-            //_buildingHandler.StartPlacingBuilding(BuildingData.Buildings[0]);
-            if (TowerShop.gameObject.activeInHierarchy || State != GameState.ACTIVE) return;
+            _isBuyMenuOpen = !_isBuyMenuOpen;
 
-            TowerShop.gameObject.SetActive(true);
-            TowerShop.ShowBuyMenu(BuildingData.Buildings, _spawnBuildingPlacement);
-            _buildingHandler.ClearPendingBuilding();
-            BuyBtnText.text = "Cancel";
-            PauseGame(true);
+            if (_isBuyMenuOpen)
+            {
+                TowerShop.gameObject.SetActive(true);
+                TowerShop.ShowBuyMenu(BuildingData.Buildings, _spawnBuildingPlacement);
+                _buildingHandler.ClearPendingBuilding();
+                BuyBtnText.text = "Cancel";
+                PauseGame(true);
+            }
+            else
+            {
+                TowerShop.gameObject.SetActive(false);
+                _buildingHandler.ClearPendingBuilding();
+                BuyBtnText.text = "Buy";
+
+                if(!_isPlacingBuilding)
+                    PauseGame(false);
+            }
         }
 
         public bool CanAffordUpgrade(int cost)
@@ -209,16 +224,24 @@ namespace GMTK_Jam
 
         private void _spawnBuildingPlacement(BuildingData data)
         {
+            _isBuyMenuOpen = false;
+
             if (data.Prefab != null)
             {
+                _isPlacingBuilding = true;
                 _buildingHandler.StartPlacingBuilding(data, (state) =>
                 {
                     if (state)
                         UpdatePlayerResource(-data.Cost);
+
+                    _isPlacingBuilding = false;
+                    BuyBtnText.text = "Buy";
                 });
             }
-
-            BuyBtnText.text = "Buy";
+            else
+            {
+                BuyBtnText.text = "Buy";
+            }
         }
     }
 

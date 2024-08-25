@@ -178,9 +178,13 @@ namespace GMTK_Jam.Player
             // Convert output of vector to value that is either -1, 0, or 1
             float widthVal = value.x / widthFromCentre;
             float heightVal = value.y / heightFromCentre;
-            if (widthVal >= 0.99)
+            if(widthVal >= 0.99)
                 widthVal = 1;
-            if(heightVal <= -0.99)
+            else if(widthVal <= -0.99)
+                widthVal = -1;
+            if(heightVal >= 0.99)
+                heightVal = 1;
+            else if(heightVal <= -0.99)
                 heightVal = -1;
             value = new Vector2((int)Mathf.Clamp(widthVal, -1, 1), (int)Mathf.Clamp(heightVal, -1, 1));
 

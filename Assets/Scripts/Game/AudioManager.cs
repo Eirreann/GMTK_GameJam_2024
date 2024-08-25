@@ -7,11 +7,11 @@ namespace GMTK_Jam
     public class AudioManager : MonoSingleton<AudioManager>
     {
         [Header("Sources")]
+        public AudioSource WaveStartSource;
         public AudioSource MusicSource;
         public AudioSource SFXSource;
 
         [Header("Sound Effects")]
-        public AudioClip WaveStart;
         public AudioClip BuildStructure;
         public AudioClip UpgradeStructure;
         public AudioClip DowngradeStructure;
@@ -19,7 +19,7 @@ namespace GMTK_Jam
 
         public void OnWaveStart()
         {
-            SFXSource.PlayOneShot(WaveStart);
+            WaveStartSource.Play();
         }
 
         public void OnTakeDamage(AudioSource source)

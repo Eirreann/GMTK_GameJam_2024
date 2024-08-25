@@ -66,7 +66,8 @@ namespace GMTK_Jam.UI
         private void _onClick(BuildingData data)
         {
             _callback.Invoke(data);
-            _onClose();
+            GameManager.Instance.PauseGame(false);
+            gameObject.SetActive(false);
         }
 
         private void _onClose()
