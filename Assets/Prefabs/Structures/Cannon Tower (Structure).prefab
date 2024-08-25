@@ -226,11 +226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a67b33280585c42b4eef3b1bfe3adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageRange: {x: 10, y: 60}
+  damageRange: {x: 10, y: 50}
   attackSpeedRange: {x: 5, y: 10}
   aOERange: {x: 70, y: 100}
-  radius: 70
-  radiusFactor: 5
   maxLevel: 10
   upgradeCost: 10
   Model: {fileID: 4343341080295839862}

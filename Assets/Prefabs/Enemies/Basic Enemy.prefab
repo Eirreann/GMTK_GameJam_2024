@@ -264,8 +264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dda504f2b7f43d4fb12e7fdff674186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 40
-  _speed: 12
+  _health: 50
+  _speed: 14
   _reward: 1
   Priority: 5
   _modelParent: {fileID: 3920462769921231312}

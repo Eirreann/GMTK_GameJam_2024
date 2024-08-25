@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.0275602, g: 0.62774456, b: 0.6784407, a: 1}
+  m_IndirectSpecularColor: {r: 1.0275731, g: 0.6277271, b: 0.6784305, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -27646,7 +27646,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &1613529520
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -36444,10 +36444,10 @@ MonoBehaviour:
   State: 0
   Player: {fileID: 750208903}
   PlayerBase: {fileID: 364069646}
-  PlayerMaxHealth: 150
+  PlayerMaxHealth: 250
   PlayerMaxScale: 100000
   EnemyManager: {fileID: 1741597240}
-  WavesData: {fileID: 11400000, guid: 231f1e53801a0104280bb49fc325fd6a, type: 2}
+  WavesData: {fileID: 11400000, guid: 42f2b1c3badddf54aa2f4976a6cc9b6d, type: 2}
   BuildingData: {fileID: 11400000, guid: 80d0bf6e497d3334185c94664b56b5da, type: 2}
   _chunks:
   - SpawnPoint: {fileID: 1322262474}
