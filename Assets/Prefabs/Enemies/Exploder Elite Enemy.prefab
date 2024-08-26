@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 6278749880970737425}
   - component: {fileID: 2284947511914745615}
   m_Layer: 0
-  m_Name: Exploder Enemy Elite
+  m_Name: Exploder Elite Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

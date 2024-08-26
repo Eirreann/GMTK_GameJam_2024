@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 72764659189988802}
   - component: {fileID: 5790018322223920181}
   m_Layer: 0
-  m_Name: Basic Enemy Elite
+  m_Name: Basic Elite Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
