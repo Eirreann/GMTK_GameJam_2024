@@ -39,6 +39,8 @@ namespace GMTK_Jam
         public UIIntroScreen IntroScreen;
         public GameObject PauseScreen;
         public Button PauseBtn;
+        public Sprite PauseIcn;
+        public Sprite PlayIcn;
         public GameObject TutorialScreen;
         public UIScaleBar ScaleBar;
         public Button BuyBtn;
@@ -47,6 +49,8 @@ namespace GMTK_Jam
         public UITowerShop TowerShop;
         public Color SpeedUpBtnEnabledColour;
         public Color SpeedUpBtnDisabledColour;
+        public Sprite SpedUpEnabledIcn;
+        public Sprite SpedUpDisabledIcn;
 
         [Header("Game Over")]
         public GameObject GameOverWinUI;
@@ -110,12 +114,12 @@ namespace GMTK_Jam
             if (_isSpedUp)
             {
                 SpeedUpBtn.GetComponentInChildren<TextMeshProUGUI>().text = ">>";
-                SpeedUpBtn.GetComponent<Image>().color = SpeedUpBtnEnabledColour;
+                SpeedUpBtn.GetComponent<Image>().sprite = SpedUpEnabledIcn;
             }
             else
             {
                 SpeedUpBtn.GetComponentInChildren<TextMeshProUGUI>().text = ">";
-                SpeedUpBtn.GetComponent<Image>().color = SpeedUpBtnDisabledColour;
+                SpeedUpBtn.GetComponent<Image>().sprite = SpedUpDisabledIcn;
             }
         }
 
@@ -235,7 +239,7 @@ namespace GMTK_Jam
             PauseGame(_paused);
             PauseScreen.SetActive(_paused);
 
-            PauseBtn.GetComponentInChildren<TextMeshProUGUI>().text = _paused ? ">" : "II";
+            PauseBtn.GetComponent<Image>().sprite = _paused ? PlayIcn : PauseIcn;
         }
 
         private void _onWaveCompleted()
