@@ -17,9 +17,9 @@ namespace GMTK_Jam.UI
         {
             StartBtn.onClick.AddListener(_onStart);
 
-            Mixer.SetFloat("Master", Mathf.Log10(PlayerPrefs.GetFloat("Master", 1f) * 20));
-            Mixer.SetFloat("Music", Mathf.Log10(PlayerPrefs.GetFloat("Music", 1f) * 20));
-            Mixer.SetFloat("SFX", Mathf.Log10(PlayerPrefs.GetFloat("SFX", 1f) * 20));
+            Mixer.SetFloat("Master", Mathf.Log10(PlayerPrefs.GetFloat("Master", 1f)) * 20);
+            Mixer.SetFloat("Music", Mathf.Log10(PlayerPrefs.GetFloat("Music", 1f)) * 20);
+            Mixer.SetFloat("SFX", Mathf.Log10(PlayerPrefs.GetFloat("SFX", 1f)) * 20);
         }
 
         private void _onStart()
