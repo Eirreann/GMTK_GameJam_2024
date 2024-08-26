@@ -43,6 +43,7 @@ namespace GMTK_Jam.Player
         private bool _isKeyPressed = false;
         private bool _zoomModPressed = false;
         private IScrollInteractable _prevHit;
+        private float _baseMoveIncrement;
 
         private void Awake()
         {
@@ -55,6 +56,7 @@ namespace GMTK_Jam.Player
             _zoomMod = _playerInput.actions["Zoom_Mod"];
 
             _startPosition = transform.position;
+            _baseMoveIncrement = _moveIncrement;
         }
 
         /// <summary>
@@ -111,6 +113,11 @@ namespace GMTK_Jam.Player
             MovementPermitted = state;
             if(!state)
                 _moveDir = Vector2.zero;
+        }
+
+        public void UpdateCameraSpeed(bool state)
+        {
+            _moveIncrement = state ? _baseMoveIncrement / 5 : _baseMoveIncrement;
         }
 
         private void Update()

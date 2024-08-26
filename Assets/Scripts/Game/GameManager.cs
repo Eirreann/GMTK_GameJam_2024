@@ -102,6 +102,7 @@ namespace GMTK_Jam
             _isSpedUp = !_isSpedUp;
             _currentTimescale = _isSpedUp ? 5 : 1;
             Time.timeScale = _currentTimescale;
+            Player.UpdateCameraSpeed(_isSpedUp);
 
             if (_isSpedUp)
             {
