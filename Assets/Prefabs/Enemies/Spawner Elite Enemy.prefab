@@ -329,7 +329,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3460716995759217413}
@@ -355,7 +355,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
-  m_Height: 5.6
+  m_Height: 10
   m_BaseOffset: 1.6
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 1
@@ -394,7 +394,7 @@ MonoBehaviour:
   _damageMat: {fileID: 2100000, guid: 750ed4d0c13391f4dba099df053305ab, type: 2}
   _healthbarCanvas: {fileID: 2981579732570173690}
   _healthBar: {fileID: 4620774764925080207}
-  _enemyToSpawn: {fileID: 2626815883905132980, guid: fbaef1dd68620654aa180f27aee45dcf,
+  _enemyToSpawn: {fileID: 72764659189988802, guid: e11e3d411d20a2345b5f9379e6ef7651,
     type: 3}
   _spawnLocation: {fileID: 330273530512171184}
   _spawnInterval: 10
@@ -437,6 +437,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 607331266827331486, guid: 8f09dfd0b295f7346b68003327776539,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 607331266827331486, guid: 8f09dfd0b295f7346b68003327776539,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 607331266827331486, guid: 8f09dfd0b295f7346b68003327776539,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 607331266827331486, guid: 8f09dfd0b295f7346b68003327776539,
         type: 3}
@@ -487,6 +502,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 607331266827331486, guid: 8f09dfd0b295f7346b68003327776539,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
