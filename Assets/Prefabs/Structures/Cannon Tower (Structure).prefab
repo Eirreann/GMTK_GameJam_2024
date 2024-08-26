@@ -226,8 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a67b33280585c42b4eef3b1bfe3adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageRange: {x: 20, y: 50}
-  attackSpeedRange: {x: 3, y: 8}
+  damageRange: {x: 15, y: 50}
+  attackSpeedRange: {x: 4, y: 10}
   aOERange: {x: 90, y: 120}
   maxLevel: 10
   upgradeCost: 10

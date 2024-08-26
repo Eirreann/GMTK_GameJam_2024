@@ -46,7 +46,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 5
-  m_Speed: 5
+  m_Speed: 15
   m_Acceleration: 8
   avoidancePriority: 40
   m_AngularSpeed: 120
@@ -57,7 +57,7 @@ NavMeshAgent:
   m_Height: 5
   m_BaseOffset: 1.6
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 1
 --- !u!114 &72764659189988802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,9 +70,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dda504f2b7f43d4fb12e7fdff674186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 12
-  _speed: 3
-  _reward: 2
+  _health: 150
+  _speed: 15
+  _reward: 1
   Priority: 5
   _modelParent: {fileID: 4626371597854028564}
   _modelRenderers:
