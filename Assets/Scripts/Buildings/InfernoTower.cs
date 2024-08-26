@@ -99,7 +99,7 @@ namespace GMTK_Jam.Buildings
             if (currentLevel == maxLevel)
             {
                 CostText.color = Color.red;
-                CostText.text = "-----";
+                CostText.text = "Cost --";
             }
             else
             {

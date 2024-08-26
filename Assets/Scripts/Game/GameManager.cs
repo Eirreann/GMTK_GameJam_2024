@@ -277,7 +277,7 @@ namespace GMTK_Jam
                 _buildingHandler.StartPlacingBuilding(data, (state) =>
                 {
                     if (state)
-                        UpdatePlayerResource(-data.Cost);
+                        UpdatePlayerResource(-data.Cost, true);
 
                     _isPlacingBuilding = false;
                     BuyBtnText.text = "Buy";
