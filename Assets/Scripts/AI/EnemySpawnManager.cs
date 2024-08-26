@@ -2,6 +2,7 @@ using GMTK_Jam.AI;
 using GMTK_Jam.UI;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -36,10 +37,10 @@ namespace GMTK_Jam.Enemy
             }
         }
 
-        public void StartWave(WaveOptions wave, UnityAction onWaveComplete)
+        public void StartWave(int waveNumber, WaveOptions wave, UnityAction onWaveComplete)
         {
             _onWaveComplete = onWaveComplete;
-            StartCoroutine(_startWave(wave));
+            StartCoroutine(_startWave(waveNumber, wave));
         }
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace GMTK_Jam.Enemy
             _corners.InsertRange(0, _currentSpawnPoint.CornersInChunk);
         }
 
-        private IEnumerator _startWave(WaveOptions wave)
+        private IEnumerator _startWave(int waveNumber, WaveOptions wave)
         {
             if (!string.IsNullOrEmpty(wave.TooltipText))
             {
@@ -65,6 +66,10 @@ namespace GMTK_Jam.Enemy
             yield return new WaitForSeconds(wave.WaveTime - uiTime);
 
             WaveStarting.SetActive(true);
+            foreach (var text in WaveStarting.GetComponentsInChildren<TextMeshProUGUI>())
+            {
+                text.text = $"Wave {waveNumber} starting...";
+            };
             AudioManager.Instance.OnWaveStart();
             yield return new WaitForSeconds(uiTime);
             WaveStarting.SetActive(false);

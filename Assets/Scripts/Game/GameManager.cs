@@ -145,7 +145,7 @@ namespace GMTK_Jam
             _chunks.ForEach(chunk => chunk.BuildSurface.SetActive(false));
             _chunks[_chunkIndex].BuildSurface.SetActive(true);
             EnemyManager.UpdateSpawnPoint(_chunks[_chunkIndex].SpawnPoint);
-            EnemyManager.StartWave(WavesData.Waves[_waveIndex], _onWaveCompleted);
+            EnemyManager.StartWave(_waveIndex + 1, WavesData.Waves[_waveIndex], _onWaveCompleted);
         }
 
         public void PauseGame(bool state)
@@ -242,7 +242,7 @@ namespace GMTK_Jam
                             EnemyManager.UpdateSpawnPoint(_chunks[_chunkIndex].SpawnPoint);
                         _chunks[_chunkIndex].BuildSurface.SetActive(true);
                     }
-                    EnemyManager.StartWave(WavesData.Waves[_waveIndex], _onWaveCompleted);
+                    EnemyManager.StartWave(_waveIndex + 1, WavesData.Waves[_waveIndex], _onWaveCompleted);
                 }
                 else
                     _endGame(true);

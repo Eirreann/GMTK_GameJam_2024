@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GMTK_Jam.Enemy
 {
-    public enum EnemyType { BASIC, BASIC_ELITE, TANK, SPAWNER, EXPLODER }
+    public enum EnemyType { BASIC, BASIC_ELITE, TANK, SPAWNER, EXPLODER, EXPLODER_ELITE }
 
     [CreateAssetMenu(fileName = "Enemy Waves", menuName = "GMTK_Jam/Enemy Waves Object", order = 1)]
     public class EnemyWavesObject : ScriptableObject
@@ -15,6 +15,7 @@ namespace GMTK_Jam.Enemy
         public TankEnemy Tank_Enemy;
         public SpawnerEnemy Spawner_Enemy;
         public ExploderEnemy Exploder_Enemy;
+        public ExploderEnemy Exploder_Enemy_Elite;
 
         [Header("Waves")]
         public List<WaveOptions> Waves;
@@ -38,6 +39,9 @@ namespace GMTK_Jam.Enemy
                     break;
                 case EnemyType.EXPLODER:
                     enemy = Exploder_Enemy;
+                    break;
+                case EnemyType.EXPLODER_ELITE:
+                    enemy = Exploder_Enemy_Elite;
                     break;
             }
             return enemy;
