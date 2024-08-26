@@ -46,7 +46,7 @@ MonoBehaviour:
       type: 3}
     BasePrefab: {fileID: 3213770870039666041, guid: b4a9658fc50d085408a4705a272d12c4,
       type: 3}
-    BaseIcon: {fileID: 21300000, guid: 7cb72b2a1d2b0cc46a6db25d2ec3c919, type: 3}
+    BaseIcon: {fileID: 21300000, guid: 3c83a1123810524428a2146336b90d89, type: 3}
     UpgradeIcon: {fileID: 21300000, guid: ba70908f8299df447b1bdd46af868ca7, type: 3}
     DowngradeIcon: {fileID: 21300000, guid: 359aaf6ffc44fa04ba2bdf90dc6c6a58, type: 3}
   - Name: Inferno Tower
@@ -57,6 +57,6 @@ MonoBehaviour:
     Prefab: {fileID: 523262055127201219, guid: 0894aae4436a9954db7227a308986e1a, type: 3}
     BasePrefab: {fileID: 628446221391439713, guid: 79749e1d24295134bb33e4d1993b8ae1,
       type: 3}
-    BaseIcon: {fileID: 21300000, guid: 03f8033cd53747d43b6998fa88c63558, type: 3}
+    BaseIcon: {fileID: 21300000, guid: c5113449ed2025a41ac0952af059f9d9, type: 3}
     UpgradeIcon: {fileID: 21300000, guid: edb2afa15b041c7408cddb1cefc6db6b, type: 3}
     DowngradeIcon: {fileID: 21300000, guid: da333e24e769adf4ea612c3ce14c01a8, type: 3}

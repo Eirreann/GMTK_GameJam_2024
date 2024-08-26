@@ -24,7 +24,7 @@ namespace GMTK_Jam.Buildings
             _travelDistance = travelDistance;
 
             // Update bullet scale
-            _impactDistance = transform.lossyScale.x;
+            _impactDistance = transform.lossyScale.x * 1.25f;
 
             // Get reference list of enemies from tower (not currently used as we're instead using list of _all_ enemies - may revert if we sort out collider issue)
             enemies.ForEach(e => _targets.Add(e));
