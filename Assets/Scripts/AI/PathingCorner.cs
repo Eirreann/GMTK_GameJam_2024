@@ -16,10 +16,13 @@ namespace GMTK_Jam.AI
             return destination;
         }
 
+
+        private const float GIZMO_LINE_LENGTH = 0.2f;
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireCube(transform.position, _destinationArea);
+            Gizmos.DrawLine(transform.position, transform.position + (transform.forward * GIZMO_LINE_LENGTH));
         }
     }
 }

@@ -43,10 +43,12 @@ namespace GMTK_Jam.Enemy
             _onEnemiesAdded.Invoke(enemies);
         }
 
+        private const float GIZMO_LINE_LENGTH = 5f;
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireCube(transform.position, _spawnArea);
+            Gizmos.DrawLine(transform.position, transform.position + (transform.forward * GIZMO_LINE_LENGTH));
         }
     }
 }
