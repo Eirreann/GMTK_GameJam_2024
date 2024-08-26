@@ -36,10 +36,10 @@ MonoBehaviour:
       EnemyCount: 1
     - BatchTime: 10
       Enemy_Type: 0
-      EnemyCount: 3
+      EnemyCount: 2
     - BatchTime: 10
       Enemy_Type: 0
-      EnemyCount: 5
+      EnemyCount: 3
     UnlocksPath: 0
     TooltipText: Our cars have gone rogue and are heading straight for our HQ! Use
       the buy menu to place one of our family friendly Urban Defense Structures!
@@ -59,10 +59,10 @@ MonoBehaviour:
     Batches:
     - BatchTime: 15
       Enemy_Type: 0
-      EnemyCount: 10
+      EnemyCount: 5
     - BatchTime: 10
       Enemy_Type: 2
-      EnemyCount: 2
+      EnemyCount: 1
     UnlocksPath: 0
     TooltipText: Did you know you can use [SCROLL WHEEL] to rotate your structures
       before placing them? Use this to aim buildings like the Cannon!
@@ -70,10 +70,10 @@ MonoBehaviour:
     Batches:
     - BatchTime: 5
       Enemy_Type: 2
-      EnemyCount: 2
+      EnemyCount: 1
     - BatchTime: 10
       Enemy_Type: 0
-      EnemyCount: 10
+      EnemyCount: 5
     UnlocksPath: 0
     TooltipText: The cars are using the tanks as a shield! Use the Ricochet Structure
       to hit the small cars!
@@ -82,7 +82,7 @@ MonoBehaviour:
     - BatchTime: 5
       Enemy_Type: 2
       EnemyCount: 1
-    - BatchTime: 10
+    - BatchTime: 15
       Enemy_Type: 0
       EnemyCount: 10
     - BatchTime: 5
@@ -90,30 +90,18 @@ MonoBehaviour:
       EnemyCount: 2
     - BatchTime: 10
       Enemy_Type: 0
-      EnemyCount: 15
+      EnemyCount: 10
     UnlocksPath: 1
     TooltipText: It's rush hour! Use the extra street you just gained to deal with
       this big wave!
   - WaveTime: 10
     Batches:
-    - BatchTime: 5
-      Enemy_Type: 2
-      EnemyCount: 1
-    - BatchTime: 10
-      Enemy_Type: 0
-      EnemyCount: 10
-    - BatchTime: 5
+    - BatchTime: 15
       Enemy_Type: 2
       EnemyCount: 2
-    - BatchTime: 10
+    - BatchTime: 15
       Enemy_Type: 0
-      EnemyCount: 20
-    - BatchTime: 10
-      Enemy_Type: 2
-      EnemyCount: 3
-    - BatchTime: 10
-      Enemy_Type: 0
-      EnemyCount: 30
+      EnemyCount: 15
     UnlocksPath: 0
     TooltipText: The Inferno Tower starts off slow, but will mow down strong enemies
       when scaled up!

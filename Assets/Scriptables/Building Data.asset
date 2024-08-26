@@ -40,7 +40,7 @@ MonoBehaviour:
   - Name: Ricochet Tower
     Desc: Sharing is caring! This peaceful structure wants to spread the love...
       and the damage! Shots will hit up to three neighbours!
-    Cost: 30
+    Cost: 25
     Type: 2
     Prefab: {fileID: 8212569296169257795, guid: f326e6ae31d3abf458beb363f18f4f4c,
       type: 3}
@@ -52,7 +52,7 @@ MonoBehaviour:
   - Name: Inferno Tower
     Desc: Something to keep you warm on a cold night! Might not do much more than
       blow hot air when it's small, scale up this puppy to create an inferno!
-    Cost: 50
+    Cost: 40
     Type: 3
     Prefab: {fileID: 523262055127201219, guid: 0894aae4436a9954db7227a308986e1a, type: 3}
     BasePrefab: {fileID: 628446221391439713, guid: 79749e1d24295134bb33e4d1993b8ae1,
