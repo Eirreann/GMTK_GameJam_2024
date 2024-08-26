@@ -197,7 +197,7 @@ MonoBehaviour:
       EnemyCount: 2
     UnlocksPath: 0
     TooltipText: 
-  - WaveTime: 10
+  - WaveTime: 15
     Batches:
     - BatchTime: 5
       Enemy_Type: 2
@@ -220,3 +220,37 @@ MonoBehaviour:
     UnlocksPath: 1
     TooltipText: YIPII NEW PATH YAYAYYA I LOVE NEW PATH YAYAYAYY LIVE LOVE LAUGH
       NEW PATH
+  - WaveTime: 15
+    Batches:
+    - BatchTime: 5
+      Enemy_Type: 6
+      EnemyCount: 1
+    - BatchTime: 20
+      Enemy_Type: 1
+      EnemyCount: 10
+    - BatchTime: 5
+      Enemy_Type: 6
+      EnemyCount: 3
+    - BatchTime: 20
+      Enemy_Type: 1
+      EnemyCount: 20
+    - BatchTime: 20
+      Enemy_Type: 5
+      EnemyCount: 1
+    - BatchTime: 20
+      Enemy_Type: 7
+      EnemyCount: 1
+    - BatchTime: 5
+      Enemy_Type: 6
+      EnemyCount: 3
+    - BatchTime: 20
+      Enemy_Type: 5
+      EnemyCount: 2
+    - BatchTime: 5
+      Enemy_Type: 6
+      EnemyCount: 3
+    - BatchTime: 20
+      Enemy_Type: 7
+      EnemyCount: 2
+    UnlocksPath: 0
+    TooltipText: uh oh they stronk :(
