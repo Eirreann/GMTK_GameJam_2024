@@ -11,7 +11,6 @@ namespace GMTK_Jam.Buildings
 
         private Vector3 _targetPos;
         private List<EnemyBase> _targets = new List<EnemyBase>();
-        private List<EnemyBase> _targetsHit = new List<EnemyBase>();
 
         protected override void Update()
         {
@@ -41,6 +40,7 @@ namespace GMTK_Jam.Buildings
 
         private IEnumerator _fireBullet()
         {
+            List<EnemyBase> targetsHit = new List<EnemyBase>();
             while (Vector3.Distance(transform.position, _targetPos) > 1f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, _targetPos, _projectileSpeed * Time.deltaTime);
@@ -50,11 +50,11 @@ namespace GMTK_Jam.Buildings
                 enemies.RemoveAll(e => e == null);
                 enemies.ForEach(enemy =>
                 {
-                    if (!_targetsHit.Contains(enemy))
+                    if (!targetsHit.Contains(enemy))
                     {
                         if (Vector3.Distance(transform.position, enemy.transform.position) < _impactDistance)
                         {
-                            _targetsHit.Add(enemy);
+                            targetsHit.Add(enemy);
                             enemy.RegisterHit(_damage);
                         }
                     }
