@@ -70,10 +70,10 @@ MonoBehaviour:
     Batches:
     - BatchTime: 5
       Enemy_Type: 2
-      EnemyCount: 3
+      EnemyCount: 2
     - BatchTime: 10
       Enemy_Type: 0
-      EnemyCount: 20
+      EnemyCount: 10
     UnlocksPath: 0
     TooltipText: The cars are using the tanks as a shield! Use the Ricochet Structure
       to hit the small cars!
@@ -81,16 +81,16 @@ MonoBehaviour:
     Batches:
     - BatchTime: 5
       Enemy_Type: 2
-      EnemyCount: 2
+      EnemyCount: 1
     - BatchTime: 10
       Enemy_Type: 0
       EnemyCount: 10
     - BatchTime: 5
       Enemy_Type: 2
-      EnemyCount: 3
+      EnemyCount: 2
     - BatchTime: 10
       Enemy_Type: 0
-      EnemyCount: 20
+      EnemyCount: 15
     UnlocksPath: 1
     TooltipText: It's rush hour! Use the extra street you just gained to deal with
       this big wave!
