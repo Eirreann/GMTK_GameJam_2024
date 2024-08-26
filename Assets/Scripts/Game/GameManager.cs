@@ -65,7 +65,8 @@ namespace GMTK_Jam
         private bool _isSpedUp = false;
         private bool _isBuyMenuOpen = false;
         private bool _isPlacingBuilding = false;
-        private float _currentTimescale = 1;
+        private float _currentTimescale = 1f;
+        private float _speedUpMod = 4f;
 
         private void Start()
         {
@@ -102,7 +103,7 @@ namespace GMTK_Jam
         private void _speedUpGame()
         {
             _isSpedUp = !_isSpedUp;
-            _currentTimescale = _isSpedUp ? 5 : 1;
+            _currentTimescale = _isSpedUp ? _speedUpMod : 1;
             Time.timeScale = _currentTimescale;
             Player.UpdateCameraSpeed(_isSpedUp);
 

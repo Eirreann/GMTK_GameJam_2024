@@ -18,9 +18,15 @@ MonoBehaviour:
     type: 3}
   Tank_Enemy: {fileID: 7532768112576291814, guid: d9b9cbdfd2eb1d54b8ffc8f66e9ee0a6,
     type: 3}
+  Tank_Enemy_Elite: {fileID: 7532768112576291814, guid: 7fdf6976b2f06ee449ddf823082e8d47,
+    type: 3}
   Spawner_Enemy: {fileID: 7269682387847077512, guid: 4ae0e8a803b7c69489610c0d127ec602,
     type: 3}
+  Spawner_Enemy_Elite: {fileID: 7269682387847077512, guid: 774a078b6b4636d4c95c9c9ecc050048,
+    type: 3}
   Exploder_Enemy: {fileID: 6278749880970737425, guid: 92e04bb235a10d7459668be9eca002b7,
+    type: 3}
+  Exploder_Enemy_Elite: {fileID: 6278749880970737425, guid: e370ac44ee7e3af4ab47442f3e5550b9,
     type: 3}
   Waves:
   - WaveTime: 10
