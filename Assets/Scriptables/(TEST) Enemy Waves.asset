@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72a5ea65bfd9b5e4db9a3920e37d527a, type: 3}
-  m_Name: Enemy Waves (TEST)
+  m_Name: (TEST) Enemy Waves
   m_EditorClassIdentifier: 
   Basic_Enemy: {fileID: 2626815883905132980, guid: fbaef1dd68620654aa180f27aee45dcf,
     type: 3}
