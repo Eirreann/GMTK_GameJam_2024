@@ -59,7 +59,7 @@ MonoBehaviour:
     Batches:
     - BatchTime: 15
       Enemy_Type: 0
-      EnemyCount: 5
+      EnemyCount: 8
     - BatchTime: 10
       Enemy_Type: 2
       EnemyCount: 1
@@ -73,7 +73,7 @@ MonoBehaviour:
       EnemyCount: 1
     - BatchTime: 10
       Enemy_Type: 0
-      EnemyCount: 5
+      EnemyCount: 10
     UnlocksPath: 0
     TooltipText: The cars are using the tanks as a shield! Use the Ricochet Structure
       to hit the small cars!
@@ -97,46 +97,52 @@ MonoBehaviour:
   - WaveTime: 10
     Batches:
     - BatchTime: 15
-      Enemy_Type: 2
-      EnemyCount: 2
+      Enemy_Type: 4
+      EnemyCount: 1
     - BatchTime: 15
+      Enemy_Type: 2
+      EnemyCount: 1
+    - BatchTime: 5
       Enemy_Type: 0
-      EnemyCount: 15
+      EnemyCount: 10
     UnlocksPath: 0
     TooltipText: The Inferno Tower starts off slow, but will mow down strong enemies
       when scaled up!
   - WaveTime: 10
     Batches:
-    - BatchTime: 5
+    - BatchTime: 10
+      Enemy_Type: 2
+      EnemyCount: 1
+    - BatchTime: 15
       Enemy_Type: 4
       EnemyCount: 1
-    - BatchTime: 10
-      Enemy_Type: 2
-      EnemyCount: 2
     - BatchTime: 5
-      Enemy_Type: 4
-      EnemyCount: 3
-    - BatchTime: 10
       Enemy_Type: 2
-      EnemyCount: 3
+      EnemyCount: 1
+    - BatchTime: 10
+      Enemy_Type: 0
+      EnemyCount: 10
     UnlocksPath: 0
     TooltipText: Watch out! This truck will explode into more cars if it's destroyed!
   - WaveTime: 10
     Batches:
     - BatchTime: 5
+      Enemy_Type: 0
+      EnemyCount: 10
+    - BatchTime: 15
+      Enemy_Type: 4
+      EnemyCount: 1
+    - BatchTime: 10
       Enemy_Type: 2
       EnemyCount: 3
+    - BatchTime: 15
+      Enemy_Type: 0
+      EnemyCount: 15
     - BatchTime: 10
       Enemy_Type: 4
       EnemyCount: 3
-    - BatchTime: 10
-      Enemy_Type: 0
-      EnemyCount: 50
-    - BatchTime: 10
-      Enemy_Type: 4
-      EnemyCount: 5
     UnlocksPath: 1
-    TooltipText: 
+    TooltipText: New path yay
   - WaveTime: 10
     Batches:
     - BatchTime: 5
