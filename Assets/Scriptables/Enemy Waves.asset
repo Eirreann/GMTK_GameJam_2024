@@ -217,7 +217,7 @@ MonoBehaviour:
     - BatchTime: 20
       Enemy_Type: 3
       EnemyCount: 3
-    UnlocksPath: 0
+    UnlocksPath: 1
     TooltipText: YIPII NEW PATH YAYAYYA I LOVE NEW PATH YAYAYAYY LIVE LOVE LAUGH
       NEW PATH
   - WaveTime: 15
@@ -285,7 +285,7 @@ MonoBehaviour:
       Enemy_Type: 7
       EnemyCount: 1
     UnlocksPath: 0
-    TooltipText: New path!
+    TooltipText: 
   - WaveTime: 20
     Batches:
     - BatchTime: 5
