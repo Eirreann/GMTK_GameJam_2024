@@ -217,40 +217,130 @@ MonoBehaviour:
     - BatchTime: 20
       Enemy_Type: 3
       EnemyCount: 3
-    UnlocksPath: 1
+    UnlocksPath: 0
     TooltipText: YIPII NEW PATH YAYAYYA I LOVE NEW PATH YAYAYAYY LIVE LOVE LAUGH
       NEW PATH
   - WaveTime: 15
     Batches:
     - BatchTime: 5
+      Enemy_Type: 3
+      EnemyCount: 3
+    - BatchTime: 5
       Enemy_Type: 6
-      EnemyCount: 1
+      EnemyCount: 3
     - BatchTime: 20
+      Enemy_Type: 1
+      EnemyCount: 5
+    - BatchTime: 5
+      Enemy_Type: 4
+      EnemyCount: 5
+    - BatchTime: 5
+      Enemy_Type: 6
+      EnemyCount: 5
+    - BatchTime: 5
       Enemy_Type: 1
       EnemyCount: 10
-    - BatchTime: 5
-      Enemy_Type: 6
-      EnemyCount: 3
-    - BatchTime: 20
-      Enemy_Type: 1
-      EnemyCount: 20
-    - BatchTime: 20
-      Enemy_Type: 5
-      EnemyCount: 1
-    - BatchTime: 20
-      Enemy_Type: 7
-      EnemyCount: 1
-    - BatchTime: 5
-      Enemy_Type: 6
-      EnemyCount: 3
-    - BatchTime: 20
-      Enemy_Type: 5
-      EnemyCount: 2
-    - BatchTime: 5
-      Enemy_Type: 6
-      EnemyCount: 3
-    - BatchTime: 20
-      Enemy_Type: 7
-      EnemyCount: 2
     UnlocksPath: 0
     TooltipText: uh oh they stronk :(
+  - WaveTime: 10
+    Batches:
+    - BatchTime: 5
+      Enemy_Type: 5
+      EnemyCount: 1
+    - BatchTime: 10
+      Enemy_Type: 6
+      EnemyCount: 3
+    - BatchTime: 5
+      Enemy_Type: 6
+      EnemyCount: 5
+    - BatchTime: 10
+      Enemy_Type: 1
+      EnemyCount: 10
+    - BatchTime: 10
+      Enemy_Type: 5
+      EnemyCount: 3
+    - BatchTime: 3
+      Enemy_Type: 1
+      EnemyCount: 5
+    UnlocksPath: 1
+    TooltipText: New path!
+  - WaveTime: 15
+    Batches:
+    - BatchTime: 20
+      Enemy_Type: 7
+      EnemyCount: 1
+    - BatchTime: 5
+      Enemy_Type: 6
+      EnemyCount: 5
+    - BatchTime: 10
+      Enemy_Type: 1
+      EnemyCount: 20
+    - BatchTime: 10
+      Enemy_Type: 5
+      EnemyCount: 3
+    - BatchTime: 10
+      Enemy_Type: 1
+      EnemyCount: 5
+    - BatchTime: 10
+      Enemy_Type: 7
+      EnemyCount: 1
+    UnlocksPath: 0
+    TooltipText: New path!
+  - WaveTime: 20
+    Batches:
+    - BatchTime: 5
+      Enemy_Type: 0
+      EnemyCount: 10
+    - BatchTime: 5
+      Enemy_Type: 2
+      EnemyCount: 10
+    - BatchTime: 5
+      Enemy_Type: 4
+      EnemyCount: 6
+    - BatchTime: 15
+      Enemy_Type: 3
+      EnemyCount: 4
+    - BatchTime: 5
+      Enemy_Type: 6
+      EnemyCount: 3
+    - BatchTime: 15
+      Enemy_Type: 1
+      EnemyCount: 10
+    - BatchTime: 10
+      Enemy_Type: 5
+      EnemyCount: 2
+    - BatchTime: 5
+      Enemy_Type: 6
+      EnemyCount: 6
+    - BatchTime: 15
+      Enemy_Type: 7
+      EnemyCount: 1
+    - BatchTime: 5
+      Enemy_Type: 5
+      EnemyCount: 4
+    - BatchTime: 15
+      Enemy_Type: 1
+      EnemyCount: 5
+    - BatchTime: 15
+      Enemy_Type: 7
+      EnemyCount: 3
+    - BatchTime: 15
+      Enemy_Type: 1
+      EnemyCount: 5
+    - BatchTime: 20
+      Enemy_Type: 6
+      EnemyCount: 10
+    - BatchTime: 5
+      Enemy_Type: 1
+      EnemyCount: 5
+    - BatchTime: 20
+      Enemy_Type: 5
+      EnemyCount: 5
+    - BatchTime: 5
+      Enemy_Type: 1
+      EnemyCount: 5
+    - BatchTime: 20
+      Enemy_Type: 7
+      EnemyCount: 5
+    UnlocksPath: 1
+    TooltipText: Final path!

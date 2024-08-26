@@ -644,7 +644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageRange: {x: 1, y: 1}
   attackSpeedRange: {x: 0.1, y: 0.1}
-  aOERange: {x: 30, y: 50}
+  aOERange: {x: 25, y: 35}
   maxLevel: 10
   upgradeCost: 3
   Model: {fileID: 1501923709938631357}

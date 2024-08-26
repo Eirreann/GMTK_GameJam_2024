@@ -372,8 +372,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 800
-  _speed: 8
-  _reward: 7
+  _speed: 10
+  _reward: 0
   Priority: 5
   _modelParent: {fileID: 4273141342635475391}
   _modelRenderers:
