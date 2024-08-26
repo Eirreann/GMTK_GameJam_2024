@@ -77,7 +77,7 @@ MonoBehaviour:
     UnlocksPath: 0
     TooltipText: The cars are using the tanks as a shield! Use the Ricochet Structure
       to hit the small cars!
-  - WaveTime: 10
+  - WaveTime: 15
     Batches:
     - BatchTime: 5
       Enemy_Type: 2
@@ -94,7 +94,7 @@ MonoBehaviour:
     UnlocksPath: 1
     TooltipText: It's rush hour! Use the extra street you just gained to deal with
       this big wave!
-  - WaveTime: 10
+  - WaveTime: 15
     Batches:
     - BatchTime: 15
       Enemy_Type: 4
@@ -124,7 +124,7 @@ MonoBehaviour:
       EnemyCount: 10
     UnlocksPath: 0
     TooltipText: Watch out! This truck will explode into more cars if it's destroyed!
-  - WaveTime: 10
+  - WaveTime: 15
     Batches:
     - BatchTime: 5
       Enemy_Type: 0
@@ -143,107 +143,38 @@ MonoBehaviour:
       EnemyCount: 3
     UnlocksPath: 1
     TooltipText: New path yay
-  - WaveTime: 10
+  - WaveTime: 15
     Batches:
+    - BatchTime: 15
+      Enemy_Type: 3
+      EnemyCount: 1
     - BatchTime: 5
       Enemy_Type: 2
-      EnemyCount: 3
-    - BatchTime: 10
-      Enemy_Type: 4
-      EnemyCount: 3
-    - BatchTime: 10
+      EnemyCount: 1
+    - BatchTime: 15
       Enemy_Type: 0
-      EnemyCount: 50
+      EnemyCount: 15
     - BatchTime: 10
       Enemy_Type: 4
-      EnemyCount: 5
-    UnlocksPath: 1
+      EnemyCount: 1
+    UnlocksPath: 0
     TooltipText: 
   - WaveTime: 10
     Batches:
     - BatchTime: 5
+      Enemy_Type: 0
+      EnemyCount: 5
+    - BatchTime: 5
+      Enemy_Type: 2
+      EnemyCount: 3
+    - BatchTime: 20
       Enemy_Type: 3
       EnemyCount: 1
     - BatchTime: 10
       Enemy_Type: 2
       EnemyCount: 3
     - BatchTime: 10
-      Enemy_Type: 3
-      EnemyCount: 3
-    - BatchTime: 10
-      Enemy_Type: 2
-      EnemyCount: 3
-    UnlocksPath: 0
-    TooltipText: 'Decommission this truck as quickly as possible! It will continue
-      releasing cars until it''s killed!
-
-'
-  - WaveTime: 10
-    Batches:
-    - BatchTime: 5
       Enemy_Type: 4
-      EnemyCount: 5
-    - BatchTime: 5
-      Enemy_Type: 3
-      EnemyCount: 3
-    - BatchTime: 5
-      Enemy_Type: 0
-      EnemyCount: 50
+      EnemyCount: 2
     UnlocksPath: 0
     TooltipText: 
-  - WaveTime: 10
-    Batches:
-    - BatchTime: 5
-      Enemy_Type: 2
-      EnemyCount: 10
-    - BatchTime: 10
-      Enemy_Type: 3
-      EnemyCount: 3
-    - BatchTime: 5
-      Enemy_Type: 4
-      EnemyCount: 5
-    UnlocksPath: 1
-    TooltipText: 
-  - WaveTime: 10
-    Batches:
-    - BatchTime: 5
-      Enemy_Type: 0
-      EnemyCount: 50
-    - BatchTime: 5
-      Enemy_Type: 2
-      EnemyCount: 10
-    - BatchTime: 10
-      Enemy_Type: 4
-      EnemyCount: 10
-    UnlocksPath: 0
-    TooltipText: 
-  - WaveTime: 10
-    Batches:
-    - BatchTime: 5
-      Enemy_Type: 2
-      EnemyCount: 10
-    - BatchTime: 15
-      Enemy_Type: 0
-      EnemyCount: 100
-    - BatchTime: 10
-      Enemy_Type: 2
-      EnemyCount: 10
-    - BatchTime: 10
-      Enemy_Type: 3
-      EnemyCount: 10
-    - BatchTime: 10
-      Enemy_Type: 4
-      EnemyCount: 10
-    - BatchTime: 20
-      Enemy_Type: 4
-      EnemyCount: 20
-    - BatchTime: 20
-      Enemy_Type: 3
-      EnemyCount: 20
-    - BatchTime: 60
-      Enemy_Type: 0
-      EnemyCount: 250
-    UnlocksPath: 1
-    TooltipText: 'These are the last ones! If we defeat these we''ll save our company!
-
-'
