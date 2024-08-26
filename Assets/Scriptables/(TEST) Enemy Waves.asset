@@ -250,6 +250,4 @@ MonoBehaviour:
       Enemy_Type: 0
       EnemyCount: 250
     UnlocksPath: 1
-    TooltipText: 'These are the last ones! If we defeat these we''ll save our company!
-
-'
+    TooltipText: These are the last ones! If we defeat these we'll save our company!
