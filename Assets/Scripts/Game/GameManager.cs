@@ -47,8 +47,6 @@ namespace GMTK_Jam
         public Button SpeedUpBtn;
         public TextMeshProUGUI BuyBtnText;
         public UITowerShop TowerShop;
-        public Color SpeedUpBtnEnabledColour;
-        public Color SpeedUpBtnDisabledColour;
         public Sprite SpedUpEnabledIcn;
         public Sprite SpedUpDisabledIcn;
 
