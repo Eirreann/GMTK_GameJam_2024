@@ -33,7 +33,7 @@ namespace GMTK_Jam.UI
 
             Mixer.SetFloat("Master", Mathf.Log10(value) * 20);
             PlayerPrefs.SetFloat("Master", value);
-            Debug.Log(value);
+            //Debug.Log(value);
         }
 
         private void _updateMusicAudio(float value)
@@ -43,7 +43,7 @@ namespace GMTK_Jam.UI
 
             Mixer.SetFloat("Music", Mathf.Log10(value) * 20);
             PlayerPrefs.SetFloat("Music", value);
-            Debug.Log(value);
+            //Debug.Log(value);
         }
 
         private void _updateSFXAudio(float value)
@@ -53,7 +53,7 @@ namespace GMTK_Jam.UI
 
             Mixer.SetFloat("SFX", Mathf.Log10(value) * 20);
             PlayerPrefs.SetFloat("SFX", value);
-            Debug.Log(value);
+            //Debug.Log(value);
         }
     }
 }

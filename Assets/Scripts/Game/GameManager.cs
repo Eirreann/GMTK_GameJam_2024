@@ -38,6 +38,7 @@ namespace GMTK_Jam
         [Header("UI")]
         public UIIntroScreen IntroScreen;
         public GameObject PauseScreen;
+        public Button PauseBtn;
         public GameObject TutorialScreen;
         public UIScaleBar ScaleBar;
         public Button BuyBtn;
@@ -76,6 +77,7 @@ namespace GMTK_Jam
             UpdatePlayerResource(0);
             PlayerBase.UpdatePlayerHealthUI(_currentHealth);
 
+            PauseBtn.onClick.AddListener(_openPauseUI);
             BuyBtn.onClick.AddListener(OpenBuyMenu);
             SpeedUpBtn.onClick.AddListener(_speedUpGame);
             EndGameButtons.ForEach(b => b.onClick.AddListener(_onRestart));
@@ -125,12 +127,7 @@ namespace GMTK_Jam
         {
             if (Input.GetKeyUp(KeyCode.Escape))
             {
-                if (_isBuyMenuOpen) return;
-
-                _paused = !_paused;
-                PauseGame(_paused);
-                PauseScreen.SetActive(_paused);
-                // TODO: Proper pause menu?
+                _openPauseUI();
             }
 
             if (Input.GetKeyUp(KeyCode.B))
@@ -227,6 +224,17 @@ namespace GMTK_Jam
             }
             else
                 ScaleBar.PreviewCost(false);
+        }
+
+        private void _openPauseUI()
+        {
+            if (_isBuyMenuOpen) return;
+
+            _paused = !_paused;
+            PauseGame(_paused);
+            PauseScreen.SetActive(_paused);
+
+            PauseBtn.GetComponentInChildren<TextMeshProUGUI>().text = _paused ? ">" : "II";
         }
 
         private void _onWaveCompleted()
